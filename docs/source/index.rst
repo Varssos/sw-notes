@@ -23,4 +23,3 @@ Contents
 
    usage
    api
-   notes
