@@ -4,10 +4,7 @@ build:
   os: "ubuntu-20.04"
   tools:
     python: "3.8"
-      install:
-      - method: pip
-        path: 
-
+    
 python:
   # Install our python package before building the docs
   install:
