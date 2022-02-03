@@ -76,4 +76,6 @@ Contents
    usage
    notes
    cpp/index.rst
+   bash/index.rst
+   python/index.rst
 
