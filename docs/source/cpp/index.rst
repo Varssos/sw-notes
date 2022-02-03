@@ -6,3 +6,8 @@ C++
 
   chrono
   cute_unit_tests
+  makefile
+  cmake
+  s2opc
+  modbus
+  s7_protocol
