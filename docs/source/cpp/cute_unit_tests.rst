@@ -9,7 +9,7 @@ The most important class in the Python Imaging Library is the
 You can create instances of this class in several ways; either by loading
 images from files, processing other images, or creating images from scratch.
 
-To load an image from a file, use the :py:func:`~PIL.Image.open` function
+To load an image from a file, use the :cpp:func:`~PIL.Image.open` function
 in the :py:mod:`~PIL.Image` module::
 
     >>> from PIL import Image
