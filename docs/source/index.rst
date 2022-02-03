@@ -1,66 +1,20 @@
 Welcome to SW's notes page
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+Content
+~~~~~~~
 
-Lumache has its documentation hosted on Read the Docs.
-Hmmm....
+There are notes/tips about C/C++, Bash, Python, Networking, Linux, OpenWrt, Git and Raspbery Pi, ESP.
+Everything here is for my private usage.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Motivation
+~~~~~~~~~~
 
-Test
-~~~~
+These notes help me to gather core, necessary information about these topics in one place. 
+The problem was that I was gaining a lot of information, things I found out in books, stackoverflow, but I wrote it in hedgeDoc, local documents, github.
+One day I was trying to find a solution to gather all data with easy access, with divided notes into some topics and I wanted to have easy access on multiple PC.
+From my research I found out that Read the Docs will be a good tool for that. In addition knowledge about using `*.rst` files, sphinx and Read the Docs will be beneficial in documentation future projects
 
-You can user ``backticks`` for showing ``highlighted`` code.
-
-`A cool websitee`_
-
-.. _A cool websitee: http://google.pl
-
-A cool bit of code::
-
-   Some cool Code
-   asdfasd
-
-.. code-block:: rst
-
-   A bit of **rst** which should be *highlighted* properly.
-
-
-At the command line::
-
-   easy_install crawler
-
-   asdfasd
-
-
-.. _reference-name: 
-
-Cool section
-~~~~~~~~~~~~
-
-:ref:`reference-name`
-
-afdsadsfa
-
-asdfasd
-
-:ref:`reference-name`
-
-
-.. option:: -i <regex>, --ignore <regex>
-
-   Ignore pages that matcha  specific pattern
-
-
-:option:`-i`
-
-
-.. classmethod: adsfa
 
 
 .. note::
@@ -83,4 +37,5 @@ Contents
    openwrt/index.rst
    git/index.rst
    rpi/index.rst
+   esp32/index.rst
 
