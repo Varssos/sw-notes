@@ -78,4 +78,9 @@ Contents
    cpp/index.rst
    bash/index.rst
    python/index.rst
+   network/index.rst
+   linux/index.rst
+   openwrt/index.rst
+   git/index.rst
+   rpi/index.rst
 
