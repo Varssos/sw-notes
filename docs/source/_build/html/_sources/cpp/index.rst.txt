@@ -11,3 +11,4 @@ C++
   s2opc
   modbus
   s7_protocol
+  debug
