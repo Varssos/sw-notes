@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; SW notes 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cute" href="cute_unit_tests.html" />
+    <link rel="prev" title="C++" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> SW notes
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-archives">Image Archives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-display">Image Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-processing">Image Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modbus.html">Modbus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openwrt/index.html">OpenWrt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpi/index.html">RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp32/index.html">ESP32</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SW notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">C++</a> &raquo;</li>
+      <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cpp/chrono.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<p>The <strong>Python Imaging Library</strong> adds image processing capabilities to your
+Python interpreter.</p>
+<p>This library provides extensive file format support, an efficient internal
+representation, and fairly powerful image processing capabilities.</p>
+<p>The core image library is designed for fast access to data stored in a few
+basic pixel formats. It should provide a solid foundation for a general image
+processing tool.</p>
+<p>Let’s look at a few possible uses of this library.</p>
+<section id="image-archives">
+<h2>Image Archives<a class="headerlink" href="#image-archives" title="Permalink to this headline"></a></h2>
+<p>The Python Imaging Library is ideal for image archival and batch processing
+applications. You can use the library to create thumbnails, convert between
+file formats, print images, etc.</p>
+<p>The current version identifies and reads a large number of formats. Write
+support is intentionally restricted to the most commonly used interchange and
+presentation formats.</p>
+</section>
+<section id="image-display">
+<h2>Image Display<a class="headerlink" href="#image-display" title="Permalink to this headline"></a></h2>
+<p>The current release includes Tk <code class="xref py py-class docutils literal notranslate"><span class="pre">PhotoImage</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BitmapImage</span></code> interfaces, as well as a <code class="xref py py-mod docutils literal notranslate"><span class="pre">Windows</span>
+<span class="pre">DIB</span> <span class="pre">interface</span></code> that can be used with PythonWin and other
+Windows-based toolkits. Many other GUI toolkits come with some kind of PIL
+support.</p>
+<p>For debugging, there’s also a <code class="xref py py-meth docutils literal notranslate"><span class="pre">show()</span></code> method which saves an image to
+disk, and calls an external display utility.</p>
+</section>
+<section id="image-processing">
+<h2>Image Processing<a class="headerlink" href="#image-processing" title="Permalink to this headline"></a></h2>
+<p>The library contains basic image processing functionality, including point operations, filtering with a set of built-in convolution kernels, and colour space conversions.</p>
+<p>The library also supports image resizing, rotation and arbitrary affine transforms.</p>
+<p>There’s a histogram method allowing you to pull some statistics out of an image. This can be used for automatic contrast enhancement, and for global statistical analysis.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cute_unit_tests.html" class="btn btn-neutral float-right" title="Cute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, SW.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

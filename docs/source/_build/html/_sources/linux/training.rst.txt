@@ -1,0 +1,10 @@
+Training
+========
+
+.. toctree::
+    :maxdepth: 2
+
+    training1
+    training2
+    training3
+    training4
