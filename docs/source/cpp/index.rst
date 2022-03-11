@@ -9,6 +9,7 @@ C++
   makefile
   cmake
   s2opc
-  modbus
+  modbusRTU
+  modbusTCP
   s7_protocol
   debug
