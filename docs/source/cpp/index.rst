@@ -1,5 +1,5 @@
-C++
-===
+C/C++
+=====
 
 .. toctree::
   :maxdepth: 2
@@ -13,3 +13,4 @@ C++
   modbusTCP
   s7_protocol
   debug
+  linux_serial_port

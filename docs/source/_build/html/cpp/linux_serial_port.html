@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux serial port configuration &mdash; SW notes 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bash" href="../bash/index.html" />
+    <link rel="prev" title="Debug" href="debug.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> SW notes
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debug</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux serial port configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-ports">Open ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-port-configuration">Serial port configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading">Reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closing-port">Closing port</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openwrt/index.html">OpenWrt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpi/index.html">RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp32/index.html">ESP32</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SW notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">C/C++</a> &raquo;</li>
+      <li>Linux serial port configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cpp/linux_serial_port.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linux-serial-port-configuration">
+<h1>Linux serial port configuration<a class="headerlink" href="#linux-serial-port-configuration" title="Permalink to this headline"></a></h1>
+<p>Great article about this topic is here: <a class="reference external" href="https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/">mbedded.ninja</a> BTW this blog is awesome</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>This post will be something like summary of linked article. The main reason why I wrote this is to help me momorize it better and quickly get back to what was important. Only practical useage is described here for more just read linked article</p>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline"></a></h2>
+<p>To use termios in your C/C++ code you have to include following libraries</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// C library headers</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Linux headers</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span><span class="c1"> // Contains file controls like O_RDWR</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span><span class="c1"> // Error integer and strerror() function</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;termios.h&gt;</span><span class="c1"> // Contains POSIX terminal control definitions</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1"> // write(), read(), close()</span><span class="cp"></span>
+</pre></div>
+</div>
+<p><strong>Hints:</strong></p>
+<ul class="simple">
+<li><p>If you have open ports and while running app disconnect usb port it will increment it like this: /dev/ttyUBS0 -&gt; /dev/ttyUSB1</p></li>
+<li><p>Errno: “Permission denied”. You should run app as sudo or add currect user to dialout group <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">adduser</span> <span class="pre">$USER</span> <span class="pre">dialout</span></code> Log in and log is required</p></li>
+</ul>
+</section>
+<section id="open-ports">
+<h2>Open ports<a class="headerlink" href="#open-ports" title="Permalink to this headline"></a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;/dev/ttyUSB0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDWR</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// or read only with non blocking mode int serial_port = open(&quot;/dev/ttyUSB0&quot;, O_RDONLY | O_NONBLOCK);</span>
+
+<span class="c1">// Check for errors</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">serial_port</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error %i from open: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="serial-port-configuration">
+<h2>Serial port configuration<a class="headerlink" href="#serial-port-configuration" title="Permalink to this headline"></a></h2>
+<p><strong>Important!</strong> Instead of get functions, all other functions return 0 on success and -1 on failure and set errno to indicate the error</p>
+<p><strong>Get USB configuration</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">termios</span><span class="w"> </span><span class="n">tty</span><span class="p">;</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">serial_port</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tty</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error %i from tcgetattr: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Baudrate</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">cfsetispeed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tty</span><span class="p">,</span><span class="w"> </span><span class="n">B9600</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Parity</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// none parity</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">PARENB</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// even parity</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">PARENB</span><span class="p">;</span><span class="w"></span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">PARODD</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// odd parity</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">PARENB</span><span class="p">;</span><span class="w"></span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">PARODD</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Number of bits per byte</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">CSIZE</span><span class="p">;</span><span class="w"> </span><span class="c1">// Clear all the size bits, then use one of the statements below</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">CS5</span><span class="p">;</span><span class="w"> </span><span class="c1">// 5 bits per byte</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">CS6</span><span class="p">;</span><span class="w"> </span><span class="c1">// 6 bits per byte</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">CS7</span><span class="p">;</span><span class="w"> </span><span class="c1">// 7 bits per byte</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">CS8</span><span class="p">;</span><span class="w"> </span><span class="c1">// 8 bits per byte (most common)</span>
+</pre></div>
+</div>
+<p><strong>Stop bits</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">CSTOPB</span><span class="p">;</span><span class="w"> </span><span class="c1">// Clear stop field, only one stop bit used in communication (most common)</span>
+<span class="n">tty</span><span class="p">.</span><span class="n">c_cflag</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">CSTOPB</span><span class="p">;</span><span class="w">  </span><span class="c1">// Set stop field, two stop bits used in communication</span>
+</pre></div>
+</div>
+<p><strong>Save termios</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">serial_port</span><span class="p">,</span><span class="w"> </span><span class="n">TCSANOW</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tty</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error %i from tcsetattr: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="reading">
+<h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline"></a></h2>
+<p>Reading is done through the read() function</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Allocate memory for read buffer, set size according to your needs</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">read_buf</span><span class="w"> </span><span class="p">[</span><span class="mi">256</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// Read bytes. The behaviour of read() (e.g. does it block?,</span>
+<span class="c1">// how long does it block for?) depends on the configuration</span>
+<span class="c1">// settings above, specifically VMIN and VTIME</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">serial_port</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">read_buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">read_buf</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="closing-port">
+<h2>Closing port<a class="headerlink" href="#closing-port" title="Permalink to this headline"></a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">close</span><span class="p">(</span><span class="n">serial_port</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="debug.html" class="btn btn-neutral float-left" title="Debug" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bash/index.html" class="btn btn-neutral float-right" title="Bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, SW.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
