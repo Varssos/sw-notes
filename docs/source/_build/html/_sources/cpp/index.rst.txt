@@ -14,3 +14,4 @@ C/C++
   s7_protocol
   debug
   linux_serial_port
+  good_practises_cr

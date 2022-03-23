@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C/C++ &mdash; SW notes 0.1 documentation</title>
+  <title>Good practises and CR checklist &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview" href="chrono.html" />
-    <link rel="prev" title="Notes" href="../notes.html" /> 
+    <link rel="next" title="Bash" href="../bash/index.html" />
+    <link rel="prev" title="Linux serial port configuration" href="linux_serial_port.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,7 +43,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">C/C++</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile</a></li>
@@ -54,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debug.html">Debug</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Good practises and CR checklist</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
@@ -81,9 +81,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>C/C++</li>
+          <li><a href="index.html">C/C++</a> &raquo;</li>
+      <li>Good practises and CR checklist</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/good_practises_cr.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -91,58 +92,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="c-c">
-<h1>C/C++<a class="headerlink" href="#c-c" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="chrono.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chrono.html#image-archives">Image Archives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chrono.html#image-display">Image Display</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chrono.html#image-processing">Image Processing</a></li>
+  <section id="good-practises-and-cr-checklist">
+<h1>Good practises and CR checklist<a class="headerlink" href="#good-practises-and-cr-checklist" title="Permalink to this headline"></a></h1>
+<ol class="arabic simple">
+<li><p><strong>Complete |</strong> Verify that the code implements the complete design <input type="checkbox"></p></li>
+<li><p><strong>#Include |</strong> Verify that #includes are complete <input type="checkbox"></p></li>
+<li><p><strong>Initialization |</strong> Check variable and parameter Initialization:</p>
+<ul class="simple">
+<li><p>at program initiation <input type="checkbox"></p></li>
+<li><p>at start of every loop <input type="checkbox"></p></li>
+<li><p>at function/procedure entry <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cute_unit_tests.html">Cute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html#using-the-image-class">Using the Image class</a></li>
+<li><p><strong>Calls |</strong> Check function call formats:</p>
+<ul class="simple">
+<li><p>pass by value/reference <input type="checkbox"></p></li>
+<li><p>parameters <input type="checkbox"></p></li>
+<li><p>use of “const” <input type="checkbox"></p></li>
+<li><p>no return of reference to local object <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="makefile.html">Makefile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmake.html">Cmake</a></li>
-<li class="toctree-l1"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modbusRTU.html#simulator">Simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modbusRTU.html#libraries">Libraries</a></li>
+<li><p><strong>Names |</strong> Check name spelling and use:</p>
+<ul class="simple">
+<li><p>is it consistent? <input type="checkbox"></p></li>
+<li><p>is it within declared scope? <input type="checkbox"></p></li>
+<li><p>do all structures and classes use ‘.’ reference? <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modbusTCP.html#simulator">Simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modbusTCP.html#libraries">Libraries</a></li>
+<li><p><strong>Strings |</strong> Check that all strings:</p>
+<ul class="simple">
+<li><p>use std::string class <input type="checkbox"></p></li>
+<li><p>have valid and appropriate subscripts <input type="checkbox"></p></li>
+<li><p>use correct member functions and operatiors <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="debug.html">Debug</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="debug.html#visual-studio-code">Visual Studio Code</a></li>
+<li><p><strong>Pointers |</strong> Check that:</p>
+<ul class="simple">
+<li><p>pointers are initialized null (0 or NULL) <input type="checkbox"></p></li>
+<li><p>pointers are deleted only after new <input type="checkbox"></p></li>
+<li><p>new pointers are alwats deleted after use <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#preparation">Preparation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#open-ports">Open ports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#serial-port-configuration">Serial port configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#reading">Reading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html#closing-port">Closing port</a></li>
+<li><p><strong>Output Format |</strong> Check the output format:</p>
+<ul class="simple">
+<li><p>pass by value/reference <input type="checkbox"></p></li>
+<li><p>parameters <input type="checkbox"></p></li>
+<li><p>use of “const” <input type="checkbox"></p></li>
+<li><p>no return of reference to local object <input type="checkbox"></p></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
+<li><p><strong>{} Pairs |</strong> Ensure that the {} are proper and matched <input type="checkbox"></p></li>
+<li><p><strong>Logic Operators |</strong> Verify the proper user of ==, =, ||, every logic function and so on <input type="checkbox"></p></li>
+<li><p><strong>Line by line check |</strong> Check every LoC for:</p>
+<ul class="simple">
+<li><p>instruction syntax <input type="checkbox"></p></li>
+<li><p>proper punctuation <input type="checkbox"></p></li>
 </ul>
-</div>
+</li>
+<li><p><strong>Standards |</strong> Ensure that the code conforms to the coding standards</p></li>
+<li><p><strong>File usage |</strong> Verify that all files are:</p>
+<ul class="simple">
+<li><p>properly declared <input type="checkbox"></p></li>
+<li><p>opened (normally at declaration) <input type="checkbox"></p></li>
+<li><p>closed (oftern automatic at destruction) <input type="checkbox"></p></li>
+<li><p>correctly tested for end-of-file, where necessary <input type="checkbox"></p></li>
+</ul>
+</li>
+<li><p>Replace magic numbers with enums/ const class members <input type="checkbox"></p></li>
+<li><p>Do not use/ try to avoid global variables <input type="checkbox"></p></li>
+<li><p>Try to avoid #define  <input type="checkbox"></p></li>
+</ol>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../notes.html" class="btn btn-neutral float-left" title="Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="chrono.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_serial_port.html" class="btn btn-neutral float-left" title="Linux serial port configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bash/index.html" class="btn btn-neutral float-right" title="Bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
