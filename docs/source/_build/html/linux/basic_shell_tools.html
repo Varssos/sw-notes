@@ -106,7 +106,7 @@
 <li><p>Korzystając z programu find znajdź wszystkie pliki, które posiadają w nazwie słowo mozilla i znajdują się w podkatalogach katalogu /usr.</p></li>
 </ol>
 <details>
-<summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find /usr/ -name <span class="s2">&quot;mozilla&quot;</span>
+<summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find /usr/ -name <span class="s2">&quot;mozilla&quot;</span>ls -alSr <span class="p">|</span> grep -v ^d
 </pre></div>
 </div>
 </details><ol class="arabic simple" start="4">
@@ -128,11 +128,10 @@
 </ol>
 <details>
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch plik.txt
+ls -la
 </pre></div>
 </div>
-</details>
-
-ls -la</details><ol class="arabic simple" start="7">
+</details><ol class="arabic simple">
 <li><p>Dla pliku plik.txt dodaj prawo zapisu dla grupy.</p></li>
 </ol>
 <details>
@@ -175,7 +174,7 @@ ls -la</details><ol class="arabic simple" start="7">
 </pre></div>
 </div>
 </details><ol class="arabic simple" start="13">
-<li><p>Wyśw. plik /etc/passwd z podziałem na strony przyjmując, że strona ma 5 linii tekstu.</p></li>
+<li><p>Wyświetl plik /etc/passwd z podziałem na strony przyjmując, że strona ma 5 linii tekstu.</p></li>
 </ol>
 <details>
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>more -5 /etc/passwd
@@ -256,11 +255,10 @@ ls -la</details><ol class="arabic simple" start="7">
 </ol>
 <details>
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -la <span class="p">|</span> tr -s <span class="s1">&#39; &#39;</span> <span class="p">|</span> sort -k <span class="m">5</span> -n
+ls -alSr <span class="p">|</span> grep -v ^d
 </pre></div>
 </div>
-</details>
-
-ls -alSr | grep -v ^d</details><ol class="arabic simple" start="25">
+</details></details><ol class="arabic simple" start="25">
 <li><p>Wyświetl zawartość pliku /etc/passwd posortowaną wg numerów UID w kolejności od największego do najmniejszego</p></li>
 </ol>
 <details>
@@ -279,11 +277,10 @@ ls -alSr | grep -v ^d</details><ol class="arabic simple" start="25">
 </ol>
 <details>
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find /home/student -type f <span class="p">|</span> wc -l
+find ~ -type f -user student <span class="p">|</span> wc -l
 </pre></div>
 </div>
-</details>
-
-find ~ -type f -user student | wc -l</details><ol class="arabic simple" start="28">
+</details><ol class="arabic simple" start="28">
 <li><p>Sporządź statystykę praw dostępu (dla każdego z praw dostępu podaj ile razy zostało ono przydzielone)</p></li>
 </ol>
 <details>
@@ -332,17 +329,7 @@ find ~ -type f -user student | wc -l</details><ol class="arabic simple" start="2
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">history</span> <span class="p">|</span> tr  -s <span class="s1">&#39; &#39;</span> <span class="p">|</span> cut -f3 -d <span class="s1">&#39; &#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n -r
 </pre></div>
 </div>
-</details><ol class="arabic simple" start="35">
-<li><p>W podanym katalogu utwórz podkatalogi wszystkim użytkownikom ze swojego roku i dodatkowo zapisz w pliku o nazwie users.txt posortowaną listę tych użytkowników.</p></li>
-</ol>
-<details>
-<summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>who i cos tam dalej
-</pre></div>
-</div>
-</details><ol class="arabic simple" start="36">
-<li><p>Sprawdź czy któryś z użytkowników jest zalogowany w systemie więcej niż jeden raz. Dla każdego takiego użytkownika należy wyświetlić jego identyfikator i listę terminali na których pracuje.</p></li>
-</ol>
-</section>
+</details></section>
 
 
            </div>

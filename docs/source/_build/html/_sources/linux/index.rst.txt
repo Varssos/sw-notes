@@ -8,4 +8,4 @@ Linux
     basic_shell_tools
     SED
     awk
-    training
+    tar

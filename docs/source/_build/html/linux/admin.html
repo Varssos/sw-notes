@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Training#3 &mdash; SW notes 0.1 documentation</title>
+  <title>Admin tools &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -66,9 +66,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Training#3</li>
+      <li>Admin tools</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/linux/training3.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/linux/admin.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,8 +76,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="training-3">
-<h1>Training#3<a class="headerlink" href="#training-3" title="Permalink to this headline"></a></h1>
+  <section id="admin-tools">
+<h1>Admin tools<a class="headerlink" href="#admin-tools" title="Permalink to this headline"></a></h1>
+<p>! Reorganize this page</p>
+<ol class="arabic">
+<li><p>Zmiana portu dla ssh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+<span class="n">listing</span> <span class="n">port</span><span class="p">:</span> <span class="n">sudo</span> <span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">sudo</span> <span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">ssh_port_t</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="mi">2022</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sprawdź, jakie polecenia uruchomił dowolny inny użytkownik, pracujący w tej chwili w systemie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ps aux | grep -v $USER | tail -1
+</pre></div>
+</div>
+</li>
+<li><p>Uruchom w tle wyszukiwanie w całym systemie plików o nazwach pasujących do wzorca “<em>user</em>”, błędy przekieruj na urządzenie puste, wyniki do pliku wyniki. Uruchamiając, obniż priorytet tego polecenia do najniższego.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nice</span> <span class="o">-</span><span class="n">n20</span> <span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*user*&quot;</span>  <span class="mi">2</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">wyniki</span><span class="o">&amp;</span>
+</pre></div>
+</div>
+</li>
+</ol>
 <section id="swap">
 <h2>SWAP<a class="headerlink" href="#swap" title="Permalink to this headline"></a></h2>
 <p>increase swap:</p>
@@ -101,10 +121,6 @@
 <h3>DNF<a class="headerlink" href="#dnf" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">https://www.tecmint.com/install-php-8-on-centos/</span></code></p>
 </section>
-<section id="sed">
-<h3>SED<a class="headerlink" href="#sed" title="Permalink to this headline"></a></h3>
-<p>SED is in separated chapter</p>
-</section>
 </section>
 <section id="cron">
 <h2>CRON<a class="headerlink" href="#cron" title="Permalink to this headline"></a></h2>
@@ -120,36 +136,41 @@
 364 cat /tmp/datazcrona</p>
 <p>atq -  sprawdzanie kolejki do wykoanania dla .. attention</p>
 </section>
-<section id="tar">
-<h2>TAR<a class="headerlink" href="#tar" title="Permalink to this headline"></a></h2>
-<p>Jesteś w katalogu domowym. Wkopiuj poniższy kod do terminala. Utworzy katalogi z plikami do ćwiczeń.</p>
-<p>mkdir s1 &amp;&amp; ls -l -R /boot &gt; s1/l1.txt &amp;&amp; cp s1/l1.txt s1/l2.txt &amp;&amp; cp -r s1 s2 &amp;&amp; cp -r s1 s3 &amp;&amp; touch l3.txt</p>
-<ol class="arabic simple">
-<li><p>Utwórz archiwum a1.tar z katalogu s1 <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-cf</span> <span class="pre">a1.tar</span> <span class="pre">s1</span></code></p></li>
-<li><p>Podejrzyj zawartość archiwum a1.tar <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">tvf</span> <span class="pre">a1.tar</span></code></p></li>
-<li><p>Utwórz archiwum a2.tar z katalogu s2 z podglądem zawartości <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">cfv</span> <span class="pre">a2.tar</span> <span class="pre">s2</span></code></p></li>
-<li><p>Dodaj plik l3.txt do a1.tar (następnie pokaż dodatkowo zawartość a1.tar). <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-rf</span> <span class="pre">a1.tar</span> <span class="pre">l3.txt</span></code> <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">tvf</span> <span class="pre">a1.tar</span></code></p></li>
-<li><p>Usuń plik l2.txt z a2.tar (następnie pokaż dodatkowo zawartość a2.tar)</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">--</span><span class="n">delete</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">a1</span><span class="o">.</span><span class="n">tar</span> <span class="n">l2</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">tar</span> <span class="o">--</span><span class="nb">list</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">a1</span><span class="o">.</span><span class="n">tar</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>Dodaj do a1.tar zawartość a2.tar (następnie pokaż dodatkowo zawartość a1.tar). <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">--concatenate</span> <span class="pre">--file=a1.tar</span> <span class="pre">a2.tar</span></code></p></li>
-<li><p>Skopiuj a1.tar pod nazwą a3.tar (zwykłe cp). Wyodrębnij zawartość a1.tar do katalogu s4 (pokaż zawartość s4). <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xf</span> <span class="pre">a1.tar</span> <span class="pre">-C</span> <span class="pre">s4</span></code></p></li>
-<li><p>Z a3.tar stwórz plik skompresowany a3.tar.gz <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-zcf</span> <span class="pre">a3.tar.gz</span> <span class="pre">a3.tar</span></code></p></li>
-<li><p>Z katalogu s3 stwórz skompresowany plik s3.zip <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">zcf</span> <span class="pre">s3.zip</span> <span class="pre">s3</span></code></p></li>
-<li><p>Z katalogu s3 stwórz plik skompresowany s3.tar.bz2 <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">cjf</span> <span class="pre">s3.tar.bz2</span> <span class="pre">s3</span></code></p></li>
-</ol>
-<p><a class="reference external" href="https://j.wojtanowski.po.opole.pl/index.php?folder=U3lzdGVteSBvcGVyYWN5am5lIElJL0FXSyBHUkVQIFNFRA==">https://j.wojtanowski.po.opole.pl/index.php?folder=U3lzdGVteSBvcGVyYWN5am5lIElJL0FXSyBHUkVQIFNFRA==</a></p>
-</section>
 <section id="extra-permissions">
 <h2>Extra Permissions<a class="headerlink" href="#extra-permissions" title="Permalink to this headline"></a></h2>
 <p><a class="reference external" href="https://www.thegeekdiary.com/linux-interview-questions-special-permissions-suid-sgid-and-sticky-bit/">https://www.thegeekdiary.com/linux-interview-questions-special-permissions-suid-sgid-and-sticky-bit/</a></p>
 <p>setfacl -m u:Kermit:rw echo.txt
 getfacl echo.txt</p>
 <p>umask 0006</p>
+</section>
+<section id="smtp">
+<h2>SMTP<a class="headerlink" href="#smtp" title="Permalink to this headline"></a></h2>
+<p>Po skonfigurowaniu servera smtp według instrukcji <a class="reference download internal" download="" href="../_downloads/33a6175382318e5a610a4346ec8ee262/poczta.pdf"><code class="xref download docutils literal notranslate"><span class="pre">poczta.pdf</span></code></a>  należy odbłokować porty</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">smtp</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">pop3</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">pop3s</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">imap</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">imaps</span> <span class="o">--</span><span class="n">permanent</span>
+</pre></div>
+</div>
+<p>Na kliencie na drugim urządzeniu instalacja np. thunderbird</p>
+<p>user: student
+address: <a class="reference external" href="mailto:student&#37;&#52;&#48;alma1&#46;test&#46;lab">student<span>&#64;</span>alma1<span>&#46;</span>test<span>&#46;</span>lab</a>
+pass:…</p>
+</section>
+<section id="nextcloud">
+<h2>NextCloud<a class="headerlink" href="#nextcloud" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.tecmint.com/install-nextcloud-on-centos-8/">https://www.tecmint.com/install-nextcloud-on-centos-8/</a></p>
+</section>
+<section id="systemd">
+<h2>SystemD<a class="headerlink" href="#systemd" title="Permalink to this headline"></a></h2>
+<p>1) Zmiana portu dla ssh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+<span class="n">listing</span> <span class="n">port</span><span class="p">:</span> <span class="n">sudo</span> <span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">l</span>
+
+<span class="n">sudo</span> <span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">ssh_port_t</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="mi">2022</span>
+</pre></div>
+</div>
 </section>
 </section>
 

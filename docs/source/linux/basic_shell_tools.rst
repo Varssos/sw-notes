@@ -5,7 +5,7 @@ Basic shell tools
 1. Przy pomocy programu locate znajdź wszystkie pozycje, które posiadają w nazwie słowo mozilla
 
 .. raw:: html
-
+   
    <details>
    <summary><a>solution</a></summary>
 
@@ -45,7 +45,7 @@ Basic shell tools
 
 .. code-block:: bash
 
-   find /usr/ -name "mozilla"
+   find /usr/ -name "mozilla"ls -alSr | grep -v ^d
 
 .. raw:: html
 
@@ -96,11 +96,6 @@ Basic shell tools
 .. code-block:: bash
 
    touch plik.txt
-
-.. raw:: html
-
-   </details>
-
    ls -la
 
 .. raw:: html
@@ -108,7 +103,7 @@ Basic shell tools
    </details>
 
 
-7. Dla pliku plik.txt dodaj prawo zapisu dla grupy.
+1. Dla pliku plik.txt dodaj prawo zapisu dla grupy.
 
 .. raw:: html
 
@@ -204,7 +199,7 @@ Basic shell tools
    </details>
 
 
-13. Wyśw. plik /etc/passwd z podziałem na strony przyjmując, że strona ma 5 linii tekstu.
+13. Wyświetl plik /etc/passwd z podziałem na strony przyjmując, że strona ma 5 linii tekstu.
 
 .. raw:: html
 
@@ -390,12 +385,13 @@ Basic shell tools
 .. code-block:: bash
 
    ls -la | tr -s ' ' | sort -k 5 -n
+   ls -alSr | grep -v ^d
 
 .. raw:: html
 
    </details>
 
-   ls -alSr | grep -v ^d
+   
 
 .. raw:: html
 
@@ -444,11 +440,6 @@ Basic shell tools
 .. code-block:: bash
 
    find /home/student -type f | wc -l
-
-.. raw:: html
-
-   </details>
-
    find ~ -type f -user student | wc -l
 
 .. raw:: html
@@ -456,7 +447,7 @@ Basic shell tools
    </details>
 
 
-28. Sporządź statystykę praw dostępu (dla każdego z praw dostępu podaj ile razy zostało ono przydzielone)
+28.  Sporządź statystykę praw dostępu (dla każdego z praw dostępu podaj ile razy zostało ono przydzielone)
 
 .. raw:: html
 
@@ -568,21 +559,3 @@ Basic shell tools
 
    </details>
 
-
-35. W podanym katalogu utwórz podkatalogi wszystkim użytkownikom ze swojego roku i dodatkowo zapisz w pliku o nazwie users.txt posortowaną listę tych użytkowników.
-
-.. raw:: html
-
-   <details>
-   <summary><a>solution</a></summary>
-
-.. code-block:: bash
-
-   who i cos tam dalej
-
-.. raw:: html
-
-   </details>
-
-
-36.  Sprawdź czy któryś z użytkowników jest zalogowany w systemie więcej niż jeden raz. Dla każdego takiego użytkownika należy wyświetlić jego identyfikator i listę terminali na których pracuje.
