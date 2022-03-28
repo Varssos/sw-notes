@@ -9,3 +9,4 @@ Linux
     SED
     awk
     tar
+    admin
