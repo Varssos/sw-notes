@@ -2,7 +2,7 @@ C/C++
 =====
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
 
   chrono
   cute_unit_tests
@@ -15,3 +15,4 @@ C/C++
   debug
   linux_serial_port
   good_practises_cr
+  unittests
