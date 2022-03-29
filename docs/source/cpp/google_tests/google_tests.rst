@@ -1,11 +1,22 @@
 Google tests
 ============
 
+
 Preview
 ~~~~~~~
 
 `Google C++ tutorial playlist <https://www.youtube.com/watch?v=nbFXI9SDfbk&list=PL_dsdStdDXbo-zApdWB5XiF2aWpsqzV55&index=1>`_ 
 Right now there is a good tutorial to learn basics of gtests
+
+Tutorial analysis
+~~~~~~~~~~~~~~~~~
+
+.. toctree::
+  :maxdepth: 3
+
+  tutorial1/tutorial1
+  tutorial2/tutorial2
+
 
 
 Install on Linux system
@@ -46,7 +57,7 @@ CMake for minimum test code
 
     cmake_minimum_required(VERSION 3.5)
 
-    project(example LANGUAGES CXX)
+    project(gtest LANGUAGES CXX)
 
     set(CMAKE_CXX_STANDARD 11)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -54,14 +65,9 @@ CMake for minimum test code
     find_package(GTest REQUIRED)
     include_directories(${GTEST_INCLUDE_DIRS})
 
-    add_executable(example main.cpp)
-    target_link_libraries(example ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
+    set(BUILD_GMOCK ON)
 
-
-.. toctree::
-  :maxdepth: 3
-
-  tutorial1/tutorial1
-  tutorial2/tutorial2
+    add_executable(gtest ./src/gtest.cpp)
+    target_link_libraries(gtest ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} gmock pthread)
 
   

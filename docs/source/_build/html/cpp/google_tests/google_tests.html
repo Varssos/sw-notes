@@ -58,6 +58,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../unittests.html">Unit tests libraries</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Google tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#preview">Preview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial-analysis">Tutorial analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-on-linux-system">Install on Linux system</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#minimum-example-test-code">Minimum example test code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cmake-for-minimum-test-code">CMake for minimum test code</a></li>
@@ -110,6 +111,26 @@
 <p><a class="reference external" href="https://www.youtube.com/watch?v=nbFXI9SDfbk&amp;list=PL_dsdStdDXbo-zApdWB5XiF2aWpsqzV55&amp;index=1">Google C++ tutorial playlist</a>
 Right now there is a good tutorial to learn basics of gtests</p>
 </section>
+<section id="tutorial-analysis">
+<h2>Tutorial analysis<a class="headerlink" href="#tutorial-analysis" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/tutorial1.html">Tutorial#1, Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#tests-with-1-subtest">2 tests with 1 subtest:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#expect-vs-assert">Expect vs Assert:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#tutorial-1-summary">Tutorial#1 summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2/tutorial2.html">Tutorial#2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#test-consist-of-arrange-act-assert">TEST consist of arrange, act, assert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#unit-tests-should">Unit tests should:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#independet-2-unit-tests">Independet 2 unit tests:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#string-comparing">String comparing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 <section id="install-on-linux-system">
 <h2>Install on Linux system<a class="headerlink" href="#install-on-linux-system" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/google/googletest.git
@@ -143,7 +164,7 @@ sudo ldconfig
 <h2>CMake for minimum test code<a class="headerlink" href="#cmake-for-minimum-test-code" title="Permalink to this headline"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.5</span><span class="p">)</span>
 
-<span class="nb">project</span><span class="p">(</span><span class="s">example</span> <span class="s">LANGUAGES</span> <span class="s">CXX</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">gtest</span> <span class="s">LANGUAGES</span> <span class="s">CXX</span><span class="p">)</span>
 
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">11</span><span class="p">)</span>
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="s">ON</span><span class="p">)</span>
@@ -151,26 +172,11 @@ sudo ldconfig
 <span class="nb">find_package</span><span class="p">(</span><span class="s">GTest</span> <span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">GTEST_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
 
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span> <span class="s">main.cpp</span><span class="p">)</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example</span> <span class="o">${</span><span class="nv">GTEST_LIBRARIES</span><span class="o">}</span> <span class="o">${</span><span class="nv">GTEST_MAIN_LIBRARIES</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_GMOCK</span> <span class="s">ON</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">gtest</span> <span class="s">./src/gtest.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">gtest</span> <span class="o">${</span><span class="nv">GTEST_LIBRARIES</span><span class="o">}</span> <span class="o">${</span><span class="nv">GTEST_MAIN_LIBRARIES</span><span class="o">}</span> <span class="s">gmock</span> <span class="s">pthread</span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1/tutorial1.html">Tutorial#1, Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#tests-with-1-subtest">2 tests with 1 subtest:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#expect-vs-assert">Expect vs Assert:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial1/tutorial1.html#tutorial-1-summary">Tutorial#1 summary</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2/tutorial2.html">Tutorial#2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#test-consist-of-arrange-act-assert">TEST consist of arrange, act, assert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#unit-tests-should">Unit tests should:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#independet-2-unit-tests">Independet 2 unit tests:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2/tutorial2.html#string-comparing">String comparing</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </section>
 </section>

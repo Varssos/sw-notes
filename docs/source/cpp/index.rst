@@ -2,7 +2,7 @@ C/C++
 =====
 
 .. toctree::
-  :maxdepth: 3
+  :maxdepth: 4
 
   chrono
   cute_unit_tests
