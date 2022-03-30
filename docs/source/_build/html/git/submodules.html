@@ -54,9 +54,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-submodule-to-project">Adding submodule to project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removing-submodule">Removing submodule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-status-of-submodules">Check status of submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#point-to-specific-commit">Point to specific commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#point-to-specific-branch">Point to specific branch</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rm_undo_single_file.html">rm undo single file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rpi/index.html">RPI</a></li>
@@ -114,6 +118,28 @@ Following steps should do it:</p>
 </pre></div>
 </div>
 <p>submodules/ directory can be replaced by any other e.g.: submodules/libmodbus/</p>
+</section>
+<section id="check-status-of-submodules">
+<h2>Check status of submodules<a class="headerlink" href="#check-status-of-submodules" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">status</span>
+</pre></div>
+</div>
+</section>
+<section id="point-to-specific-commit">
+<h2>Point to specific commit<a class="headerlink" href="#point-to-specific-commit" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">submodules</span><span class="o">/</span><span class="n">libmodbus</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="p">{</span><span class="n">SHA1</span><span class="p">}</span> <span class="c1">#e.g a2e0e4546e23cefaee95545668f8eaa891f88c9e</span>
+<span class="n">cd</span> <span class="o">../..</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">submodules</span><span class="o">/</span><span class="n">libmodbus</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="point-to-specific-branch">
+<h2>Point to specific branch<a class="headerlink" href="#point-to-specific-branch" title="Permalink to this headline"></a></h2>
+<p>When submodule already exist:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span><span class="n">gitmodules</span> <span class="n">submodule</span><span class="o">.</span><span class="n">submodules</span><span class="o">/</span><span class="n">libmodbus</span><span class="o">.</span><span class="n">branch</span> <span class="n">master</span>
+</pre></div>
+</div>
 </section>
 </section>
 

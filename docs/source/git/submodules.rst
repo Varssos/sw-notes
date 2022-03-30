@@ -32,3 +32,32 @@ Following steps should do it::
     git rm -f submodules/
 
 submodules/ directory can be replaced by any other e.g.: submodules/libmodbus/
+
+
+Check status of submodules
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:: 
+
+    git submodule status
+
+Point to specific commit
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    cd submodules/libmodbus
+    git checkout {SHA1} #e.g a2e0e4546e23cefaee95545668f8eaa891f88c9e
+    cd ../..
+    git add submodules/libmodbus/
+
+
+Point to specific branch
+~~~~~~~~~~~~~~~~~~~~~~~~
+When submodule already exist:
+
+::
+
+    git config -f .gitmodules submodule.submodules/libmodbus.branch master
+
+    

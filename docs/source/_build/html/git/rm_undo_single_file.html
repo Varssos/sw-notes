@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Git &mdash; SW notes 0.1 documentation</title>
+  <title>rm undo single file &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,9 +17,7 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Submodules" href="submodules.html" />
-    <link rel="prev" title="Crontab" href="../openwrt/crontab.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,7 +38,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C/C++</a></li>
@@ -49,12 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openwrt/index.html">OpenWrt</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Git</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rm_undo_single_file.html">rm undo single file</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rpi/index.html">RPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../esp32/index.html">ESP32</a></li>
 </ul>
@@ -73,9 +66,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Git</li>
+      <li>rm undo single file</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/git/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/git/rm_undo_single_file.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -83,32 +76,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="submodules.html">Submodules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#adding-submodule-to-project">Adding submodule to project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#removing-submodule">Removing submodule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#check-status-of-submodules">Check status of submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#point-to-specific-commit">Point to specific commit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="submodules.html#point-to-specific-branch">Point to specific branch</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tags.html">Tags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rm_undo_single_file.html">rm undo single file</a></li>
-</ul>
+  <section id="rm-undo-single-file">
+<h1>rm undo single file<a class="headerlink" href="#rm-undo-single-file" title="Permalink to this headline"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this restores the file status in the index</span>
+<span class="n">git</span> <span class="n">reset</span> <span class="o">--</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+<span class="c1"># then check out a copy from the index</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
 </div>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../openwrt/crontab.html" class="btn btn-neutral float-left" title="Crontab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="submodules.html" class="btn btn-neutral float-right" title="Submodules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
