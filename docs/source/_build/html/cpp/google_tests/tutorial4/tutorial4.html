@@ -17,7 +17,9 @@
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial#5" href="../tutorial5/tutorial5.html" />
+    <link rel="prev" title="Tutorial#3" href="../tutorial3/tutorial3.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,10 +40,34 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../notes.html">Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">C/C++</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">C/C++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../chrono.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cute_unit_tests.html">Cute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../makefile.html">Makefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s2opc.html">S2OPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modbusRTU.html">Modbus RTU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modbusTCP.html">Modbus TCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s7_protocol.html">S7 Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug.html">Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linux_serial_port.html">Linux serial port configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../good_practises_cr.html">Good practises and CR checklist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../unittests.html">Unit tests libraries</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../google_tests.html">Google tests</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../google_tests.html#preview">Preview</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../google_tests.html#video-tutorial-analysis">Video Tutorial analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../google_tests.html#install-on-linux-system">Install on Linux system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../google_tests.html#minimum-example-test-code">Minimum example test code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../google_tests.html#cmake-for-minimum-test-code">CMake for minimum test code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bash/index.html">Bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network/index.html">Network</a></li>
@@ -66,6 +92,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">C/C++</a> &raquo;</li>
+          <li><a href="../../unittests.html">Unit tests libraries</a> &raquo;</li>
+          <li><a href="../google_tests.html">Google tests</a> &raquo;</li>
       <li>Tutorial#4</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/cpp/google_tests/tutorial4/tutorial4.rst.txt" rel="nofollow"> View page source</a>
@@ -78,9 +107,8 @@
              
   <section id="tutorial-4">
 <h1>Tutorial#4<a class="headerlink" href="#tutorial-4" title="Permalink to this headline"></a></h1>
-</section>
 <section id="mocking">
-<h1>Mocking<a class="headerlink" href="#mocking" title="Permalink to this headline"></a></h1>
+<h2>Mocking<a class="headerlink" href="#mocking" title="Permalink to this headline"></a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gmock/gmock.h&gt;</span><span class="cp"></span>
@@ -179,11 +207,15 @@ Instead of using</p>
 </pre></div>
 </div>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorial3/tutorial3.html" class="btn btn-neutral float-left" title="Tutorial#3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tutorial5/tutorial5.html" class="btn btn-neutral float-right" title="Tutorial#5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

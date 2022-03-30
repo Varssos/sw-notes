@@ -5,11 +5,13 @@ Google tests
 Preview
 ~~~~~~~
 
-`Google C++ tutorial playlist <https://www.youtube.com/watch?v=nbFXI9SDfbk&list=PL_dsdStdDXbo-zApdWB5XiF2aWpsqzV55&index=1>`_ 
-Right now there is a good tutorial to learn basics of gtests
+`Google test C++ article <https://infotraining.bitbucket.io/cpp-tdd/gtest.html>`_
 
-Tutorial analysis
-~~~~~~~~~~~~~~~~~
+`Google C++ tutorial playlist <https://www.youtube.com/watch?v=nbFXI9SDfbk&list=PL_dsdStdDXbo-zApdWB5XiF2aWpsqzV55&index=1>`_ 
+
+
+Video Tutorial analysis
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
   :maxdepth: 3
