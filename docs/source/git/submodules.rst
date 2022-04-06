@@ -1,8 +1,6 @@
 Submodules
 ==========
 
-Hejo Domi :*
-
 Overview
 ~~~~~~~~
 
@@ -16,6 +14,9 @@ Submodules are thirdy part libraries/project which you can insert into your own 
 
 Adding submodule to project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 
 Imagine that you want to add libmodbus library to your git project.
 Make sure that you are in main project path, and submodule/libmodbus direcotry does not exist.
