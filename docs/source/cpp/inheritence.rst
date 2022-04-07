@@ -17,7 +17,7 @@ Upcasting and downcasting with classes
     {
     public:
         int x;
-        virtual void f() = 0 ;
+        virtual void f() = 0;
         virtual ~Base() {};
     };
 
