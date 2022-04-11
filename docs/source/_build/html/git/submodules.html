@@ -57,6 +57,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#check-status-of-submodules">Check status of submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#point-to-specific-commit">Point to specific commit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#point-to-specific-branch">Point to specific branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-submodules">Building submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-makefile">Example makefile</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
@@ -138,6 +140,65 @@ Following steps should do it:</p>
 <h2>Point to specific branch<a class="headerlink" href="#point-to-specific-branch" title="Permalink to this headline"></a></h2>
 <p>When submodule already exist:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span><span class="n">gitmodules</span> <span class="n">submodule</span><span class="o">.</span><span class="n">submodules</span><span class="o">/</span><span class="n">libmodbus</span><span class="o">.</span><span class="n">branch</span> <span class="n">master</span>
+</pre></div>
+</div>
+</section>
+<section id="building-submodules">
+<h2>Building submodules<a class="headerlink" href="#building-submodules" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="n">submodules</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="n">submodules</span> <span class="n">install</span>
+</pre></div>
+</div>
+</section>
+<section id="example-makefile">
+<h2>Example makefile<a class="headerlink" href="#example-makefile" title="Permalink to this headline"></a></h2>
+<p>This makefile should be set in ./submodules/ directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">runner</span> <span class="o">=</span> <span class="k">$(</span>shell whoami<span class="k">)</span>
+<span class="nv">ROOT_DIR</span> <span class="o">=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">MAKE</span> <span class="o">=</span> make
+
+<span class="nv">SUBMODULES_DIR_PATH</span><span class="o">=</span><span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+
+.DEFAULT_GOAL<span class="o">=</span>all
+
+.PHONY: clean all <span class="se">\</span>
+    libmodbus libmodbus_install libmodbus_clean
+
+all: libmodbus
+
+install: check_runner <span class="se">\</span>
+    libmodbus_install
+
+clean: <span class="se">\</span>
+    libmodbus_clean
+
+check_runner: <span class="c1"># check if make is executed by root user</span>
+ifneq <span class="o">(</span><span class="k">$(</span>runner<span class="k">)</span>, root<span class="o">)</span>
+    <span class="k">$(</span>error Some submodules require other module installation. Please, run make as root <span class="o">[</span>now: <span class="k">$(</span>runner<span class="k">)</span><span class="o">]</span>.<span class="k">)</span>
+<span class="k">else</span>
+    @echo <span class="s1">&#39;Running as root. OK&#39;</span>
+endif
+
+
+<span class="c1"># MODBUS ---------------------------------</span>
+
+libmodbus: libmodbus_clean
+    @echo Build libmodbus
+    @mkdir -p ./libmodbus/build
+    @cd libmodbus<span class="p">;</span> ./autogen.sh<span class="p">;</span>
+    @cd libmodbus<span class="p">;</span> ./configure --prefix<span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/build<span class="p">;</span>
+    @<span class="k">$(</span>MAKE<span class="k">)</span> -C ./libmodbus/
+    @<span class="k">$(</span>MAKE<span class="k">)</span> -C ./libmodbus/ install
+
+libmodbus_install: check_runner
+    @echo Install libmodbus
+    @cp -r ./libmodbus/build/* /usr/local/
+
+libmodbus_clean:
+    @echo Clean libmodbus
+    @rm -rf ./libmodbus/build
 </pre></div>
 </div>
 </section>

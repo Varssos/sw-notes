@@ -63,4 +63,66 @@ When submodule already exist:
 
     git config -f .gitmodules submodule.submodules/libmodbus.branch master
 
-    
+
+Building submodules
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+    git submodule init
+    git submodule update
+    make -C submodules
+    sudo make -C submodules install
+
+Example makefile
+~~~~~~~~~~~~~~~~
+
+This makefile should be set in ./submodules/ directory
+ 
+.. code-block:: bash
+
+    runner = $(shell whoami)
+    ROOT_DIR = $(shell pwd)
+    MAKE = make
+
+    SUBMODULES_DIR_PATH=$(shell pwd)
+
+    .DEFAULT_GOAL=all
+
+    .PHONY: clean all \
+        libmodbus libmodbus_install libmodbus_clean 
+
+    all: libmodbus
+
+    install: check_runner \
+        libmodbus_install
+
+    clean: \
+        libmodbus_clean
+
+    check_runner: # check if make is executed by root user
+    ifneq ($(runner), root)
+        $(error Some submodules require other module installation. Please, run make as root [now: $(runner)].)
+    else
+        @echo 'Running as root. OK'
+    endif
+
+
+    # MODBUS ---------------------------------
+
+    libmodbus: libmodbus_clean
+        @echo Build libmodbus
+        @mkdir -p ./libmodbus/build
+        @cd libmodbus; ./autogen.sh;
+        @cd libmodbus; ./configure --prefix=`pwd`/build;
+        @$(MAKE) -C ./libmodbus/
+        @$(MAKE) -C ./libmodbus/ install
+
+    libmodbus_install: check_runner
+        @echo Install libmodbus
+        @cp -r ./libmodbus/build/* /usr/local/
+
+    libmodbus_clean:
+        @echo Clean libmodbus
+        @rm -rf ./libmodbus/build
+
