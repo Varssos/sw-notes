@@ -17,3 +17,4 @@ C/C++
   good_practises_cr
   unittests
   inheritence
+  build_errors
