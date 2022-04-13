@@ -1,6 +1,17 @@
 Inheritence
 ===========
 
+Rules
+~~~~~
+
+1. When base class is pure virtual, member functions has to be signed as virtual too like this::
+
+.. code-block:: cpp
+
+    virtual void HandleResponse () = 0;
+
+If function is not implemented in cpp it will throw segmentation fault. That is why it has ``= 0"`` 
+
 
 
 Upcasting and downcasting with classes
