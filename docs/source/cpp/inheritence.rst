@@ -4,18 +4,15 @@ Inheritence
 Rules
 ~~~~~
 
-1. When base class is pure virtual, member functions has to be signed as virtual too like this::
-
-.. code-block:: cpp
-
-    virtual void HandleResponse () = 0;
+1. When base class is pure virtual, member functions has to be signed as virtual too like this
+``virtual void HandleResponse () = 0;``
 
 If function is not implemented in cpp it will throw segmentation fault. That is why it has ``= 0"`` 
 
-2. It is impossible to create ``template`` abstract class member functions
-3. Virtual functions can't have different parameter types. In this situation 
-4. It is impossible to create an object of pure virtual class
-5. Use ``std::dynamic_pointer_cast<Derived>(obj)->`` for up/down casting
+1. It is impossible to create ``template`` abstract class member functions
+2. Virtual functions can't have different parameter types. In this situation 
+3. It is impossible to create an object of pure virtual class
+4. Use ``std::dynamic_pointer_cast<Derived>(obj)->`` for up/down casting
 
 Upcasting and downcasting with classes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,6 +70,9 @@ Upcasting and downcasting with classes
 **How to access function which is only in derived class, when we have only a pointer to base class** 
 
 .. code-block:: cpp
+
+    #include <iostream>
+    #include <memory>
 
     class Base
     {
