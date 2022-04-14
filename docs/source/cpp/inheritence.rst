@@ -12,12 +12,17 @@ Rules
 
 If function is not implemented in cpp it will throw segmentation fault. That is why it has ``= 0"`` 
 
-
+2. It is impossible to create ``template`` abstract class member functions
+3. Virtual functions can't have different parameter types. In this situation 
+4. It is impossible to create an object of pure virtual class
+5. Use ``std::dynamic_pointer_cast<Derived>(obj)->`` for up/down casting
 
 Upcasting and downcasting with classes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Upcasting/Downcastring <https://www.bogotobogo.com/cplusplus/upcasting_downcasting.php>`_ 
+
+**Downcasting to pass its smart pointer as an argument** 
 
 .. code-block:: cpp
 
@@ -61,6 +66,49 @@ Upcasting and downcasting with classes
 
         smart_pointer_function( std::dynamic_pointer_cast<Derived>(obj) );
         print_derived_y(std::dynamic_pointer_cast<Derived>(obj));
+
+        return 0;
+    }
+
+**How to access function which is only in derived class, when we have only a pointer to base class** 
+
+.. code-block:: cpp
+
+    class Base
+    {
+    public:
+        int x;
+        uint16_t y;
+        uint32_t z;
+        
+        virtual ~Base() = default;
+    };
+
+    class Derived: public Base
+    {
+        public: 
+        Derived() {};
+        virtual ~Derived() {};
+
+        void Write( uint16_t lReg) { y = lReg; }
+    };
+
+    class Derived2: public Derived
+    {
+        public:
+        void Write( uint32_t lReg) { z = lReg; }
+        
+    };
+
+
+    int main()
+    {
+        std::shared_ptr<Base> obj = std::make_shared<Derived>();
+
+        // Write is invisible when try to call obj directly for base object;
+        // To avoid this problem just use dynamic cast to desired class
+        std::dynamic_pointer_cast<Derived>(obj)->Write((uint16_t) 3 );
+        std::cout << obj->y << std::endl;
 
         return 0;
     }
