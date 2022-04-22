@@ -18,3 +18,4 @@ C/C++
   unittests
   inheritence
   build_errors
+  thread
