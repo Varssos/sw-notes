@@ -62,6 +62,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#threads">Threads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thread-join">Thread join</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thread-detach">Thread detach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#race-confition">Race confition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mutex">Mutex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-mutex-try-lock">std::mutex::try_lock()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-try-lock">std::try_lock()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-timed-mutex">std::timed_mutex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-recursive-mutex">std::recursive_mutex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-lock-guard">std::lock_guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-unique-lock">std::unique_lock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#condition-variable">Condition Variable</a></li>
 </ul>
 </li>
 </ul>
@@ -301,6 +310,440 @@
 <p class="admonition-title">Important</p>
 <p>If you do not use <code class="docutils literal notranslate"><span class="pre">join()</span></code> or <code class="docutils literal notranslate"><span class="pre">detached()</span></code> it will cause <code class="docutils literal notranslate"><span class="pre">Aborted</span> <span class="pre">(core</span> <span class="pre">dumped)</span></code></p>
 </div>
+</section>
+<section id="race-confition">
+<h2>Race confition<a class="headerlink" href="#race-confition" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Race condition is a situation where two or more threads/process are trying to change common data at the same time</p></li>
+<li><p>If there is a race condition thwn we have to protext it and the protected section is called critical section/region</p></li>
+</ol>
+</section>
+<section id="mutex">
+<h2>Mutex<a class="headerlink" href="#mutex" title="Permalink to this headline"></a></h2>
+<p><strong>Mutex: Mutual Exclusion</strong></p>
+<ol class="arabic simple">
+<li><p>Mutex is used to avoid race condition</p></li>
+<li><p>The simpliest way to avoid race condition with mutex is use <code class="docutils literal notranslate"><span class="pre">lock()</span></code> and <code class="docutils literal notranslate"><span class="pre">unlock()</span></code> functions</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">myAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addMoney</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">myAmount</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">addMoney</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">addMoney</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="std-mutex-try-lock">
+<h2>std::mutex::try_lock()<a class="headerlink" href="#std-mutex-try-lock" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>try_lock() tries to lock the mutex. Returns immediately. On success lock acquisition returns true otherwise returns false</p></li>
+<li><p>If try_lock() is not able to lock mutex, then it doesn’t get blocked that’s why it is called non-blocking</p></li>
+<li><p>If try_lock() is called again by the same thread which owns the mutex, the behaviour is undefined. It is a dead lock situation with undefined behaviour ( if you want to be able to lock the same mutex by same thread more than one time the go for recursive_mutex )</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">increaseTheCounterFor100000Time</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">try_lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">counter</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">increaseTheCounterFor100000Time</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">increaseTheCounterFor100000Time</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;counter: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="std-try-lock">
+<h2>std::try_lock()<a class="headerlink" href="#std-try-lock" title="Permalink to this headline"></a></h2>
+<p>Syntax: std::try_lock(m1, m2, m3, m4,…,mn);</p>
+<ol class="arabic simple">
+<li><p>std::try_lock() tries to lock all the lockable objects passed in it one by one in given order</p></li>
+<li><p>On success this funciton returns -1  otherwise it will return 0-based mutex index number which it could not lock</p></li>
+<li><p>Of ot fails to lock ant of the mutex then it will release all the mutex it locked before</p></li>
+<li><p>If a call to try_lock results in an exception, unlock is called for ant locked objects before rethrowing</p></li>
+</ol>
+</section>
+<section id="std-timed-mutex">
+<h2>std::timed_mutex<a class="headerlink" href="#std-timed-mutex" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>std::timed_mutex is blocked till timeout_time or the lock is aquired and returns true on success</p></li>
+<li><dl class="simple">
+<dt>Member functions</dt><dd><ol class="loweralpha simple">
+<li><p>lock()</p></li>
+<li><p>try_lock()</p></li>
+<li><p>try_lock_for()</p></li>
+<li><p>try_lock_until()</p></li>
+<li><p>unlock()</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>try_lock_for()</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">myAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">try_lock_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">myAmount</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; entered &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; couldn&#39;t enter&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">increment</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">increment</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">myAmount</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">thread</span> <span class="mi">2</span> <span class="n">couldn</span><span class="s1">&#39;t enter</span>
+<span class="n">thread</span> <span class="mi">1</span> <span class="n">entered</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Timeout for mutex is shorter than execution of function, so only one thread will be executed</p>
+<p><strong>try_lock_until()</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">myAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">try_lock_until</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">myAmount</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; entered &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; couldn&#39;t enter&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">increment</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">increment</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">myAmount</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="std-recursive-mutex">
+<h2>std::recursive_mutex<a class="headerlink" href="#std-recursive-mutex" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>It is same as mutex but, same thread can lock one mutex multiple times using recursive_mutex</p></li>
+<li><p>If thread t1 first call lock/try_lock on recursive_mutex m1, then m1 is locked by t1, now as t1 is running in recursion t1 can call lock/try_lock ant number of times there is no issue</p></li>
+<li><p>But if t1 have acquired 10 time lock/try_lock on mutex m1 then thread t1 will have to unlock it 10 times otherwise no other thread will be able to lock mutex m1. It means that recursive_mutex keeps count how many time it was locked so that many times it should be unlocked</p></li>
+<li><p>How many time we can lock recursive_mutex is not defined but when that number reaches and if we were calling lock() it will return std::system_error or if we were calling try_lock() then it will return false</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">recursive_mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">recursion</span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loopFor</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">loopFor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">recursion</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">loopFor</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">recursion</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">recursion</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="std-lock-guard">
+<h2>std::lock_guard<a class="headerlink" href="#std-lock-guard" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>It is very light weight wrapper for owning mutex on scoped basis</p></li>
+<li><p>It aquires mutex lock the moment you create the object of lock_guard</p></li>
+<li><p>It automatically removes the lock while goes out of scope</p></li>
+<li><p>You can explicitly unlock the lock_guard</p></li>
+<li><p>You can copy lock_guard</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">threadNumber</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loopFor</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">loopFor</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">buffer</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">threadNumber</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T2&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="std-unique-lock">
+<h2>std::unique_lock<a class="headerlink" href="#std-unique-lock" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>The class unique_lock is a mutex ownership wrapper</p></li>
+<li><dl class="simple">
+<dt>It allows:</dt><dd><ol class="loweralpha simple">
+<li><p>Can Have Different Locking Strategies</p></li>
+<li><p>time-constrained attempts at locking (try_lock_for, try_lock_until )</p></li>
+<li><p>recursive locking</p></li>
+<li><p>transfer of lock ownership ( move not copy )</p></li>
+<li><p>condition variables</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Locking strategies:
+1. defer_lock
+2. try_to_lock
+3. adpot_lock</p>
+<p><strong>Simple lock like lock_guard</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loopFor</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">loopFor</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">buffer</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Defer lock</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loopFor</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">defer_lock</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lock</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">loopFor</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">buffer</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="condition-variable">
+<h2>Condition Variable<a class="headerlink" href="#condition-variable" title="Permalink to this headline"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Condition Variable are used for two purposes:</p>
+<ol class="arabic simple">
+<li><p>Notify other threads</p></li>
+<li><p>Waiting for some conditions</p></li>
+</ol>
+</div>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Condition variable allows running threads to wait on some conditions and once those conditions are met the waiting thread is notified using:</dt><dd><ol class="loweralpha simple">
+<li><p>notify_one()</p></li>
+<li><p>notify_all()</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>You need mutex to use condition variable</p></li>
+<li><dl class="simple">
+<dt>If some thread want to wait on some condition then it has to do these things:</dt><dd><ol class="loweralpha simple">
+<li><p>Acquire the mutex lock using std::unique_lock&lt;std::mutex&gt; lock(m);</p></li>
+<li><p>Execute wait, wait_for, or wait_until. The wait operations atomically release the mutex and suspend the execution of the thread</p></li>
+<li><p>When the condition variable is notified, the thread is awakened, and the mutex is atomically reacquired. The thread should then check the condition and resume waiting if the wake up was spurious</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span><span class="w"> </span><span class="n">cv</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="kt">long</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addMoney</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lg</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">money</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Amount added. Current balance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cv</span><span class="p">.</span><span class="n">notify_one</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">withdrawMoney</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ul</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">cv</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">ul</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">balance</span><span class="w"> </span><span class="o">-=</span><span class="n">money</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Amount deducted: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Amount cant be deducted, current balance is less than &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Current balance is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">withdrawMoney</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">addMoney</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Amount</span> <span class="n">added</span><span class="o">.</span> <span class="n">Current</span> <span class="n">balance</span><span class="p">:</span> <span class="mi">500</span>
+<span class="n">Amount</span> <span class="n">deducted</span><span class="p">:</span> <span class="mi">500</span>
+<span class="n">Current</span> <span class="n">balance</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>First will be executed addMoney then withdrawMoney()</p>
 </section>
 </section>
 
