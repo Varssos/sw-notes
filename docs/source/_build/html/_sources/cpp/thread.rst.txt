@@ -141,3 +141,75 @@ There are **5** different types we can create threads in C++11 using callable ob
 .. important:: If we create multiple threads at the same time it doesn't guarantee which one will start first
 
 
+Thread join
+~~~~~~~~~~~
+
+1. std::thread::join() wait till thread is finished
+2. If needed it is possible to check if thread is joinable before joining ( ``joinable()`` function )
+
+.. important:: Double join will cause program termination
+
+
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <thread>
+
+    void run( int count )
+    {
+        while( count -- > 0 )
+        {
+            std::cout << count << std::endl;
+        }  
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
+
+    int main()
+    {
+        std::thread t1(run, 10);
+        std::cout << "main()" << std::endl;
+        t1.join();
+        std::cout << "main() after" << std::endl;
+
+        return 0;
+    }
+
+Thread detach
+~~~~~~~~~~~~~
+
+1. This is used to detach newly created thread from the parent thread
+2. Always check before detaching a thread that it is joinable, otherwise we may end up double detaching and double detach() will result into program termination
+3. If we have detached thread and main function is returning then the detached thread execution is suspended
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <thread>
+
+    void run( int count )
+    {
+        while( count -- > 0 )
+        {
+            std::cout << count << std::endl;
+        }  
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        std::cout << "thread finished" << std::endl;
+    }
+
+    int main()
+    {
+        std::thread t1(run, 10);
+        std::cout << "main()" << std::endl;
+
+        t1.detach();
+        
+        std::cout << "main() after" << std::endl;
+
+        return 0;
+    }
+
+.. important:: If you do not use ``join()`` or ``detached()`` it will cause ``Aborted (core dumped)``
+
+
+
