@@ -1,5 +1,5 @@
-Debug
-=====
+Prepare debug configuration
+===========================
 
 
 Visual Studio Code

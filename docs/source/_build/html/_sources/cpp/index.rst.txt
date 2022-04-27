@@ -12,10 +12,11 @@ C/C++
   modbusRTU
   modbusTCP
   s7_protocol
-  debug
+  debug_configuration
   linux_serial_port
   good_practises_cr
   unittests
   inheritence
   build_errors
+  debugging
   thread
