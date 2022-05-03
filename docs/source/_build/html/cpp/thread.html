@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bash" href="../bash/index.html" />
-    <link rel="prev" title="Build errors" href="build_errors.html" /> 
+    <link rel="prev" title="Debugging and problems solving" href="debugging.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,17 +52,18 @@
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug.html">Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Multithreading in C++</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#threads">Threads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thread-join">Thread join</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#thread-detach">Thread detach</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#race-confition">Race confition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#race-condition">Race condition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mutex">Mutex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#std-mutex-try-lock">std::mutex::try_lock()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#std-try-lock">std::try_lock()</a></li>
@@ -71,6 +72,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#std-lock-guard">std::lock_guard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#std-unique-lock">std::unique_lock</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#condition-variable">Condition Variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deadlock">DeadLock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-synchronization">Thread synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#std-lock">std::lock()</a></li>
 </ul>
 </li>
 </ul>
@@ -311,11 +315,11 @@
 <p>If you do not use <code class="docutils literal notranslate"><span class="pre">join()</span></code> or <code class="docutils literal notranslate"><span class="pre">detached()</span></code> it will cause <code class="docutils literal notranslate"><span class="pre">Aborted</span> <span class="pre">(core</span> <span class="pre">dumped)</span></code></p>
 </div>
 </section>
-<section id="race-confition">
-<h2>Race confition<a class="headerlink" href="#race-confition" title="Permalink to this headline"></a></h2>
+<section id="race-condition">
+<h2>Race condition<a class="headerlink" href="#race-condition" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
 <li><p>Race condition is a situation where two or more threads/process are trying to change common data at the same time</p></li>
-<li><p>If there is a race condition thwn we have to protext it and the protected section is called critical section/region</p></li>
+<li><p>If there is a race condition then we have to protect it and the protected section is called critical section/region</p></li>
 </ol>
 </section>
 <section id="mutex">
@@ -399,8 +403,8 @@
 <ol class="arabic simple">
 <li><p>std::try_lock() tries to lock all the lockable objects passed in it one by one in given order</p></li>
 <li><p>On success this funciton returns -1  otherwise it will return 0-based mutex index number which it could not lock</p></li>
-<li><p>Of ot fails to lock ant of the mutex then it will release all the mutex it locked before</p></li>
-<li><p>If a call to try_lock results in an exception, unlock is called for ant locked objects before rethrowing</p></li>
+<li><p>If it fails to lock and if the mutex then it will release all the mutex it locked before</p></li>
+<li><p>If a call to try_lock results in an exception, unlock is called for and locked objects before rethrowing</p></li>
 </ol>
 </section>
 <section id="std-timed-mutex">
@@ -507,8 +511,8 @@
 <h2>std::recursive_mutex<a class="headerlink" href="#std-recursive-mutex" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
 <li><p>It is same as mutex but, same thread can lock one mutex multiple times using recursive_mutex</p></li>
-<li><p>If thread t1 first call lock/try_lock on recursive_mutex m1, then m1 is locked by t1, now as t1 is running in recursion t1 can call lock/try_lock ant number of times there is no issue</p></li>
-<li><p>But if t1 have acquired 10 time lock/try_lock on mutex m1 then thread t1 will have to unlock it 10 times otherwise no other thread will be able to lock mutex m1. It means that recursive_mutex keeps count how many time it was locked so that many times it should be unlocked</p></li>
+<li><p>If thread t1 first call lock/try_lock on recursive_mutex m1, then m1 is locked by t1, now as t1 is running in recursion t1 can call lock/try_lock and number of times there is no issue</p></li>
+<li><p>But if t1 have acquired 10 time lock/try_lock on mutex m1 then thread t1 will have to unlock it 10 times otherwise no other thread will be able to lock mutex m1. It means that recursive_mutex keeps count how many times it was locked so that many times it should be unlocked</p></li>
 <li><p>How many time we can lock recursive_mutex is not defined but when that number reaches and if we were calling lock() it will return std::system_error or if we were calling try_lock() then it will return false</p></li>
 </ol>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -600,7 +604,7 @@
 <p>Locking strategies:
 1. defer_lock
 2. try_to_lock
-3. adpot_lock</p>
+3. adopt_lock</p>
 <p><strong>Simple lock like lock_guard</strong></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
@@ -745,13 +749,156 @@
 </div>
 <p>First will be executed addMoney then withdrawMoney()</p>
 </section>
+<section id="deadlock">
+<h2>DeadLock<a class="headerlink" href="#deadlock" title="Permalink to this headline"></a></h2>
+<p>Dead lock example. It lock first mutex and try to lock second which is locked by other thread. So all threads wait for releasing/unlocking thread but it will not occur</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">m2</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Thread1&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">m2</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m2</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Thread2&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">m2</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">m1</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">thread1</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">thread2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="thread-synchronization">
+<h2>Thread synchronization<a class="headerlink" href="#thread-synchronization" title="Permalink to this headline"></a></h2>
+<p>To solve problem with race condition we use a mutex to cover critical sections</p>
+</section>
+<section id="std-lock">
+<h2>std::lock()<a class="headerlink" href="#std-lock" title="Permalink to this headline"></a></h2>
+<p>It is used to lock multiple mutex at the same time.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p>All arguments are locked via a sequence of calls to lock(), try_lock(), or unlock() on each argument</p></li>
+<li><p>Order of locking is not defined ( it will try to lock provided mutex in any order and ensure that there is no dead lock)</p></li>
+<li><p>It is a blocking call</p></li>
+</ol>
+</div>
+<p><strong>No deadlock examples:</strong></p>
+<ol class="arabic">
+<li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thread</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+
+<span class="n">Thread</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thread</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+
+<span class="n">Thread</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">m1</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thread</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">);</span>
+
+<span class="n">Thread</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m3</span><span class="p">,</span><span class="n">m4</span><span class="p">);</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Ad.1</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread1</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">lock</span><span class="p">(</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Thread1&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">m1</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">m2</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">thread2</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Thread2&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">m2</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">m1</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">thread1</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">thread2</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Examples with dead lock:</strong></p>
+<ol class="arabic">
+<li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thread</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">);</span>
+
+<span class="n">Thread</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">);</span>
+<span class="n">std</span><span class="p">::</span><span class="n">lock</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="build_errors.html" class="btn btn-neutral float-left" title="Build errors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debugging.html" class="btn btn-neutral float-left" title="Debugging and problems solving" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../bash/index.html" class="btn btn-neutral float-right" title="Bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

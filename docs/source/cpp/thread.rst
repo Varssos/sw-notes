@@ -211,11 +211,11 @@ Thread detach
 
 .. important:: If you do not use ``join()`` or ``detached()`` it will cause ``Aborted (core dumped)``
 
-Race confition
+Race condition
 ~~~~~~~~~~~~~~
 
 1. Race condition is a situation where two or more threads/process are trying to change common data at the same time
-2. If there is a race condition thwn we have to protext it and the protected section is called critical section/region
+2. If there is a race condition then we have to protect it and the protected section is called critical section/region
 
 
 Mutex
@@ -303,8 +303,8 @@ Syntax: std::try_lock(m1, m2, m3, m4,...,mn);
 
 1. std::try_lock() tries to lock all the lockable objects passed in it one by one in given order
 2. On success this funciton returns -1  otherwise it will return 0-based mutex index number which it could not lock
-3. Of ot fails to lock ant of the mutex then it will release all the mutex it locked before
-4. If a call to try_lock results in an exception, unlock is called for ant locked objects before rethrowing
+3. If it fails to lock and if the mutex then it will release all the mutex it locked before
+4. If a call to try_lock results in an exception, unlock is called for and locked objects before rethrowing
 
 std::timed_mutex
 ~~~~~~~~~~~~~~~~
@@ -409,8 +409,8 @@ std::recursive_mutex
 ~~~~~~~~~~~~~~~~~~~~
 
 1. It is same as mutex but, same thread can lock one mutex multiple times using recursive_mutex
-2. If thread t1 first call lock/try_lock on recursive_mutex m1, then m1 is locked by t1, now as t1 is running in recursion t1 can call lock/try_lock ant number of times there is no issue
-3. But if t1 have acquired 10 time lock/try_lock on mutex m1 then thread t1 will have to unlock it 10 times otherwise no other thread will be able to lock mutex m1. It means that recursive_mutex keeps count how many time it was locked so that many times it should be unlocked
+2. If thread t1 first call lock/try_lock on recursive_mutex m1, then m1 is locked by t1, now as t1 is running in recursion t1 can call lock/try_lock and number of times there is no issue
+3. But if t1 have acquired 10 time lock/try_lock on mutex m1 then thread t1 will have to unlock it 10 times otherwise no other thread will be able to lock mutex m1. It means that recursive_mutex keeps count how many times it was locked so that many times it should be unlocked
 4. How many time we can lock recursive_mutex is not defined but when that number reaches and if we were calling lock() it will return std::system_error or if we were calling try_lock() then it will return false
 
 .. code-block:: cpp
@@ -498,7 +498,7 @@ std::unique_lock
 Locking strategies:
 1. defer_lock
 2. try_to_lock
-3. adpot_lock
+3. adopt_lock
 
 **Simple lock like lock_guard**
 
@@ -636,3 +636,151 @@ Output::
     Current balance is: 0
 
 First will be executed addMoney then withdrawMoney()
+
+DeadLock
+~~~~~~~~
+
+Dead lock example. It lock first mutex and try to lock second which is locked by other thread. So all threads wait for releasing/unlocking thread but it will not occur
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <thread>
+    #include <mutex>
+    #include <condition_variable>
+
+    std::mutex m1, m2;
+
+    void thread1 ()
+    {
+        m1.lock();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        m2.lock();
+        std::cout << "Thread1" << std::endl;
+        m1.unlock();
+        m2.unlock();
+    }
+
+    void thread2 ()
+    {
+        m2.lock();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        m1.lock();
+        std::cout << "Thread2" << std::endl;
+        m2.unlock();
+        m1.unlock();
+    }
+
+    int main()
+    {
+        std::thread t1 ( thread1 );
+        std::thread t2 ( thread2 );
+
+        t1.join();
+        t2.join();
+
+        return 0;
+    }
+
+Thread synchronization
+~~~~~~~~~~~~~~~~~~~~~~
+
+To solve problem with race condition we use a mutex to cover critical sections
+
+std::lock()
+~~~~~~~~~~~
+
+It is used to lock multiple mutex at the same time. 
+
+.. important:: 
+    1. All arguments are locked via a sequence of calls to lock(), try_lock(), or unlock() on each argument
+    
+    2. Order of locking is not defined ( it will try to lock provided mutex in any order and ensure that there is no dead lock)
+    
+    3. It is a blocking call  
+
+**No deadlock examples:**
+
+1. :: 
+
+    Thread 1: 
+    std::lock(m1, m2);   
+    
+    Thread 2: 
+    std::lock(m1, m2); 
+
+2. ::
+
+    Thread 1: 
+    std::lock(m1, m2);
+    
+    Thread 2: 
+    std::lock(m2, m1);
+
+3. ::
+
+    Thread 1: 
+    std::lock(m1, m2, m3, m4);
+
+    Thread 2: 
+    std::lock(m3,m4);
+    std::lock(m1, m2);
+
+**Ad.1**
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <thread>
+    #include <mutex>
+    #include <condition_variable>
+
+    std::mutex m1, m2;
+
+    void thread1 ()
+    {
+        while ( 1 )
+        {
+            std::lock( m1, m2);
+            std::cout << "Thread1" << std::endl;
+            m1.unlock();
+            m2.unlock();
+        }
+    }
+
+    void thread2 ()
+    {
+        while ( 1 )
+        {
+            std::lock(m1, m2);
+            std::cout << "Thread2" << std::endl;
+            m2.unlock();
+            m1.unlock();
+        }
+        
+    }
+
+    int main()
+    {
+        std::thread t1 ( thread1 );
+        std::thread t2 ( thread2 );
+
+        t1.join();
+        t2.join();
+
+        return 0;
+    }
+
+
+**Examples with dead lock:**
+
+1. ::
+
+    Thread 1: 
+    std::lock(m1, m2); 
+    std::lock(m3, m4);
+
+    Thread 2:
+    std::lock(m3, m4);
+    std::lock(m1, m2);
+
