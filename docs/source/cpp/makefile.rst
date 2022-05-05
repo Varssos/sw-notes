@@ -9,7 +9,9 @@ Nice, short tutorial to repeat knowledge about makefiles
     2. `@` is a built-in make variable containing the target of each rule
     3. `^` is another built-in variable containing all the dependencies of each rule
     4. `<` is a variable which contains only the first element of the dependencies
-    5. If `obj = main.o game.o level.o ...` then to substitute longer names it is a must to use `$(obj)`. If we instead tried to use `$obj` then make would try to expand a variable named `o`, and then append the string `bj` to the result.
+    5. `@` at the beginning of the recipe it will not print executed command
+    6. If `obj = main.o game.o level.o ...` then to substitute longer names it is a must to use `$(obj)`. If we instead tried to use `$obj` then make would try to expand a variable named `o`, and then append the string `bj` to the result.
+    7. `PROJDIR := $(realpath $(CURDIR)/..)` thanks to realpath we get `E:/Cpp/` instead of `E:/Cpp/build/..`
 
 A simple makefile nosists of rules with the following shape:
 ::
@@ -24,7 +26,7 @@ A simple makefile nosists of rules with the following shape:
 
 Imagine that in your project you have such tree
 
-.. image:: build_tree.PNG
+.. image:: build_tree.png
 
 Not elegant make
 ~~~~~~~~~~~~~~~~
