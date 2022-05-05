@@ -26,7 +26,7 @@ A simple makefile nosists of rules with the following shape:
 
 Imagine that in your project you have such tree
 
-.. image:: build_tree.png
+.. image:: ./build_tree.png
 
 Not elegant make
 ~~~~~~~~~~~~~~~~
