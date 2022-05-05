@@ -4,6 +4,7 @@ C/C++
 .. toctree::
   :maxdepth: 4
 
+  setup
   chrono
   cute_unit_tests
   makefile
