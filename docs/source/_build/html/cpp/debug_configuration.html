@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unit tests libraries &mdash; SW notes 0.1 documentation</title>
+  <title>Prepare debug configuration &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Google tests" href="google_tests/google_tests.html" />
-    <link rel="prev" title="Good practises and CR checklist" href="good_practises_cr.html" /> 
+    <link rel="next" title="Linux serial port configuration" href="linux_serial_port.html" />
+    <link rel="prev" title="S7 Protocol" href="s7_protocol.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,13 +52,13 @@
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit tests libraries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="google_tests/google_tests.html">Google tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prepare debug configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#visual-studio-code">Visual Studio Code</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
@@ -90,9 +90,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Unit tests libraries</li>
+      <li>Prepare debug configuration</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/unittests.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/debug_configuration.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -100,29 +100,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="unit-tests-libraries">
-<h1>Unit tests libraries<a class="headerlink" href="#unit-tests-libraries" title="Permalink to this headline"></a></h1>
-<p><a class="reference external" href="https://infotraining.bitbucket.io/cpp-tdd/index.html">TDD in C++ articles in polish</a></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="google_tests/google_tests.html">Google tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#preview">Preview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#video-tutorial-analysis">Video Tutorial analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#install-on-linux-system">Install on Linux system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#minimum-example-test-code">Minimum example test code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#cmake-for-minimum-test-code">CMake for minimum test code</a></li>
-</ul>
-</li>
-</ul>
+  <section id="prepare-debug-configuration">
+<h1>Prepare debug configuration<a class="headerlink" href="#prepare-debug-configuration" title="Permalink to this headline"></a></h1>
+<section id="visual-studio-code">
+<h2>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this headline"></a></h2>
+<p>If app is very simple just watch <a class="reference external" href="https://www.youtube.com/watch?v=G9gnSGKYIg4">VS debugging</a>
+, otherwise if it is not enough try hints described below</p>
+<p>Before you start, make sure that binary and shared libraries are build with arg <code class="docutils literal notranslate"><span class="pre">-g</span></code> or in CMake <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> set to <code class="docutils literal notranslate"><span class="pre">Debug</span></code>. Otherwise gdb will not stop on desired breakpoints.</p>
+<p><strong>Building binary with Cmake:</strong></p>
+<ol class="arabic simple">
+<li><p>Navigate to {project_directory}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_BUILD_TYPE=Debug</span> <span class="pre">../</span></code></p></li>
+<li><p>After that, when you type <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">build</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span> <span class="pre">build</span></code> in {project_directory} it will build as a debug bin/shared_obj</p></li>
+</ol>
+<p><strong>Steps to configure debugging in VS</strong></p>
+<ol class="arabic">
+<li><p>Go to “Run and Debug” section on left hand side, click “create a launch.json file” and choose GDB</p></li>
+<li><p>In launch.json change section “program” to program binary location e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/{bin_name}</span></code></p></li>
+<li><p>If any args are needed set them in this way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="si">{directory}</span><span class="s2">/config_file.cfg&quot;</span> <span class="p">],</span>
+</pre></div>
 </div>
+</li>
+<li><p>It is possible to specify gdb binary location, just add section <code class="docutils literal notranslate"><span class="pre">&quot;miDebuggerPath&quot;:</span> <span class="pre">&quot;/usr/bin/gdb&quot;</span></code></p></li>
+</ol>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="good_practises_cr.html" class="btn btn-neutral float-left" title="Good practises and CR checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="google_tests/google_tests.html" class="btn btn-neutral float-right" title="Google tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="s7_protocol.html" class="btn btn-neutral float-left" title="S7 Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linux_serial_port.html" class="btn btn-neutral float-right" title="Linux serial port configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -42,8 +42,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-recipes">Creating recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setup-on-windows">Environment setup on windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-recipes">Creating recipes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
@@ -84,15 +87,31 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
+<section id="environment-setup-on-windows">
+<h2>Environment setup on windows<a class="headerlink" href="#environment-setup-on-windows" title="Permalink to this headline"></a></h2>
+<p>1. Git clone</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sebastianwach</span><span class="o">/</span><span class="n">sw</span><span class="o">-</span><span class="n">notes</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>2. Install python modules</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">importlib</span><span class="o">-</span><span class="n">metadata</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Add reStructuredText extension with extra pack from LeXstudi Inc. in VS code</p></li>
+<li><p>Now it should be buildable :D</p></li>
+<li><p>Right now on windows I have live Preview but it is very poor</p></li>
+</ol>
 <section id="installation">
-<span id="id1"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h3>
 <p>To use Lumache, first install it using pip:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install lumache
 </pre></div>
 </div>
 </section>
 <section id="creating-recipes">
-<h2>Creating recipes<a class="headerlink" href="#creating-recipes" title="Permalink to this headline"></a></h2>
+<h3>Creating recipes<a class="headerlink" href="#creating-recipes" title="Permalink to this headline"></a></h3>
 <p>To retrieve a list of random ingredients,
 you can use the <code class="docutils literal notranslate"><span class="pre">lumache.get_random_ingredients()</span></code> function:</p>
 <dl class="py function">
@@ -130,6 +149,7 @@ will raise an exception.</p>
 <span class="go">[&#39;shells&#39;, &#39;gorgonzola&#39;, &#39;parsley&#39;]</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
