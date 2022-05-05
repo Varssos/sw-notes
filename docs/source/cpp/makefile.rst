@@ -24,9 +24,7 @@ A simple makefile nosists of rules with the following shape:
     <this file> : <needs these files>
         <and is created by this command>
 
-Imagine that in your project you have such tree
-
-.. image:: ./build_tree.png
+Imagine that in your project you have a main project folder in it Makefile and 2 folders: `inc` and `src`
 
 Not elegant make
 ~~~~~~~~~~~~~~~~
