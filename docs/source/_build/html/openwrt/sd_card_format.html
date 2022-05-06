@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview &mdash; SW notes 0.1 documentation</title>
+  <title>SD card format &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cute" href="cute_unit_tests.html" />
-    <link rel="prev" title="Setup environment" href="setup.html" /> 
+    <link rel="next" title="Network configuration" href="network_configuration.html" />
+    <link rel="prev" title="OpenWrt" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,31 +43,21 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
-<li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
-<li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="thread.html">Multithreading in C++</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C/C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../openwrt/index.html">OpenWrt</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">OpenWrt</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SD card format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_configuration.html">Network configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hub_configuration.html">Hub configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ntpq.html">Ntpq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk.html">OpenWrt SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart.html">Uart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crontab.html">Crontab</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rpi/index.html">RPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../esp32/index.html">ESP32</a></li>
@@ -87,10 +77,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Overview</li>
+          <li><a href="index.html">OpenWrt</a> &raquo;</li>
+      <li>SD card format</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/chrono.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/openwrt/sd_card_format.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,16 +88,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+  <section id="sd-card-format">
+<h1>SD card format<a class="headerlink" href="#sd-card-format" title="Permalink to this headline"></a></h1>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>Before start, refresh the list of available software packages</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>opkg update
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install all utils if you want to verify usb drivers</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>opkg install kmod-usb-storage
+opkg install kmod-usb-storage-uas
+opkg install usbutils
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>List your connected devices</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb -t
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Check current file system</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>df -Th
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>If card exist /dev/sda*/ e.g. /dev/sda1/ try to unmount:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>umount /dev/sda1
+</pre></div>
+</div>
+<p>Otherwise check which one is it</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -l /dev/sd*
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Before format partition, install needed packages</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>opkg install e2fsprogs
+opkg install kmod-fs-ext4
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Format with EXT4 file system</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkfs.ext4 /dev/sda1
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Mount sd card</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount /dev/sda1 /mnt/sdcard
+</pre></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup.html" class="btn btn-neutral float-left" title="Setup environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cute_unit_tests.html" class="btn btn-neutral float-right" title="Cute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="OpenWrt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="network_configuration.html" class="btn btn-neutral float-right" title="Network configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

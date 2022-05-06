@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview &mdash; SW notes 0.1 documentation</title>
+  <title>Setup environment &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cute" href="cute_unit_tests.html" />
-    <link rel="prev" title="Setup environment" href="setup.html" /> 
+    <link rel="next" title="Overview" href="chrono.html" />
+    <link rel="prev" title="C/C++" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,8 +44,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setup environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
@@ -88,9 +91,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Overview</li>
+      <li>Setup environment</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/chrono.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/setup.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,16 +101,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+  <section id="setup-environment">
+<h1>Setup environment<a class="headerlink" href="#setup-environment" title="Permalink to this headline"></a></h1>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=8CNRX1Bk5sY">Install gcc/g++</a></p>
+<p><a class="reference external" href="https://www.youtube.com/redirect?event=video_description&amp;redir_token=QUFFLUhqbXRKOFZUSExuR1Y2dG9hZ2VuS05iMUZjRGVWZ3xBQ3Jtc0ttM2tFeWo0UTQyVlUzZzhoUzVfN0tkVE1nQTREdUdUVmVubzR0cTNydDdDSUhfZG9LRDNLTHhsRk9QWE9lY05pT0JkSEVsWGlQMEg0Q25wdVBSVnJBUjc2TzE5YkFaYlpLdkh2U2pSMXlUZG1DN3IwRQ&amp;q=https%3A%2F%2Fosdn.net%2Fprojects%2Fmingw%2Freleases%2F&amp;v=8CNRX1Bk5sY">MinGW installer</a></p>
+</li>
+<li><p>Add c++ extension to VS code</p></li>
+<li><p>Prepare makefile like this</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CXX</span> <span class="o">=</span> g++
+
+<span class="nv">TARGET</span> <span class="o">=</span> thread
+
+<span class="nv">FLAGS</span> <span class="o">=</span> -g -Wall -std<span class="o">=</span>c++17
+
+all: <span class="k">$(</span>TARGET<span class="k">)</span>.cpp
+    <span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>FLAGS<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>.cpp
+
+clean:
+    rm thread.exe
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup.html" class="btn btn-neutral float-left" title="Setup environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cute_unit_tests.html" class="btn btn-neutral float-right" title="Cute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="C/C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chrono.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

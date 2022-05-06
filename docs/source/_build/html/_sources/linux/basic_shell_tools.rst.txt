@@ -559,3 +559,17 @@ Basic shell tools
 
    </details>
 
+35. Z podanej nazwy ``rapidjson_1.1.0-1_mips_24kc.ipk`` weź nazwę pliku aż do 1. delimitera ``_`` 
+
+.. raw:: html
+   
+   <details>
+   <summary><a>solution</a></summary>
+
+.. code-block:: bash
+
+   echo "rapidjson_1.1.0-1_mips_24kc.ipk" | cut -d '_' -f 1
+
+.. raw:: html
+
+   </details>

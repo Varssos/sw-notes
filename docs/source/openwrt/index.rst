@@ -5,6 +5,7 @@ OpenWrt
 .. toctree::
     :maxdepth: 2
 
+    sd_card_format
     network_configuration
     hub_configuration
     ntpq

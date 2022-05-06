@@ -44,9 +44,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Makefile</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Makefile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#not-elegant-make">Not elegant make</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simpler-makefile">Simpler makefile</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
@@ -99,6 +104,82 @@
              
   <section id="makefile">
 <h1>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline"></a></h1>
+<p>Nice, short tutorial to repeat knowledge about makefiles
+<a class="reference external" href="http://nuclear.mutantstargoat.com/articles/make/">Practical makefiles, by example</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>typing <code class="docutils literal notranslate"><span class="pre">make</span></code> means: build the first rule in the makefile</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is a built-in make variable containing the target of each rule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> is another built-in variable containing all the dependencies of each rule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> is a variable which contains only the first element of the dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> at the beginning of the recipe it will not print executed command</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">obj</span> <span class="pre">=</span> <span class="pre">main.o</span> <span class="pre">game.o</span> <span class="pre">level.o</span> <span class="pre">...</span></code> then to substitute longer names it is a must to use <code class="docutils literal notranslate"><span class="pre">$(obj)</span></code>. If we instead tried to use <code class="docutils literal notranslate"><span class="pre">$obj</span></code> then make would try to expand a variable named <code class="docutils literal notranslate"><span class="pre">o</span></code>, and then append the string <code class="docutils literal notranslate"><span class="pre">bj</span></code> to the result.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJDIR</span> <span class="pre">:=</span> <span class="pre">$(realpath</span> <span class="pre">$(CURDIR)/..)</span></code> thanks to realpath we get <code class="docutils literal notranslate"><span class="pre">E:/Cpp/</span></code> instead of <code class="docutils literal notranslate"><span class="pre">E:/Cpp/build/..</span></code></p></li>
+</ol>
+</div>
+<p>A simple makefile nosists of rules with the following shape:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>target … : prerequisites …
+    recipe
+    …
+    …
+
+&lt;this file&gt; : &lt;needs these files&gt;
+    &lt;and is created by this command&gt;
+</pre></div>
+</div>
+<p>Imagine that in your project you have a main project folder in it Makefile and 2 folders: <cite>inc</cite> and <cite>src</cite></p>
+<section id="not-elegant-make">
+<h2>Not elegant make<a class="headerlink" href="#not-elegant-make" title="Permalink to this headline"></a></h2>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXX</span> <span class="o">=</span> g++
+<span class="nv">TARGET</span> <span class="o">=</span> thread
+<span class="nv">FLAGS</span> <span class="o">=</span> -g -Wall -std<span class="o">=</span>c++17
+<span class="nv">INCLUDE</span> <span class="o">=</span> inc/
+
+
+<span class="nf">all</span><span class="o">:</span> <span class="n">thread</span>.<span class="n">o</span> <span class="n">connection</span>.<span class="n">o</span> <span class="n">device</span>.<span class="n">o</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>FLAGS<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>.o connection.o device.o -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">thread.o</span><span class="o">:</span> <span class="n">thread</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c thread.cpp
+
+<span class="nf">device.o</span><span class="o">:</span> ./<span class="n">src</span>/<span class="n">device</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c ./src/device.cpp -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">connection.o</span><span class="o">:</span> ./<span class="n">src</span>/<span class="n">connection</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c ./src/connection.cpp -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    rm thread.exe
+    rm *.o
+</pre></div>
+</div>
+</section>
+<section id="simpler-makefile">
+<h2>Simpler makefile<a class="headerlink" href="#simpler-makefile" title="Permalink to this headline"></a></h2>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXX</span> <span class="o">=</span> g++
+<span class="nv">TARGET</span> <span class="o">=</span> thread
+<span class="nv">FLAGS</span> <span class="o">=</span> -g -Wall -std<span class="o">=</span>c++17
+<span class="nv">INCLUDE</span> <span class="o">=</span> inc/
+
+<span class="nf">all</span><span class="o">:</span> <span class="n">thread</span>.<span class="n">o</span> <span class="n">connection</span>.<span class="n">o</span> <span class="n">device</span>.<span class="n">o</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>FLAGS<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> $^ -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">thread.o</span><span class="o">:</span> <span class="n">thread</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c thread.cpp
+
+<span class="nf">device.o</span><span class="o">:</span> ./<span class="n">src</span>/<span class="n">device</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c ./src/device.cpp -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">connection.o</span><span class="o">:</span> ./<span class="n">src</span>/<span class="n">connection</span>.<span class="n">cpp</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c ./src/connection.cpp -I <span class="k">$(</span>INCLUDE<span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    rm -rf <span class="k">$(</span>TARGET<span class="k">)</span>.exe
+    rm -rf *.o
+</pre></div>
+</div>
+</section>
 </section>
 
 

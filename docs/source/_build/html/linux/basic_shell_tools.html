@@ -330,6 +330,13 @@ find ~ -type f -user student <span class="p">|</span> wc -l
 <summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">history</span> <span class="p">|</span> tr  -s <span class="s1">&#39; &#39;</span> <span class="p">|</span> cut -f3 -d <span class="s1">&#39; &#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n -r
 </pre></div>
 </div>
+</details><ol class="arabic simple" start="35">
+<li><p>Z podanej nazwy <code class="docutils literal notranslate"><span class="pre">rapidjson_1.1.0-1_mips_24kc.ipk</span></code> weź nazwę pliku aż do 1. delimitera <code class="docutils literal notranslate"><span class="pre">_</span></code></p></li>
+</ol>
+<details>
+<summary><a>solution</a></summary><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;rapidjson_1.1.0-1_mips_24kc.ipk&quot;</span> <span class="p">|</span> cut -d <span class="s1">&#39;_&#39;</span> -f <span class="m">1</span>
+</pre></div>
+</div>
 </details></section>
 
 

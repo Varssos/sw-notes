@@ -25,12 +25,10 @@ Jesteś w katalogu domowym. Skopiuj poniższy kod do terminala. Utworzy on katal
     tar -rf a1.tar l3.txt
     tar tvf a1.tar
 
-5. Usuń plik l2.txt z a2.tar (następnie pokaż dodatkowo zawartość a2.tar)
-
-:: 
+5. Usuń plik l2.txt z a2.tar (następnie pokaż dodatkowo zawartość a2.tar):: 
    
-   tar --delete --file=a1.tar l2.txt
-   tar --list --file=a1.tar
+    tar --delete --file=a1.tar l2.txt
+    tar --list --file=a1.tar
 
 
 6. Dodaj do a1.tar zawartość a2.tar (następnie pokaż dodatkowo zawartość a1.tar).::
