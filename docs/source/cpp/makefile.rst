@@ -14,6 +14,8 @@ Nice, short tutorial to repeat knowledge about makefiles
     5. ``@`` at the beginning of the recipe it will not print executed command
     6. If ``obj = main.o game.o level.o ...`` then to substitute longer names it is a must to use ``$(obj)``. If we instead tried to use ``$obj`` then make would try to expand a variable named ``o``, and then append the string ``bj`` to the result.
     7. ``PROJDIR := $(realpath $(CURDIR)/..)`` thanks to realpath we get ``E:/Cpp/`` instead of ``E:/Cpp/build/..``
+    8. ``DIRS_PATH = $(wildcard $(SOURCEDIR)/*/)`` gets all absolute path of all folders inside ``SOURCEDIR``
+    9. ``DIRS  = $(foreach dir,  $(DIRS_PATH), $(shell basename $(dir)) )`` gets basename of folders from path in ``DIRS_PATH``
 
 Makefile general scheme
 ~~~~~~~~~~~~~~~~~~~~~~~
