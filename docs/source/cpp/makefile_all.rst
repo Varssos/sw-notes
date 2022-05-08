@@ -170,12 +170,12 @@ Shoule be:
             rm *.o temp
 
 Makefile functions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 All knowledge about function is `here <https://www.gnu.org/software/make/manual/html_node/Functions.html#Functions>`_ 
 
 Function call syntax
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 Function call looks like this:
 
@@ -201,6 +201,34 @@ or like this:
         # bar is now ‘a,b,c’.
 
 String substitution
-~~~~~~~~~~~~~~~~~~~
+-------------------
+
+**Text replacement**
+
+.. code-block:: Makefile
+
+    $(subst from,to,text)
+
+Example:
+
+.. code-block:: Makefile
+
+    $(subst ee,EE,feet on the street)
+    # Result: 'fEEt on the strEEt'
+
+**Pattern replacement**
+
+.. code-block:: Makefile
+
+    $(patsubst pattern,replacement,text)
+
+Example:
+
+.. code-block:: Makefile
+
+    $(patsubst %.c,%.o,x.c.c bar.c)
+    #Result: 'x.c.o bar.o'
+
+
 
 
