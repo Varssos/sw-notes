@@ -229,6 +229,159 @@ Example:
     $(patsubst %.c,%.o,x.c.c bar.c)
     #Result: 'x.c.o bar.o'
 
+It is equivalent to:
+
+.. code-block:: Makefile
+
+    $(var:pattern=replacement)
+
+Example:
+
+.. code-block:: Makefile
+
+    objects = foo.o bar.o baz.o
+    $(objects:.o=.c)
+    # Result: foo.c bar.c baz.c
+
+**Remove leading and trailing whitespace from string**
+
+.. code-block:: Makefile
+
+    $(strip string)
+
+Example:
+
+.. code-block:: Makefile
+
+    $(strip a b c )
+    # Result: 'a b c'
+
+**Find string**
+
+.. code-block:: Makefile
+
+    $(findstring find,in)
+
+It search for ``find`` in ``in`` and return true on success. Examples:
+
+.. code-block:: Makefile
+
+    $(findstring a,a b c)
+    $(findstring a,b c)
+
+**Filter text**
+
+.. code-block:: Makefile
+
+    $(filter pattern…,text)
+
+Returns all whitespace-separated words in text that do match any of the parrern words, removing any words that do not match. Example:
+
+.. code-block:: Makefile
+
+    sources := foo.c bar.c baz.s ugh.h
+    foo: $(sources)
+        cc $(filter %.c %.s,$(sources)) -o foo
+    # Result: cc foo.c bar.c baz.s -o foo
+
+**Filter out text**
+
+.. code-block:: Makefile
+
+    $(filter-out pattern…,text)
+
+It works exaclty opposite to ``filter``. Example:
+
+.. code-block:: Makefile
+
+    objects=main1.o foo.o main2.o bar.o
+    mains=main1.o main2.o
+    $(filter-out $(mains),$(objects))
+    # Result: foo.o bar.o
+
+**Sort**
+
+.. code-block:: Makefile
+
+    $(sort list)
+
+Example:
+
+.. code-block:: Makefile
+
+    $(sort foo bar lose)
+    # Result: 'bar foo lose'
+
+**Word**
+
+.. code-block:: Makefile
+
+    $(word n,text)
+
+Returns the nth word of ``text``. It starts counting from 1!. Example:
+
+.. code-block:: Makefile
+
+    $(word 2, foo bar baz)
+    # Result: 'bar'
+
+**Wordlist**
+
+.. code-block:: Makefile
+
+    $(wordlist s,e,text)
+
+Returns the list of words in ``text`` starting with word ``s`` and ending with ``e`` (inclusive). Example:
+
+.. code-block:: Makefile
+
+    $(wordlist 2, 3, foo bar baz)
+    # Return: 'bar baz'
+
+**Words**
+
+.. code-block:: Makefile
+
+    $(words text)
+
+Returns the number of words in ``text``. Example:
+
+.. code-block:: Makefile
+
+    $(words  foo bar baz)
+    # Return: '3'
+
+**Firstword**
+
+.. code-block:: Makefile
+
+    $(firstword foo bar)
+
+**Lastword**
+
+.. code-block:: Makefile
+
+    $(lastword foo bar)
+
+**Some practical examples**
+
+.. code-block:: Makefile
+
+    #VPATH:=src:../headers
+    $(subst :, ,$(VPATH))
+    # Result: 'src ../headers'
+
+.. code-block:: Makefile
+
+    override CFLAGS += $(patsubst %,-I%,$(subst :, ,$(VPATH)))
+    # Result: '-Isrc -I../headers'
+
+
+
+
+
+
+
 
 
 
