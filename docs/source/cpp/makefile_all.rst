@@ -150,6 +150,7 @@ Phony Targets
 `Well described article <https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html#Phony-Targets>`_
 
 We use ``.PHONY:`` to:
+
 1. Avoid conflict with a file of the same name of target
 2. Improve performance
    
@@ -168,5 +169,38 @@ Shoule be:
     clean:
             rm *.o temp
 
+Makefile functions
+------------------
+
+All knowledge about function is `here <https://www.gnu.org/software/make/manual/html_node/Functions.html#Functions>`_ 
+
+Function call syntax
+~~~~~~~~~~~~~~~~~~~~
+
+Function call looks like this:
+
+.. code-block:: Makefile
+
+    $(function arguments)
+
+or like this:
+
+::
+
+    ${function arguments}
+
+.. important:: Commas and unmatched parentheses or braces cannnot appear in the test of an argument as written. It can be done in this way:
+
+    .. code-block:: Makefile
+
+        comma:= ,
+        empty:=
+        space:= $(empty) $(empty)
+        foo:= a b c
+        bar:= $(subst $(space),$(comma),$(foo))
+        # bar is now ‘a,b,c’.
+
+String substitution
+~~~~~~~~~~~~~~~~~~~
 
 
