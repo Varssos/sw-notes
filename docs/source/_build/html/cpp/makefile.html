@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Makefile &mdash; SW notes 0.1 documentation</title>
+  <title>Makefile tips, knowledge in a nuthsell &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cmake" href="cmake.html" />
+    <link rel="next" title="All Makefile knowledge" href="makefile_all.html" />
     <link rel="prev" title="Cute" href="cute_unit_tests.html" /> 
 </head>
 
@@ -47,11 +47,12 @@
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Makefile</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Makefile tips, knowledge in a nuthsell</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#not-elegant-make">Not elegant make</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simpler-makefile">Simpler makefile</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
@@ -92,7 +93,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Makefile</li>
+      <li>Makefile tips, knowledge in a nuthsell</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/cpp/makefile.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -102,33 +103,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="makefile">
-<h1>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline"></a></h1>
+  <section id="makefile-tips-knowledge-in-a-nuthsell">
+<h1>Makefile tips, knowledge in a nuthsell<a class="headerlink" href="#makefile-tips-knowledge-in-a-nuthsell" title="Permalink to this headline"></a></h1>
+<p>All knowledge about GNU Makefile <a class="reference external" href="https://www.gnu.org/software/make/manual/html_node/index.html#SEC_Contents">link</a></p>
 <p>Nice, short tutorial to repeat knowledge about makefiles
 <a class="reference external" href="http://nuclear.mutantstargoat.com/articles/make/">Practical makefiles, by example</a></p>
+<p><a class="reference external" href="https://riptutorial.com/makefile/example/21376/building-from-different-source-folders-to-different-target-folders">Cool, more complex makefile example</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
 <li><p>typing <code class="docutils literal notranslate"><span class="pre">make</span></code> means: build the first rule in the makefile</p></li>
+<li><p>To write prerequisities, recipes in multiple lines <code class="docutils literal notranslate"><span class="pre">\</span></code> on the end of line is used</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is a built-in make variable containing the target of each rule</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> is another built-in variable containing all the dependencies of each rule</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> is a variable which contains only the first element of the dependencies</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> at the beginning of the recipe it will not print executed command</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">obj</span> <span class="pre">=</span> <span class="pre">main.o</span> <span class="pre">game.o</span> <span class="pre">level.o</span> <span class="pre">...</span></code> then to substitute longer names it is a must to use <code class="docutils literal notranslate"><span class="pre">$(obj)</span></code>. If we instead tried to use <code class="docutils literal notranslate"><span class="pre">$obj</span></code> then make would try to expand a variable named <code class="docutils literal notranslate"><span class="pre">o</span></code>, and then append the string <code class="docutils literal notranslate"><span class="pre">bj</span></code> to the result.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PROJDIR</span> <span class="pre">:=</span> <span class="pre">$(realpath</span> <span class="pre">$(CURDIR)/..)</span></code> thanks to realpath we get <code class="docutils literal notranslate"><span class="pre">E:/Cpp/</span></code> instead of <code class="docutils literal notranslate"><span class="pre">E:/Cpp/build/..</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIRS_PATH</span> <span class="pre">=</span> <span class="pre">$(wildcard</span> <span class="pre">$(SOURCEDIR)/*/)</span></code> gets all absolute path of all folders inside <code class="docutils literal notranslate"><span class="pre">SOURCEDIR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIRS</span>&#160; <span class="pre">=</span> <span class="pre">$(foreach</span> <span class="pre">dir,</span>&#160; <span class="pre">$(DIRS_PATH),</span> <span class="pre">$(shell</span> <span class="pre">basename</span> <span class="pre">$(dir))</span> <span class="pre">)</span></code> gets basename of folders from path in <code class="docutils literal notranslate"><span class="pre">DIRS_PATH</span></code></p></li>
 </ol>
 </div>
-<p>A simple makefile nosists of rules with the following shape:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>target … : prerequisites …
-    recipe
-    …
-    …
-
-&lt;this file&gt; : &lt;needs these files&gt;
-    &lt;and is created by this command&gt;
-</pre></div>
-</div>
-<p>Imagine that in your project you have a main project folder in it Makefile and 2 folders: <cite>inc</cite> and <cite>src</cite></p>
 <section id="not-elegant-make">
 <h2>Not elegant make<a class="headerlink" href="#not-elegant-make" title="Permalink to this headline"></a></h2>
 <div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXX</span> <span class="o">=</span> g++
@@ -187,7 +182,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cute_unit_tests.html" class="btn btn-neutral float-left" title="Cute" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cmake.html" class="btn btn-neutral float-right" title="Cmake" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="makefile_all.html" class="btn btn-neutral float-right" title="All Makefile knowledge" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
