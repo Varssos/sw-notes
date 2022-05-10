@@ -2,11 +2,11 @@ Modbus RTU
 ==========
 
 
-Simulator
-~~~~~~~~~
+Modbus RTU Simulator
+~~~~~~~~~~~~~~~~~~~~
 
 
-Libraries
-~~~~~~~~~
+Modbus RTU Libraries
+~~~~~~~~~~~~~~~~~~~~
 
 
