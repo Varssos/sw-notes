@@ -10,3 +10,4 @@ Linux
     awk
     tar
     admin
+    pulseaudio

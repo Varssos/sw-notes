@@ -3,8 +3,8 @@ Linux serial port configuration
 
 Great article about this topic is here: `mbedded.ninja <https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/>`_ BTW this blog is awesome
 
-Overview 
-~~~~~~~~
+Linux serial port Overview 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This post will be something like summary of linked article. The main reason why I wrote this is to help me momorize it better and quickly get back to what was important. Only practical useage is described here for more just read linked article 
 

@@ -2,8 +2,8 @@ Modbus TCP
 ==========
 
 
-Simulator
-~~~~~~~~~
+Modbus TCP Simulator
+~~~~~~~~~~~~~~~~~~~~
 
 To start developing Modbus TCP client you can use `pyModbusTCP <https://pymodbustcp.readthedocs.io/en/stable/>`_ 
 to set Modbus TCP server. Below are described few steps how to set it. Connection parameters are hardcoded in python script

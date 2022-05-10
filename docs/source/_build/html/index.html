@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="usage.html" /> 
+    <link rel="next" title="Usage Lumache" href="usage.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,7 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Lumache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpp/index.html">C/C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash/index.html">Bash</a></li>
@@ -98,14 +98,7 @@ From my research I found out that Read the Docs will be a good tool for that. In
 <h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#environment-setup-on-windows">Environment setup on windows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="usage.html#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="usage.html#creating-recipes">Creating recipes</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Lumache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpp/index.html">C/C++</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cpp/setup.html">Setup environment</a><ul>
@@ -142,7 +135,7 @@ From my research I found out that Read the Docs will be a good tool for that. In
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cpp/modbusTCP.html">Modbus TCP</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cpp/modbusTCP.html#simulator">Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpp/modbusTCP.html#modbus-tcp-simulator">Modbus TCP Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cpp/modbusTCP.html#libraries">Libraries</a></li>
 </ul>
 </li>
@@ -152,7 +145,7 @@ From my research I found out that Read the Docs will be a good tool for that. In
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cpp/linux_serial_port.html">Linux serial port configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cpp/linux_serial_port.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpp/linux_serial_port.html#linux-serial-port-overview">Linux serial port Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cpp/linux_serial_port.html#preparation">Preparation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cpp/linux_serial_port.html#open-ports">Open ports</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cpp/linux_serial_port.html#serial-port-configuration">Serial port configuration</a></li>
@@ -239,11 +232,33 @@ From my research I found out that Read the Docs will be a good tool for that. In
 <li class="toctree-l3"><a class="reference internal" href="linux/admin.html#systemd">SystemD</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="linux/pulseaudio.html">Pulseaudio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linux/pulseaudio.html#restart-pulseaudio">Restart pulseaudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="linux/pulseaudio.html#check-pulseaudio-status">Check pulseaudio status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linux/pulseaudio.html#kill-running-pulseaudio-daemon">Kill running pulseaudio daemon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linux/pulseaudio.html#start-pulseaudio-daemon">Start pulseaudio daemon</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="openwrt/index.html">OpenWrt</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="openwrt/sd_card_format.html">SD card format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openwrt/network_configuration.html">Network configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openwrt/network_configuration.html">Network configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="openwrt/network_configuration.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openwrt/network_configuration.html#default-configuration-to-work-as-a-dhcp-client">Default configuration to work as a dhcp client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="openwrt/network_configuration.html#etc-config-network">/etc/config/network/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openwrt/network_configuration.html#etc-config-wireless">/etc/config/wireless/</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="openwrt/network_configuration.html#configuration-to-connect-wan-via-wifi-and-set-a-dhcp-server-and-lan-on-ethernet-port">Configuration to connect WAN via wifi and set a dhcp server and LAN on ethernet port</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="openwrt/network_configuration.html#id1">/etc/config/network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openwrt/network_configuration.html#id2">/etc/config/wireless/.</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="openwrt/hub_configuration.html">Hub configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openwrt/ntpq.html">Ntpq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openwrt/sdk.html">OpenWrt SDK</a></li>
@@ -253,7 +268,7 @@ From my research I found out that Read the Docs will be a good tool for that. In
 </li>
 <li class="toctree-l1"><a class="reference internal" href="git/index.html">Git</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="git/submodules.html">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="git/submodules.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="git/submodules.html#submodules-overview">Submodules Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="git/submodules.html#adding-submodule-to-project">Adding submodule to project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="git/submodules.html#removing-submodule">Removing submodule</a></li>
 <li class="toctree-l3"><a class="reference internal" href="git/submodules.html#check-status-of-submodules">Check status of submodules</a></li>
@@ -279,7 +294,7 @@ From my research I found out that Read the Docs will be a good tool for that. In
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage Lumache" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

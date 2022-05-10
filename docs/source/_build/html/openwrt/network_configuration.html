@@ -50,7 +50,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">OpenWrt</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sd_card_format.html">SD card format</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Network configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Network configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-configuration-to-work-as-a-dhcp-client">Default configuration to work as a dhcp client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etc-config-network">/etc/config/network/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etc-config-wireless">/etc/config/wireless/</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-to-connect-wan-via-wifi-and-set-a-dhcp-server-and-lan-on-ethernet-port">Configuration to connect WAN via wifi and set a dhcp server and LAN on ethernet port</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">/etc/config/network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">/etc/config/wireless/.</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="hub_configuration.html">Hub configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ntpq.html">Ntpq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk.html">OpenWrt SDK</a></li>
@@ -90,6 +103,169 @@
              
   <section id="network-configuration">
 <h1>Network configuration<a class="headerlink" href="#network-configuration" title="Permalink to this headline"></a></h1>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline"></a></h2>
+<p>Network configuration on OpenWRT can be changed in GUI with LUCI, by uci commands or changing raw config files in /etc/config/network and /etc/config/wireless</p>
+</section>
+<section id="default-configuration-to-work-as-a-dhcp-client">
+<h2>Default configuration to work as a dhcp client<a class="headerlink" href="#default-configuration-to-work-as-a-dhcp-client" title="Permalink to this headline"></a></h2>
+<section id="etc-config-network">
+<h3>/etc/config/network/<a class="headerlink" href="#etc-config-network" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;loopback&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;lo&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;static&#39;</span>
+    <span class="n">option</span> <span class="n">ipaddr</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+    <span class="n">option</span> <span class="n">netmask</span> <span class="s1">&#39;255.0.0.0&#39;</span>
+
+<span class="n">config</span> <span class="nb">globals</span> <span class="s1">&#39;globals&#39;</span>
+    <span class="n">option</span> <span class="n">ula_prefix</span> <span class="s1">&#39;fdf4:38e8:c283::/48&#39;</span>
+
+<span class="n">config</span> <span class="n">device</span>
+    <span class="n">option</span> <span class="n">name</span> <span class="s1">&#39;br-lan&#39;</span>
+    <span class="n">option</span> <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+    <span class="nb">list</span> <span class="n">ports</span> <span class="s1">&#39;eth1&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;lan&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;br-lan&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;static&#39;</span>
+    <span class="n">option</span> <span class="n">netmask</span> <span class="s1">&#39;255.255.255.0&#39;</span>
+    <span class="n">option</span> <span class="n">ip6assign</span> <span class="s1">&#39;60&#39;</span>
+    <span class="n">option</span> <span class="n">ipaddr</span> <span class="s1">&#39;192.168.22.1&#39;</span>
+    <span class="n">option</span> <span class="n">auto</span> <span class="s1">&#39;0&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wan&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;eth0&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcp&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;5&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wan6&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;eth0&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcpv6&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;3g&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;3g&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;15&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;/dev/ttyUSB1&#39;</span>
+    <span class="n">option</span> <span class="n">service</span> <span class="s1">&#39;gprs&#39;</span>
+    <span class="n">option</span> <span class="n">apn</span> <span class="s1">&#39;internet&#39;</span>
+    <span class="n">option</span> <span class="n">auto</span> <span class="s1">&#39;0&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wwan&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcp&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;10&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="etc-config-wireless">
+<h3>/etc/config/wireless/<a class="headerlink" href="#etc-config-wireless" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="nb">type</span> <span class="s1">&#39;mac80211&#39;</span>
+    <span class="n">option</span> <span class="n">path</span> <span class="s1">&#39;platform/ahb/18100000.wmac&#39;</span>
+    <span class="n">option</span> <span class="n">band</span> <span class="s1">&#39;2g&#39;</span>
+    <span class="n">option</span> <span class="n">htmode</span> <span class="s1">&#39;HT20&#39;</span>
+    <span class="n">option</span> <span class="n">disabled</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">option</span> <span class="n">channel</span> <span class="s1">&#39;auto&#39;</span>
+
+<span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">iface</span> <span class="s1">&#39;client&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="n">network</span> <span class="s1">&#39;wwan&#39;</span>
+    <span class="n">option</span> <span class="n">mode</span> <span class="s1">&#39;sta&#39;</span>
+    <span class="n">option</span> <span class="n">encryption</span> <span class="s1">&#39;psk2&#39;</span>
+    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;ssid&#39;</span>
+    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;passwd&#39;</span>
+    <span class="n">option</span> <span class="n">disabled</span> <span class="s1">&#39;1&#39;</span>
+
+<span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">iface</span> <span class="s1">&#39;ap&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="n">network</span> <span class="s1">&#39;lan&#39;</span>
+    <span class="n">option</span> <span class="n">mode</span> <span class="s1">&#39;ap&#39;</span>
+    <span class="n">option</span> <span class="n">encryption</span> <span class="s1">&#39;psk2&#39;</span>
+    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;XXXXX&#39;</span>
+    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;YYYYYY&#39;</span>
+    <span class="n">option</span> <span class="n">disabled</span> <span class="s1">&#39;1&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration-to-connect-wan-via-wifi-and-set-a-dhcp-server-and-lan-on-ethernet-port">
+<h2>Configuration to connect WAN via wifi and set a dhcp server and LAN on ethernet port<a class="headerlink" href="#configuration-to-connect-wan-via-wifi-and-set-a-dhcp-server-and-lan-on-ethernet-port" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h3>/etc/config/network<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;loopback&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;lo&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;static&#39;</span>
+    <span class="n">option</span> <span class="n">ipaddr</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+    <span class="n">option</span> <span class="n">netmask</span> <span class="s1">&#39;255.0.0.0&#39;</span>
+
+<span class="n">config</span> <span class="nb">globals</span> <span class="s1">&#39;globals&#39;</span>
+    <span class="n">option</span> <span class="n">ula_prefix</span> <span class="s1">&#39;fdb8:4ae9:c3e8::/48&#39;</span>
+
+<span class="n">config</span> <span class="n">device</span>
+        <span class="n">option</span> <span class="n">name</span> <span class="s1">&#39;br-lan&#39;</span>
+        <span class="n">option</span> <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+        <span class="nb">list</span> <span class="n">ports</span> <span class="s1">&#39;eth0&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;lan&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;br-lan&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;static&#39;</span>
+    <span class="n">option</span> <span class="n">netmask</span> <span class="s1">&#39;255.255.255.0&#39;</span>
+    <span class="n">option</span> <span class="n">ip6assign</span> <span class="s1">&#39;60&#39;</span>
+    <span class="n">option</span> <span class="n">ipaddr</span> <span class="s1">&#39;192.168.22.1&#39;</span>
+    <span class="n">option</span> <span class="n">auto</span> <span class="s1">&#39;1&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wan&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;eth1&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcp&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;5&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wan6&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;eth1&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcpv6&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;3g&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;3g&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;15&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;/dev/ttyUSB1&#39;</span>
+    <span class="n">option</span> <span class="n">service</span> <span class="s1">&#39;gprs&#39;</span>
+    <span class="n">option</span> <span class="n">apn</span> <span class="s1">&#39;internet&#39;</span>
+    <span class="n">option</span> <span class="n">auto</span> <span class="s1">&#39;0&#39;</span>
+
+<span class="n">config</span> <span class="n">interface</span> <span class="s1">&#39;wwan&#39;</span>
+    <span class="n">option</span> <span class="n">proto</span> <span class="s1">&#39;dhcp&#39;</span>
+    <span class="n">option</span> <span class="n">metric</span> <span class="s1">&#39;10&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>/etc/config/wireless/.<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="nb">type</span> <span class="s1">&#39;mac80211&#39;</span>
+    <span class="n">option</span> <span class="n">path</span> <span class="s1">&#39;platform/ahb/18100000.wmac&#39;</span>
+    <span class="n">option</span> <span class="n">band</span> <span class="s1">&#39;2g&#39;</span>
+    <span class="n">option</span> <span class="n">htmode</span> <span class="s1">&#39;HT20&#39;</span>
+    <span class="n">option</span> <span class="n">disabled</span> <span class="s1">&#39;0&#39;</span>
+    <span class="n">option</span> <span class="n">channel</span> <span class="s1">&#39;auto&#39;</span>
+
+<span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">iface</span> <span class="s1">&#39;client&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="n">network</span> <span class="s1">&#39;wwan&#39;</span>
+    <span class="n">option</span> <span class="n">mode</span> <span class="s1">&#39;sta&#39;</span>
+    <span class="n">option</span> <span class="n">encryption</span> <span class="s1">&#39;psk2&#39;</span>
+    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;IO-LINK&#39;</span>
+    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;Demo12345&#39;</span>
+
+<span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">iface</span> <span class="s1">&#39;ap&#39;</span>
+    <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
+    <span class="n">option</span> <span class="n">network</span> <span class="s1">&#39;lan&#39;</span>
+    <span class="n">option</span> <span class="n">mode</span> <span class="s1">&#39;ap&#39;</span>
+    <span class="n">option</span> <span class="n">encryption</span> <span class="s1">&#39;psk2&#39;</span>
+    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;iot-gateway&#39;</span>
+    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;GoodPasswd!&#39;</span>
+    <span class="n">option</span> <span class="n">disabled</span> <span class="s1">&#39;1&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
