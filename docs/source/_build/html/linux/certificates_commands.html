@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linux &mdash; SW notes 0.1 documentation</title>
+  <title>Certificates-practical commands &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Users" href="users.html" />
-    <link rel="prev" title="Linux basic network commands" href="../network/linux_basic_commands.html" /> 
+    <link rel="next" title="OpenWrt" href="../openwrt/index.html" />
+    <link rel="prev" title="Pulseaudio" href="pulseaudio.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,7 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Linux</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic_shell_tools.html">Basic shell tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SED.html">SED</a></li>
@@ -55,7 +55,14 @@
 <li class="toctree-l2"><a class="reference internal" href="tar.html">Tar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="admin.html">Admin tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pulseaudio.html">Pulseaudio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="certificates_commands.html">Certificates-practical commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Certificates-practical commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wget-with-certs">Wget with certs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#files-crt-and-key">Files .crt and .key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-cer">Files .cer</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../openwrt/index.html">OpenWrt</a></li>
@@ -78,9 +85,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Linux</li>
+          <li><a href="index.html">Linux</a> &raquo;</li>
+      <li>Certificates-practical commands</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/linux/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/linux/certificates_commands.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -88,46 +96,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="linux">
-<h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic_shell_tools.html">Basic shell tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SED.html">SED</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SED.html#cwiczenie1">Cwiczenie1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SED.html#cwiczenie2">Cwiczenie2</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="awk.html">AWK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tar.html">Tar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#swap">SWAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#cron">CRON</a></li>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#extra-permissions">Extra Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#smtp">SMTP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#nextcloud">NextCloud</a></li>
-<li class="toctree-l2"><a class="reference internal" href="admin.html#systemd">SystemD</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pulseaudio.html">Pulseaudio</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pulseaudio.html#restart-pulseaudio">Restart pulseaudio</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="certificates_commands.html">Certificates-practical commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="certificates_commands.html#wget-with-certs">Wget with certs</a></li>
-</ul>
-</li>
-</ul>
+  <section id="certificates-practical-commands">
+<h1>Certificates-practical commands<a class="headerlink" href="#certificates-practical-commands" title="Permalink to this headline"></a></h1>
+<section id="wget-with-certs">
+<h2>Wget with certs<a class="headerlink" href="#wget-with-certs" title="Permalink to this headline"></a></h2>
+<section id="files-crt-and-key">
+<h3>Files .crt and .key<a class="headerlink" href="#files-crt-and-key" title="Permalink to this headline"></a></h3>
+<p>If you have such cert files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@user:~/.certs$ ls -la
+-rw------- 1 user user 1245 lip 5 11:48 ca.crt
+-rw------- 1 user user 1326 lip 5 11:48 cert.crt
+-rw------- 1 user user 1704 lip 5 11:49 private.key
+</pre></div>
 </div>
+<p>There is an example of wget:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wget --ca-certificate=$HOME/.certs/ca.crt --certificate=$HOME/.certs/cert.crt --private-key=$HOME/.certs/private.key &#39;link&#39;
+</pre></div>
+</div>
+<p>You can create a script to handle this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@user:~# echo &#39;#!/bin/sh
+wget --ca-certificate=$HOME/.certs/ca.crt --certificate=$HOME/.certs/cert.crt --private-key=$HOME/.certs/private.key $*&#39; &gt; /bin/wget-ca
+user@user:~# chmod +x /bin/wget-ca
+</pre></div>
+</div>
+</section>
+<section id="files-cer">
+<h3>Files .cer<a class="headerlink" href="#files-cer" title="Permalink to this headline"></a></h3>
+<p>If you have such certs files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@user:~/.certs$ ls -la
+-rw------- 1 user user 1348 kwi 25 09:01 ca.cer
+-rw------- 1 user user 1828 kwi 25 09:00 priv.cer
+-rw------- 1 user user 1486 kwi 25 09:00 pub.cer
+</pre></div>
+</div>
+<p>There is an example of wget:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wget --ca-certificate=$HOME/.certs/ca.cer --certificate=$HOME/.certs/pub.cer --private-key=$HOME/.certs/priv.cer &#39;link&#39;
+</pre></div>
+</div>
+<p>You can create a script to handle this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@user:~# echo &#39;#!/bin/sh
+wget --ca-certificate=$HOME/.certs/ca.cer --certificate=$HOME/.certs/pub.cer --private-key=$HOME/.certs/priv.cer $*&#39; &gt; /bin/wget-ca
+user@user:~# chmod +x /bin/wget-ca
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../network/linux_basic_commands.html" class="btn btn-neutral float-left" title="Linux basic network commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="users.html" class="btn btn-neutral float-right" title="Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pulseaudio.html" class="btn btn-neutral float-left" title="Pulseaudio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../openwrt/index.html" class="btn btn-neutral float-right" title="OpenWrt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

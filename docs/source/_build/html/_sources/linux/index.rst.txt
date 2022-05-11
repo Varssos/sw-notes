@@ -11,3 +11,4 @@ Linux
     tar
     admin
     pulseaudio
+    certificates_commands
