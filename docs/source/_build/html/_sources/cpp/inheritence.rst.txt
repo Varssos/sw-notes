@@ -1,6 +1,8 @@
 Inheritence
 ===========
 
+:file:`./class-test.tar` 
+
 Rules
 ~~~~~
 

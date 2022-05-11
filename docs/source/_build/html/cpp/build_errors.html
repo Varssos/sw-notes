@@ -59,7 +59,11 @@
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build errors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#used-but-never-defined">Used but never defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#declared-multiple-times">Declared multiple times</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thread.html">Multithreading in C++</a></li>
 </ul>
@@ -101,14 +105,21 @@
              
   <section id="build-errors">
 <h1>Build errors<a class="headerlink" href="#build-errors" title="Permalink to this headline"></a></h1>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">GetStringFromRapidJsonValueWithThrow(const</span> <span class="pre">Value&amp;,</span> <span class="pre">const</span> <span class="pre">string&amp;)’</span> <span class="pre">used</span> <span class="pre">but</span> <span class="pre">never</span> <span class="pre">defined</span></code></p></li>
-</ol>
+<section id="used-but-never-defined">
+<h2>Used but never defined<a class="headerlink" href="#used-but-never-defined" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">GetStringFromRapidJsonValueWithThrow(const</span> <span class="pre">Value&amp;,</span> <span class="pre">const</span> <span class="pre">string&amp;)’</span> <span class="pre">used</span> <span class="pre">but</span> <span class="pre">never</span> <span class="pre">defined</span></code></p>
 <p>Solutions:</p>
 <ol class="arabic simple">
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword if they are divided into many files. <code class="docutils literal notranslate"><span class="pre">You've</span> <span class="pre">declared</span> <span class="pre">the</span> <span class="pre">function</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">static.</span> <span class="pre">This</span> <span class="pre">means</span> <span class="pre">that</span> <span class="pre">it</span> <span class="pre">is</span> <span class="pre">only</span> <span class="pre">visible</span> <span class="pre">within</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">compilation</span> <span class="pre">unit.</span></code></p></li>
 <li><p>Clean build <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--clean</span> <span class="pre">build</span></code> Cmake can be not curious about existing new <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">*.hpp</span></code> files</p></li>
 </ol>
+</section>
+<section id="declared-multiple-times">
+<h2>Declared multiple times<a class="headerlink" href="#declared-multiple-times" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">E:/Cpp/Makefile_learning/inc/connection/connection.hpp:2:7:</span> <span class="pre">error:</span> <span class="pre">redefinition</span> <span class="pre">of</span> <span class="pre">'class</span> <span class="pre">IConnection'</span></code></p>
+<p>Solutions:
+1. Check out if header files have on the top <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code></p>
+</section>
 </section>
 
 
