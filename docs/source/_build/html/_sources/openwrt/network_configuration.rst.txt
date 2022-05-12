@@ -157,8 +157,8 @@ Configuration to connect WAN via wifi and set a dhcp server and LAN on ethernet 
         option network 'wwan'
         option mode 'sta'
         option encryption 'psk2'
-        option ssid 'IO-LINK'
-        option key 'Demo12345'
+        option ssid 'XXXX'
+        option key 'YYYYY'
 
     config wifi-iface 'ap'
         option device 'radio0'
@@ -170,5 +170,22 @@ Configuration to connect WAN via wifi and set a dhcp server and LAN on ethernet 
         option disabled '1'
 
 
+Setting AP on OpenWRT
+~~~~~~~~~~~~~~~~~~~~~
 
+1. change config /etc/config/wireless like it is above
+2. Use uci command 
+3. Set it in LUCI GUI interface
+
+
+UCI to set network device on ethernet port
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    uci add_list firewall.cfg03dc81.network='wwan'
+    uci set network.lan.auto='1'
+    uci set network.@device[0].ports='eth0'
+    uci set network.wan.device='eth1'
+    uci set netowrk.wan6.device='eth1'
 
