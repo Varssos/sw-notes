@@ -3,7 +3,81 @@ Linux serial port configuration
 
 Great article about this topic is here: `mbedded.ninja <https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/>`_ BTW this blog is awesome
 
-Linux serial port Overview 
+`Here <https://tldp.org/HOWTO/Serial-Programming-HOWTO/>`_ is fine how to serial programming on linux
+
+Checking tty* serial port details
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    stty -F /dev/ttyUBS0
+
+
+Creating virtual port on Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create 2 virtual ports::
+
+    sudo  socat -u -u pty,raw,echo=0,link=/dev/ttyS50 pty,raw,echo=0,link=/dev/ttyS51
+
+Change owner of created ports::
+
+    sudo chown comarch_user:comarch_user /dev/ttyS50 # Write port
+    sudo chown comarch_user:comarch_user /dev/ttyS51 # 
+    
+
+You can test it with echo::
+
+    # First terminal
+    echo "1123423" > /dev/ttyS50
+
+    #Second terminal
+    cat /dev/ttyS51
+
+Here is write python code example for such case
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+
+    import serial, time
+
+    ser = serial.Serial(port='/dev/ttyS50',\
+                        baudrate=9600,\
+                        parity=serial.PARITY_NONE,\
+                        stopbits=serial.STOPBITS_ONE,\
+                        bytesize=serial.EIGHTBITS )
+
+    request = "02 02 03 20 00 01 b8 77"
+    request_array = bytearray.fromhex(request)
+    print(request_array)
+
+
+    while 1:
+        print("Writing...")
+        ser.write(request_array)
+        time.sleep(1)
+
+Here is read python code example for such case
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+
+    from urllib import response
+    import serial, time
+
+    ser = serial.Serial(port='/dev/ttyS51',\
+                        baudrate=9600,\
+                        parity=serial.PARITY_NONE,\
+                        stopbits=serial.STOPBITS_ONE,\
+                        bytesize=serial.EIGHTBITS )
+
+    while 1:
+        print(set.read())
+
+
+Linux serial port Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This post will be something like summary of linked article. The main reason why I wrote this is to help me momorize it better and quickly get back to what was important. Only practical useage is described here for more just read linked article 

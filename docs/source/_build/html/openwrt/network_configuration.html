@@ -41,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage Lumache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes.html">Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C/C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
@@ -62,6 +62,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">/etc/config/wireless/.</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-ap-on-openwrt">Setting AP on OpenWRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uci-to-set-network-device-on-ethernet-port">UCI to set network device on ethernet port</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hub_configuration.html">Hub configuration</a></li>
@@ -251,8 +253,8 @@
     <span class="n">option</span> <span class="n">network</span> <span class="s1">&#39;wwan&#39;</span>
     <span class="n">option</span> <span class="n">mode</span> <span class="s1">&#39;sta&#39;</span>
     <span class="n">option</span> <span class="n">encryption</span> <span class="s1">&#39;psk2&#39;</span>
-    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;IO-LINK&#39;</span>
-    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;Demo12345&#39;</span>
+    <span class="n">option</span> <span class="n">ssid</span> <span class="s1">&#39;XXXX&#39;</span>
+    <span class="n">option</span> <span class="n">key</span> <span class="s1">&#39;YYYYY&#39;</span>
 
 <span class="n">config</span> <span class="n">wifi</span><span class="o">-</span><span class="n">iface</span> <span class="s1">&#39;ap&#39;</span>
     <span class="n">option</span> <span class="n">device</span> <span class="s1">&#39;radio0&#39;</span>
@@ -265,6 +267,24 @@
 </pre></div>
 </div>
 </section>
+</section>
+<section id="setting-ap-on-openwrt">
+<h2>Setting AP on OpenWRT<a class="headerlink" href="#setting-ap-on-openwrt" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>change config /etc/config/wireless like it is above</p></li>
+<li><p>Use uci command</p></li>
+<li><p>Set it in LUCI GUI interface</p></li>
+</ol>
+</section>
+<section id="uci-to-set-network-device-on-ethernet-port">
+<h2>UCI to set network device on ethernet port<a class="headerlink" href="#uci-to-set-network-device-on-ethernet-port" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uci</span> <span class="n">add_list</span> <span class="n">firewall</span><span class="o">.</span><span class="n">cfg03dc81</span><span class="o">.</span><span class="n">network</span><span class="o">=</span><span class="s1">&#39;wwan&#39;</span>
+<span class="n">uci</span> <span class="nb">set</span> <span class="n">network</span><span class="o">.</span><span class="n">lan</span><span class="o">.</span><span class="n">auto</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+<span class="n">uci</span> <span class="nb">set</span> <span class="n">network</span><span class="o">.</span><span class="nd">@device</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ports</span><span class="o">=</span><span class="s1">&#39;eth0&#39;</span>
+<span class="n">uci</span> <span class="nb">set</span> <span class="n">network</span><span class="o">.</span><span class="n">wan</span><span class="o">.</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;eth1&#39;</span>
+<span class="n">uci</span> <span class="nb">set</span> <span class="n">netowrk</span><span class="o">.</span><span class="n">wan6</span><span class="o">.</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;eth1&#39;</span>
+</pre></div>
+</div>
 </section>
 </section>
 
