@@ -57,6 +57,7 @@
 <li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Linux serial port configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#checking-tty-serial-port-details">Checking tty* serial port details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-virtual-port-on-linux">Creating virtual port on Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux-serial-port-overview">Linux serial port Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-ports">Open ports</a></li>
@@ -110,12 +111,71 @@
              
   <section id="linux-serial-port-configuration">
 <h1>Linux serial port configuration<a class="headerlink" href="#linux-serial-port-configuration" title="Permalink to this headline"></a></h1>
+<p>Great article about this topic is here: <a class="reference external" href="https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/">mbedded.ninja</a> BTW this blog is awesome</p>
+<p><a class="reference external" href="https://tldp.org/HOWTO/Serial-Programming-HOWTO/">Here</a> is fine how to serial programming on linux</p>
 <section id="checking-tty-serial-port-details">
 <h2>Checking tty* serial port details<a class="headerlink" href="#checking-tty-serial-port-details" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stty</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUBS0</span>
 </pre></div>
 </div>
-<p>Great article about this topic is here: <a class="reference external" href="https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/">mbedded.ninja</a> BTW this blog is awesome</p>
+</section>
+<section id="creating-virtual-port-on-linux">
+<h2>Creating virtual port on Linux<a class="headerlink" href="#creating-virtual-port-on-linux" title="Permalink to this headline"></a></h2>
+<p>Create 2 virtual ports:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span>  <span class="n">socat</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">u</span> <span class="n">pty</span><span class="p">,</span><span class="n">raw</span><span class="p">,</span><span class="n">echo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">link</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span> <span class="n">pty</span><span class="p">,</span><span class="n">raw</span><span class="p">,</span><span class="n">echo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">link</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span>
+</pre></div>
+</div>
+<p>Change owner of created ports:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">comarch_user</span><span class="p">:</span><span class="n">comarch_user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span> <span class="c1"># Write port</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="n">comarch_user</span><span class="p">:</span><span class="n">comarch_user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span> <span class="c1">#</span>
+</pre></div>
+</div>
+<p>You can test it with echo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># First terminal</span>
+<span class="n">echo</span> <span class="s2">&quot;1123423&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span>
+
+<span class="c1">#Second terminal</span>
+<span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span>
+</pre></div>
+</div>
+<p>Here is write python code example for such case</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">import</span> <span class="nn">serial</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s1">&#39;/dev/ttyS50&#39;</span><span class="p">,</span>\
+                    <span class="n">baudrate</span><span class="o">=</span><span class="mi">9600</span><span class="p">,</span>\
+                    <span class="n">parity</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">PARITY_NONE</span><span class="p">,</span>\
+                    <span class="n">stopbits</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">STOPBITS_ONE</span><span class="p">,</span>\
+                    <span class="n">bytesize</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">EIGHTBITS</span> <span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="s2">&quot;02 02 03 20 00 01 b8 77&quot;</span>
+<span class="n">request_array</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">request_array</span><span class="p">)</span>
+
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Writing...&quot;</span><span class="p">)</span>
+    <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">request_array</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is read python code example for such case</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">response</span>
+<span class="kn">import</span> <span class="nn">serial</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s1">&#39;/dev/ttyS51&#39;</span><span class="p">,</span>\
+                    <span class="n">baudrate</span><span class="o">=</span><span class="mi">9600</span><span class="p">,</span>\
+                    <span class="n">parity</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">PARITY_NONE</span><span class="p">,</span>\
+                    <span class="n">stopbits</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">STOPBITS_ONE</span><span class="p">,</span>\
+                    <span class="n">bytesize</span><span class="o">=</span><span class="n">serial</span><span class="o">.</span><span class="n">EIGHTBITS</span> <span class="p">)</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
 </section>
 <section id="linux-serial-port-overview">
 <h2>Linux serial port Overview<a class="headerlink" href="#linux-serial-port-overview" title="Permalink to this headline"></a></h2>
