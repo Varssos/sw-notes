@@ -19,3 +19,17 @@ Declared multiple times
 
 Solutions:
 1. Check out if header files have on the top ``#pragma once``
+
+Undefined reference to ... Due to template functions/classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+e.g::
+
+    c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: E:/Cpp/Makefile_learning/src/main/main.cpp:12: undefined reference to `Manager<Device>::~Manager()'
+
+`Stackoverflow problem description <https://stackoverflow.com/questions/8752837/undefined-reference-to-template-class-constructor>`_ 
+
+Quick solutions:
+
+1. Put at the end of ``*.cpp`` file, explicitly instantiate the template ``template class Manager<Device>;``
+2. Declare template functions in header files
