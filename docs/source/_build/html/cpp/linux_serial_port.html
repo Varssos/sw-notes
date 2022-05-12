@@ -56,6 +56,7 @@
 <li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Linux serial port configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#checking-tty-serial-port-details">Checking tty* serial port details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux-serial-port-overview">Linux serial port Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-ports">Open ports</a></li>
@@ -109,7 +110,13 @@
              
   <section id="linux-serial-port-configuration">
 <h1>Linux serial port configuration<a class="headerlink" href="#linux-serial-port-configuration" title="Permalink to this headline"></a></h1>
+<section id="checking-tty-serial-port-details">
+<h2>Checking tty* serial port details<a class="headerlink" href="#checking-tty-serial-port-details" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stty</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUBS0</span>
+</pre></div>
+</div>
 <p>Great article about this topic is here: <a class="reference external" href="https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/">mbedded.ninja</a> BTW this blog is awesome</p>
+</section>
 <section id="linux-serial-port-overview">
 <h2>Linux serial port Overview<a class="headerlink" href="#linux-serial-port-overview" title="Permalink to this headline"></a></h2>
 <p>This post will be something like summary of linked article. The main reason why I wrote this is to help me momorize it better and quickly get back to what was important. Only practical useage is described here for more just read linked article</p>

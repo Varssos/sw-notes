@@ -1,6 +1,13 @@
 Linux serial port configuration
 ===============================
 
+Checking tty* serial port details
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    stty -F /dev/ttyUBS0  
+
 Great article about this topic is here: `mbedded.ninja <https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/>`_ BTW this blog is awesome
 
 Linux serial port Overview 
