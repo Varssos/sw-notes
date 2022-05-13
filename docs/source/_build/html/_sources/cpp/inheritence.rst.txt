@@ -1,7 +1,7 @@
 Inheritence
 ===========
 
-:file:`./class-test.tar` 
+:download:`Class test templates <class-test.tar>` 
 
 Rules
 ~~~~~

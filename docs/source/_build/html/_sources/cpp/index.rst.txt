@@ -22,3 +22,4 @@ C/C++
   build_errors
   debugging
   thread
+  include_guards

@@ -22,8 +22,8 @@ Create 2 virtual ports::
 
 Change owner of created ports::
 
-    sudo chown comarch_user:comarch_user /dev/ttyS50 # Write port
-    sudo chown comarch_user:comarch_user /dev/ttyS51 # 
+    sudo chown user:user /dev/ttyS50 # Write port
+    sudo chown user:user /dev/ttyS51 # 
     
 
 You can test it with echo::

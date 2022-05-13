@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build errors &mdash; SW notes 0.1 documentation</title>
+  <title>Include Guards &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Debugging and problems solving" href="debugging.html" />
-    <link rel="prev" title="Inheritence" href="inheritence.html" /> 
+    <link rel="next" title="Bash" href="../bash/index.html" />
+    <link rel="prev" title="Multithreading in C++" href="thread.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,15 +59,14 @@
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build errors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#used-but-never-defined">Used but never defined</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#declared-multiple-times">Declared multiple times</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#undefined-reference-to-due-to-template-functions-classes">Undefined reference to … Due to template functions/classes</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thread.html">Multithreading in C++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="include_guards.html">Include Guards</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Include Guards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#include-guard">Include guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pragma-once">Pragma once</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
@@ -95,9 +94,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Build errors</li>
+      <li>Include Guards</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/build_errors.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/include_guards.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -105,34 +104,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="build-errors">
-<h1>Build errors<a class="headerlink" href="#build-errors" title="Permalink to this headline"></a></h1>
-<section id="used-but-never-defined">
-<h2>Used but never defined<a class="headerlink" href="#used-but-never-defined" title="Permalink to this headline"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">GetStringFromRapidJsonValueWithThrow(const</span> <span class="pre">Value&amp;,</span> <span class="pre">const</span> <span class="pre">string&amp;)’</span> <span class="pre">used</span> <span class="pre">but</span> <span class="pre">never</span> <span class="pre">defined</span></code></p>
-<p>Solutions:</p>
+  <section id="include-guards">
+<h1>Include Guards<a class="headerlink" href="#include-guards" title="Permalink to this headline"></a></h1>
+<p>In C++ to avoid multiple declarations class etc with #include “header_file.hpp” are used:</p>
 <ol class="arabic simple">
-<li><p>Remove <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword if they are divided into many files. <code class="docutils literal notranslate"><span class="pre">You've</span> <span class="pre">declared</span> <span class="pre">the</span> <span class="pre">function</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">static.</span> <span class="pre">This</span> <span class="pre">means</span> <span class="pre">that</span> <span class="pre">it</span> <span class="pre">is</span> <span class="pre">only</span> <span class="pre">visible</span> <span class="pre">within</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">compilation</span> <span class="pre">unit.</span></code></p></li>
-<li><p>Clean build <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--clean</span> <span class="pre">build</span></code> Cmake can be not curious about existing new <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">*.hpp</span></code> files</p></li>
+<li><p>Include guards</p></li>
+<li><p>#pragma once</p></li>
 </ol>
-</section>
-<section id="declared-multiple-times">
-<h2>Declared multiple times<a class="headerlink" href="#declared-multiple-times" title="Permalink to this headline"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">E:/Cpp/Makefile_learning/inc/connection/connection.hpp:2:7:</span> <span class="pre">error:</span> <span class="pre">redefinition</span> <span class="pre">of</span> <span class="pre">'class</span> <span class="pre">IConnection'</span></code></p>
-<p>Solutions:
-1. Check out if header files have on the top <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code></p>
-</section>
-<section id="undefined-reference-to-due-to-template-functions-classes">
-<h2>Undefined reference to … Due to template functions/classes<a class="headerlink" href="#undefined-reference-to-due-to-template-functions-classes" title="Permalink to this headline"></a></h2>
-<p>e.g:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: E:/Cpp/Makefile_learning/src/main/main.cpp:12: undefined reference to `Manager&lt;Device&gt;::~Manager()&#39;
+<section id="include-guard">
+<h2>Include guard<a class="headerlink" href="#include-guard" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">header</span><span class="o">.</span><span class="n">h</span>
+<span class="c1">#ifndef HEADER_H_</span>
+<span class="c1">#define HEADER_H_</span>
+<span class="o">//</span> <span class="n">declarations</span>
+<span class="c1">#endif</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">c</span>
+<span class="c1">#ifndef HEADER_H_</span>
+<span class="c1">#include &quot;header.h&quot;</span>
+<span class="c1">#endif</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://stackoverflow.com/questions/8752837/undefined-reference-to-template-class-constructor">Stackoverflow problem description</a></p>
-<p>Quick solutions:</p>
 <ol class="arabic simple">
-<li><p>Put at the end of <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file, explicitly instantiate the template <code class="docutils literal notranslate"><span class="pre">template</span> <span class="pre">class</span> <span class="pre">Manager&lt;Device&gt;;</span></code></p></li>
-<li><p>Declare template functions in header files</p></li>
+<li><p><a class="reference external" href="http://wiki.c2.com/?RedundantIncludeGuards">Redundant Include Guards</a></p></li>
+<li><p>It is always supported</p></li>
+</ol>
+</section>
+<section id="pragma-once">
+<h2>Pragma once<a class="headerlink" href="#pragma-once" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Well supported across compilers, but not part of standard</p></li>
+<li><p>The preprocessor may be a little faster with it</p></li>
+<li><p>More simple to understand exact intent, so less prone to make mistakes</p></li>
 </ol>
 </section>
 </section>
@@ -141,8 +144,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="inheritence.html" class="btn btn-neutral float-left" title="Inheritence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging and problems solving" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="thread.html" class="btn btn-neutral float-left" title="Multithreading in C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bash/index.html" class="btn btn-neutral float-right" title="Bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

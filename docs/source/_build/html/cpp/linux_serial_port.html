@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thread.html">Multithreading in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_guards.html">Include Guards</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bash/index.html">Bash</a></li>
@@ -126,8 +127,8 @@
 </pre></div>
 </div>
 <p>Change owner of created ports:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">comarch_user</span><span class="p">:</span><span class="n">comarch_user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span> <span class="c1"># Write port</span>
-<span class="n">sudo</span> <span class="n">chown</span> <span class="n">comarch_user</span><span class="p">:</span><span class="n">comarch_user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span> <span class="c1">#</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">user</span><span class="p">:</span><span class="n">user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span> <span class="c1"># Write port</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="n">user</span><span class="p">:</span><span class="n">user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span> <span class="c1">#</span>
 </pre></div>
 </div>
 <p>You can test it with echo:</p>
