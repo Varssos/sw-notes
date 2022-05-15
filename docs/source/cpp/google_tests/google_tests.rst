@@ -37,6 +37,26 @@ Install on Linux system
     sudo make install
     sudo ldconfig
 
+Install google test on Windows
+It should works as `here <https://www.youtube.com/watch?v=3zUqJEilhnM>`_ 
+but on windows even with installed posix mingw packages, there was problem 
+with <thread>. It had to be declared as <pthread.h> 
+
+1. First install cmake like it is described here :ref:`Install cmake on Windows` 
+2. Go to minGW location e.g. /C/minGW/ 
+3. Execute below lines in minGW
+
+::
+
+    git clone https://github.com/google/googletest.git
+    cd googletest
+    mkdir build && cd build
+    cmake -G "MinGW Makefiles" ..
+    make -j4
+    .... here is problem with threads etc. So I finally gave up and installed wsl2 on windows
+
+
+
 Minimum example test code
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
