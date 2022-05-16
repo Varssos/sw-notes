@@ -49,7 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile tips, knowledge in a nuthsell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cmake</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cmake</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-cmake-on-windows">Install cmake on Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
@@ -102,6 +105,15 @@
              
   <section id="cmake">
 <h1>Cmake<a class="headerlink" href="#cmake" title="Permalink to this headline"></a></h1>
+<section id="install-cmake-on-windows">
+<h2>Install cmake on Windows<a class="headerlink" href="#install-cmake-on-windows" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Install cmake from <a class="reference external" href="https://cmake.org/download/">here</a> with <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">CMake</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">PATH</span> <span class="pre">for</span> <span class="pre">all</span> <span class="pre">users</span></code></p></li>
+<li><p>Add to path installed cmake bin folder e.g. <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\CMake\bin\</span></code></p></li>
+<li><p>If you are using a minGW, use MinGW Installation Manager to install <code class="docutils literal notranslate"><span class="pre">mingw32-make-bin</span></code> or <code class="docutils literal notranslate"><span class="pre">mingw32-make</span></code>. For that case you should also add <code class="docutils literal notranslate"><span class="pre">C:\MinGW\bin\</span></code> to Path</p></li>
+<li><p>You would be forced to use cmake like this <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;MinGW</span> <span class="pre">Makefiles&quot;</span> <span class="pre">..</span></code></p></li>
+</ol>
+</section>
 </section>
 
 
