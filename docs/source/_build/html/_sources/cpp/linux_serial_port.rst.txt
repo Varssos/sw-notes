@@ -18,7 +18,16 @@ Creating virtual port on Linux
 
 Create 2 virtual ports::
 
-    sudo  socat -u -u pty,raw,echo=0,link=/dev/ttyS50 pty,raw,echo=0,link=/dev/ttyS51
+    # Used in most cases!! (bidirectional)
+    sudo  socat pty,raw,echo=0,link=/dev/ttyS50 pty,raw,echo=0,link=/dev/ttyS51
+
+    # Unidirectional
+    # -u     unidirectional mode (left to right)
+    # -U     unidirectional mode (right to left)
+    sudo  socat -u -u pty,raw,echo=0,link=/dev/ttyS50 pty,raw,echo=0,link=/dev/ttyS51 
+
+Let's imagine that instead of ``/dev/ttyUSB0`` on which you read/write data from device you can set Application to read from ``/dev/ttyS50``.
+You can simulate device on port ``/dev/ttyS51`` using python pyserial.
 
 Change owner of created ports::
 
