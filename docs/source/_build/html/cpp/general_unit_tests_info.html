@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unit tests libraries &mdash; SW notes 0.1 documentation</title>
+  <title>General info about unittests &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="General info about unittests" href="general_unit_tests_info.html" />
-    <link rel="prev" title="Good practises and CR checklist" href="good_practises_cr.html" /> 
+    <link rel="next" title="Google tests" href="google_tests/google_tests.html" />
+    <link rel="prev" title="Unit tests libraries" href="unittests.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,8 +56,12 @@
 <li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit tests libraries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="general_unit_tests_info.html">General info about unittests</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="unittests.html">Unit tests libraries</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">General info about unittests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mock">Mock</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="google_tests/google_tests.html">Google tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cute_unit_tests.html">CUTE</a></li>
 </ul>
@@ -94,9 +98,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Unit tests libraries</li>
+          <li><a href="unittests.html">Unit tests libraries</a> &raquo;</li>
+      <li>General info about unittests</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/unittests.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/general_unit_tests_info.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -104,38 +109,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="unit-tests-libraries">
-<h1>Unit tests libraries<a class="headerlink" href="#unit-tests-libraries" title="Permalink to this headline"></a></h1>
-<p><a class="reference external" href="https://infotraining.bitbucket.io/cpp-tdd/index.html">TDD in C++ articles in polish</a></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="general_unit_tests_info.html">General info about unittests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="general_unit_tests_info.html#unit-tests">Unit tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="general_unit_tests_info.html#mock">Mock</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="google_tests/google_tests.html">Google tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#preview">Preview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#video-tutorial-analysis">Video Tutorial analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#install-on-linux-system">Install on Linux system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#minimum-example-test-code">Minimum example test code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="google_tests/google_tests.html#cmake-for-minimum-test-code">CMake for minimum test code</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cute_unit_tests.html">CUTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html#project-tree">Project tree</a></li>
-</ul>
-</li>
-</ul>
+  <section id="general-info-about-unittests">
+<h1>General info about unittests<a class="headerlink" href="#general-info-about-unittests" title="Permalink to this headline"></a></h1>
+<section id="unit-tests">
+<h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h2>
+</section>
+<section id="mock">
+<h2>Mock<a class="headerlink" href="#mock" title="Permalink to this headline"></a></h2>
+<p>Nice <a class="reference external" href="https://cpp-polska.pl/post/podstawy-pracy-z-googlemock">tutorial</a> about google mocks</p>
+<p>Main mock function is to replace external environment for our code.
+For example instead of using Modbus slave device, we use its simulator</p>
+<section id="fake-object">
+<h3>Fake object<a class="headerlink" href="#fake-object" title="Permalink to this headline"></a></h3>
+<p>It only imitate real object behaviour</p>
+</section>
+<section id="stub">
+<h3>Stub<a class="headerlink" href="#stub" title="Permalink to this headline"></a></h3>
+<p>Only difference between fake object and stub is that stub return fixed values like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">getMessage</span><span class="p">()</span> <span class="n">const</span> <span class="n">override</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;this is stub message&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+</section>
+<section id="mock-object">
+<h3>Mock object<a class="headerlink" href="#mock-object" title="Permalink to this headline"></a></h3>
+<p>Mocks are objects which allow us to define <strong>stubs</strong></p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="good_practises_cr.html" class="btn btn-neutral float-left" title="Good practises and CR checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="general_unit_tests_info.html" class="btn btn-neutral float-right" title="General info about unittests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="unittests.html" class="btn btn-neutral float-left" title="Unit tests libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="google_tests/google_tests.html" class="btn btn-neutral float-right" title="Google tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

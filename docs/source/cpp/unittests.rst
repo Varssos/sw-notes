@@ -6,5 +6,6 @@ Unit tests libraries
 .. toctree::
   :maxdepth: 2
 
+  general_unit_tests_info
   google_tests/google_tests
   cute_unit_tests.rst
