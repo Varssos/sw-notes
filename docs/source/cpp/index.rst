@@ -6,7 +6,6 @@ C/C++
 
   setup
   chrono
-  cute_unit_tests
   makefile
   makefile_all
   cmake

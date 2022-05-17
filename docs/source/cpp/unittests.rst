@@ -7,3 +7,4 @@ Unit tests libraries
   :maxdepth: 2
 
   google_tests/google_tests
+  cute_unit_tests.rst

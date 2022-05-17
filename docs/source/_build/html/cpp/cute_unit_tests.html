@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cute &mdash; SW notes 0.1 documentation</title>
+  <title>CUTE &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Makefile tips, knowledge in a nuthsell" href="makefile.html" />
-    <link rel="prev" title="Overview" href="chrono.html" /> 
+    <link rel="next" title="Inheritence" href="inheritence.html" />
+    <link rel="prev" title="Tutorial#5" href="google_tests/tutorial5/tutorial5.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,10 +46,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cute</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-image-class">Using the Image class</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile tips, knowledge in a nuthsell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
@@ -60,7 +56,14 @@
 <li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unittests.html">Unit tests libraries</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="unittests.html">Unit tests libraries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="google_tests/google_tests.html">Google tests</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CUTE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#project-tree">Project tree</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="inheritence.html">Inheritence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_errors.html">Build errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
@@ -93,7 +96,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Cute</li>
+          <li><a href="unittests.html">Unit tests libraries</a> &raquo;</li>
+      <li>CUTE</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/cpp/cute_unit_tests.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -104,9 +108,98 @@
            <div itemprop="articleBody">
              
   <section id="cute">
-<h1>Cute<a class="headerlink" href="#cute" title="Permalink to this headline"></a></h1>
-<section id="using-the-image-class">
-<h2>Using the Image class<a class="headerlink" href="#using-the-image-class" title="Permalink to this headline"></a></h2>
+<h1>CUTE<a class="headerlink" href="#cute" title="Permalink to this headline"></a></h1>
+<section id="project-tree">
+<h2>Project tree<a class="headerlink" href="#project-tree" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── src
+├── inc
+├── ...
+├── tests
+|   ├── inc
+|   │   ├── INCLUDES.hpp ─────────────── File in which tests header files are included. Used not to clutter TESTS.hpp
+|   │   ├── template_test_class
+|   │   │   └── TemplateTestClass.hpp ── Example test class header.
+|   │   └── TESTS.hpp ────────────────── File containing tests.
+|   └── src
+|       ├── template_test_class
+|       │   └── TemplateTestClass.cpp ── Example test class source file.
+|       └── test.cpp ─────────────────── File containing main test engine.
+└── tests.cmake ──────────── File containing rules of building tests for CMake
+</pre></div>
+</div>
+<p>test.cpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;TESTS.hpp&quot;</span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">X</span><span class="p">::</span><span class="n">Tests</span><span class="p">;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="n">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">AggregateTests</span><span class="p">();</span>
+    <span class="n">RunTests</span><span class="p">(</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>TESTS.hpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma once</span>
+
+<span class="c1">#include &quot;INCLUDES.hpp&quot;</span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">X</span><span class="p">::</span><span class="n">Tests</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">AggregateTests</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">AddTests</span><span class="p">(</span> <span class="n">suite_ModbusConnection</span><span class="p">(),</span> <span class="s2">&quot;ModbusConnection Tests&quot;</span> <span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>INLCUDES.hpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma once</span>
+
+<span class="c1">#include &quot;modbus_connection/ModbusConnectionTest.hpp&quot;</span>
+</pre></div>
+</div>
+<p>ModbusConnectionTest.hpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma once</span>
+
+<span class="c1">#include &quot;cute/cute_suite.h&quot;</span>
+
+<span class="n">namespace</span> <span class="n">X</span><span class="p">::</span><span class="n">Tests</span>
+<span class="p">{</span>
+    <span class="n">void</span> <span class="n">test_ModbusConnect</span><span class="p">();</span>
+
+    <span class="n">cute</span><span class="p">::</span><span class="n">suite</span> <span class="n">suite_ModbusConnection</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ModbusConnectionTest.cpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;modbus_connection/ModbusConnectionTest.hpp&quot;</span>
+<span class="c1">#include &quot;modbus_connection/ModbusConnection.hpp&quot;</span>
+
+
+<span class="c1">#include &quot;cute/cute.h&quot;</span>
+
+
+<span class="o">//</span><span class="n">using</span> <span class="n">namespace</span> <span class="o">...</span> <span class="k">for</span> <span class="n">developing</span> <span class="n">apps</span>
+
+<span class="n">namespace</span> <span class="n">X</span><span class="p">::</span><span class="n">Tests</span>
+<span class="p">{</span>
+    <span class="n">void</span> <span class="n">test_ModbusConnect</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ASSERT_EQUAL</span><span class="p">(</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">cute</span><span class="p">::</span><span class="n">suite</span> <span class="n">suite_ModbusConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">cute</span><span class="p">::</span><span class="n">suite</span> <span class="n">lSuite</span><span class="p">;</span>
+        <span class="n">lSuite</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span> <span class="n">CUTE</span><span class="p">(</span> <span class="n">test_ModbusConnect</span> <span class="p">)</span> <span class="p">);</span>
+
+
+        <span class="k">return</span> <span class="n">lSuite</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -114,8 +207,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="chrono.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="makefile.html" class="btn btn-neutral float-right" title="Makefile tips, knowledge in a nuthsell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="google_tests/tutorial5/tutorial5.html" class="btn btn-neutral float-left" title="Tutorial#5" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="inheritence.html" class="btn btn-neutral float-right" title="Inheritence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
