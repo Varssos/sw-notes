@@ -9,3 +9,13 @@ Install cmake on Windows
 3. If you are using a minGW, use MinGW Installation Manager to install ``mingw32-make-bin`` or ``mingw32-make``. For that case you should also add ``C:\MinGW\bin\`` to Path
 4. You would be forced to use cmake like this ``cmake -G "MinGW Makefiles" ..``
 
+Short tips about CMake
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: 
+    1. Assignment of variable ``set( TEST_CFG_PATH "${CMAKE_CURRENT_LIST_DIR}/tests/test_cfg/" )``
+    2. Execute shell command::
+   
+        execute_process(
+            COMMAND sed "s#\"modbus-tcp\": \".*\"#\"modbus-tcp\": \"${TEST_CFG_PATH}tcp/di-modbus-tcp-test.cfg\"#g" "${TEST_CFG_PATH}/modbus_test.cfg"
+        )

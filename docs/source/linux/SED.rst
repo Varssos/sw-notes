@@ -66,7 +66,19 @@ Dla niego wykonaj poniższe zadania
 7. Zamień linie zaczynające się od  </listing> na ---end listing ``sed -i -e 's|^</listing>|---end listing|g' article``
 8. Zamień &lt; na <. ``sed -i -e 's|&lt|<|g' article``
 9. Zamień &gt; na >. ``sed -i -e 's|&gt|>|g' article``
-10.  Zamień &amp; na &. ``sed -e 's|\&amp|\&\.|g' article``
+10. Zamień &amp; na &. ``sed -e 's|\&amp|\&\.|g' article``
+11. Zamień ścieżkę w ``"modbus-tcp": "/home/user/...."`` w pliku ``modbus_test.cfg.bak``
 
+.. code-block:: bash
+
+   TEST_CFG_PATH="/home/user/bla/bla/"
+   sed "s#\"modbus-tcp\":\s\".*\"#\"modbus-tcp\": \"$TEST_CFG_PATH\"#g" modbus_test.cfg.bak
+
+12. Zamień ścieżkę makrze ``#define TEST_CFG_PATH "DODAJ_TU_SCIEZKE"`` w pliku ``abc.hpp``  
+    
+.. code-block:: bash
+
+   TEST_CFG_PATH="/home/user/bla/bla/"
+   sed "s#TEST_CFG_PATH \".*\"#TEST_CFG_PATH \"$TEST_CFG_PATH\"#g" abc.hpp
 
 sed -e "s/^\s.*/{&}/g" basic_shell_tools.rst

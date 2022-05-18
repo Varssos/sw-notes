@@ -46,11 +46,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cute_unit_tests.html">Cute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile tips, knowledge in a nuthsell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Cmake</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-cmake-on-windows">Install cmake on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#short-tips-about-cmake">Short tips about CMake</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
@@ -113,6 +113,22 @@
 <li><p>If you are using a minGW, use MinGW Installation Manager to install <code class="docutils literal notranslate"><span class="pre">mingw32-make-bin</span></code> or <code class="docutils literal notranslate"><span class="pre">mingw32-make</span></code>. For that case you should also add <code class="docutils literal notranslate"><span class="pre">C:\MinGW\bin\</span></code> to Path</p></li>
 <li><p>You would be forced to use cmake like this <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;MinGW</span> <span class="pre">Makefiles&quot;</span> <span class="pre">..</span></code></p></li>
 </ol>
+</section>
+<section id="short-tips-about-cmake">
+<h2>Short tips about CMake<a class="headerlink" href="#short-tips-about-cmake" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic">
+<li><p>Assignment of variable <code class="docutils literal notranslate"><span class="pre">set(</span> <span class="pre">TEST_CFG_PATH</span> <span class="pre">&quot;${CMAKE_CURRENT_LIST_DIR}/tests/test_cfg/&quot;</span> <span class="pre">)</span></code></p></li>
+<li><p>Execute shell command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execute_process</span><span class="p">(</span>
+    <span class="n">COMMAND</span> <span class="n">sed</span> <span class="s2">&quot;s#</span><span class="se">\&quot;</span><span class="s2">modbus-tcp</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">.*</span><span class="se">\&quot;</span><span class="s2">#</span><span class="se">\&quot;</span><span class="s2">modbus-tcp</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">$</span><span class="si">{TEST_CFG_PATH}</span><span class="s2">tcp/di-modbus-tcp-test.cfg</span><span class="se">\&quot;</span><span class="s2">#g&quot;</span> <span class="s2">&quot;$</span><span class="si">{TEST_CFG_PATH}</span><span class="s2">/modbus_test.cfg&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 </section>
 </section>
 

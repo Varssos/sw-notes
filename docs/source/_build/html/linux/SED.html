@@ -154,7 +154,19 @@ Dla niego wykonaj poniższe zadania</p>
 <li><p>Zamień &amp;lt; na &lt;. <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">-i</span> <span class="pre">-e</span> <span class="pre">'s|&amp;lt|&lt;|g'</span> <span class="pre">article</span></code></p></li>
 <li><p>Zamień &amp;gt; na &gt;. <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">-i</span> <span class="pre">-e</span> <span class="pre">'s|&amp;gt|&gt;|g'</span> <span class="pre">article</span></code></p></li>
 <li><p>Zamień &amp;amp; na &amp;. <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">-e</span> <span class="pre">'s|\&amp;amp|\&amp;\.|g'</span> <span class="pre">article</span></code></p></li>
+<li><p>Zamień ścieżkę w <code class="docutils literal notranslate"><span class="pre">&quot;modbus-tcp&quot;:</span> <span class="pre">&quot;/home/user/....&quot;</span></code> w pliku <code class="docutils literal notranslate"><span class="pre">modbus_test.cfg.bak</span></code></p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">TEST_CFG_PATH</span><span class="o">=</span><span class="s2">&quot;/home/user/bla/bla/&quot;</span>
+sed <span class="s2">&quot;s#\&quot;modbus-tcp\&quot;:\s\&quot;.*\&quot;#\&quot;modbus-tcp\&quot;: \&quot;</span><span class="nv">$TEST_CFG_PATH</span><span class="s2">\&quot;#g&quot;</span> modbus_test.cfg.bak
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li><p>Zamień ścieżkę makrze <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">TEST_CFG_PATH</span> <span class="pre">&quot;DODAJ_TU_SCIEZKE&quot;</span></code> w pliku <code class="docutils literal notranslate"><span class="pre">abc.hpp</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">TEST_CFG_PATH</span><span class="o">=</span><span class="s2">&quot;/home/user/bla/bla/&quot;</span>
+sed <span class="s2">&quot;s#TEST_CFG_PATH \&quot;.*\&quot;#TEST_CFG_PATH \&quot;</span><span class="nv">$TEST_CFG_PATH</span><span class="s2">\&quot;#g&quot;</span> abc.hpp
+</pre></div>
+</div>
 <p>sed -e “s/^s.*/{&amp;}/g” basic_shell_tools.rst</p>
 </section>
 </section>
