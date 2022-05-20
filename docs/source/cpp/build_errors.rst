@@ -20,6 +20,13 @@ Declared multiple times
 Solutions:
 1. Check out if header files have on the top ``#pragma once``
 
+Undefined reference to ...
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Solution:
+
+1. Check all headers order
+
 Undefined reference to ... Due to template functions/classes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -33,3 +40,23 @@ Quick solutions:
 
 1. Put at the end of ``*.cpp`` file, explicitly instantiate the template ``template class Manager<Device>;``
 2. Declare template functions in header files
+
+Passing ‘const ...’ as ‘...’ argument of ‘...’ discards qualifiers"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    ModbusDeviceRegisters
+    {
+    public:
+        bool operator==( const ModbusDeviceRegisters& rhs)
+    }
+
+Invoking::
+
+    ModbusDeviceRegisters lTestModbusDeviceRegister, lExpectedModbusDeviceRegister;
+    ASSERT_EQUAL( lTestModbusDeviceRegister, lExpectedModbusDeviceRegister )
+
+Solution:
+
+1. Set returning const ``bool operator==( const ModbusDeviceRegisters& rhs) const``
+2. If you have ability to change invoking function and if you want to edit object/variable you can also remove everywhere const modifier

@@ -61,7 +61,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Build errors</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#used-but-never-defined">Used but never defined</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#declared-multiple-times">Declared multiple times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#undefined-reference-to">Undefined reference to …</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#undefined-reference-to-due-to-template-functions-classes">Undefined reference to … Due to template functions/classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-const-as-argument-of-discards-qualifiers">Passing ‘const …’ as ‘…’ argument of ‘…’ discards qualifiers”</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging and problems solving</a></li>
@@ -121,6 +123,13 @@
 <p>Solutions:
 1. Check out if header files have on the top <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code></p>
 </section>
+<section id="undefined-reference-to">
+<h2>Undefined reference to …<a class="headerlink" href="#undefined-reference-to" title="Permalink to this headline"></a></h2>
+<p>Solution:</p>
+<ol class="arabic simple">
+<li><p>Check all headers order</p></li>
+</ol>
+</section>
 <section id="undefined-reference-to-due-to-template-functions-classes">
 <h2>Undefined reference to … Due to template functions/classes<a class="headerlink" href="#undefined-reference-to-due-to-template-functions-classes" title="Permalink to this headline"></a></h2>
 <p>e.g:</p>
@@ -132,6 +141,26 @@
 <ol class="arabic simple">
 <li><p>Put at the end of <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file, explicitly instantiate the template <code class="docutils literal notranslate"><span class="pre">template</span> <span class="pre">class</span> <span class="pre">Manager&lt;Device&gt;;</span></code></p></li>
 <li><p>Declare template functions in header files</p></li>
+</ol>
+</section>
+<section id="passing-const-as-argument-of-discards-qualifiers">
+<h2>Passing ‘const …’ as ‘…’ argument of ‘…’ discards qualifiers”<a class="headerlink" href="#passing-const-as-argument-of-discards-qualifiers" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ModbusDeviceRegisters</span>
+<span class="p">{</span>
+<span class="n">public</span><span class="p">:</span>
+    <span class="nb">bool</span> <span class="n">operator</span><span class="o">==</span><span class="p">(</span> <span class="n">const</span> <span class="n">ModbusDeviceRegisters</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Invoking:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ModbusDeviceRegisters</span> <span class="n">lTestModbusDeviceRegister</span><span class="p">,</span> <span class="n">lExpectedModbusDeviceRegister</span><span class="p">;</span>
+<span class="n">ASSERT_EQUAL</span><span class="p">(</span> <span class="n">lTestModbusDeviceRegister</span><span class="p">,</span> <span class="n">lExpectedModbusDeviceRegister</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Solution:</p>
+<ol class="arabic simple">
+<li><p>Set returning const <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">operator==(</span> <span class="pre">const</span> <span class="pre">ModbusDeviceRegisters&amp;</span> <span class="pre">rhs)</span> <span class="pre">const</span></code></p></li>
+<li><p>If you have ability to change invoking function and if you want to edit object/variable you can also remove everywhere const modifier</p></li>
 </ol>
 </section>
 </section>
