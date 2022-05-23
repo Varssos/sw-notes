@@ -139,9 +139,36 @@
 <p><a class="reference external" href="https://stackoverflow.com/questions/8752837/undefined-reference-to-template-class-constructor">Stackoverflow problem description</a></p>
 <p>Quick solutions:</p>
 <ol class="arabic simple">
-<li><p>Put at the end of <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file, explicitly instantiate the template <code class="docutils literal notranslate"><span class="pre">template</span> <span class="pre">class</span> <span class="pre">Manager&lt;Device&gt;;</span></code></p></li>
 <li><p>Declare template functions in header files</p></li>
+<li><p>Put at the end of <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file, explicitly instantiate the template <code class="docutils literal notranslate"><span class="pre">template</span> <span class="pre">class</span> <span class="pre">Manager&lt;Device&gt;;</span></code></p></li>
 </ol>
+<p><strong>Examples</strong></p>
+<ol class="arabic">
+<li><p>Manger.hpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">ModbusManager</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Manager.cpp should have accurate declaration on the bottom of file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="k">class</span> <span class="nc">ModbusManager</span><span class="o">&lt;</span><span class="n">ModbusTCPDevice</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Config.hpp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">InitializeModbusDevices</span><span class="p">(</span> <span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">aEntry</span> <span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Config.cpp should have accurate declaration on the bottom of file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ModbusTCPDevice</span><span class="o">&gt;</span> <span class="n">ModbusConfig</span><span class="p">::</span><span class="n">InitializeModbusDevices</span><span class="p">(</span> <span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="p">);</span>
+</pre></div>
+</div>
 </section>
 <section id="passing-const-as-argument-of-discards-qualifiers">
 <h2>Passing ‘const …’ as ‘…’ argument of ‘…’ discards qualifiers”<a class="headerlink" href="#passing-const-as-argument-of-discards-qualifiers" title="Permalink to this headline"></a></h2>

@@ -38,8 +38,32 @@ e.g::
 
 Quick solutions:
 
-1. Put at the end of ``*.cpp`` file, explicitly instantiate the template ``template class Manager<Device>;``
-2. Declare template functions in header files
+1. Declare template functions in header files
+2. Put at the end of ``*.cpp`` file, explicitly instantiate the template ``template class Manager<Device>;``
+
+**Examples**
+
+1. Manger.hpp::
+
+    template <class T>
+    class ModbusManager
+    {
+    }
+
+Manager.cpp should have accurate declaration on the bottom of file::
+
+    template class ModbusManager<ModbusTCPDevice>;
+
+2. Config.hpp::
+
+    template <class T> 
+    std::vector<T> InitializeModbusDevices( const std::string& aEntry );
+
+Config.cpp should have accurate declaration on the bottom of file::
+
+    template std::vector<ModbusTCPDevice> ModbusConfig::InitializeModbusDevices( const std::string& );
+
+
 
 Passing ‘const ...’ as ‘...’ argument of ‘...’ discards qualifiers"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
