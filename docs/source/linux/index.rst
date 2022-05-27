@@ -12,3 +12,4 @@ Linux
     admin
     pulseaudio
     certificates_commands
+    RDP
