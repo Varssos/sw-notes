@@ -25,3 +25,10 @@ After that you should be able to connect with this device via RDP
 
 RDP client on Linux
 ~~~~~~~~~~~~~~~~~~~
+
+To connect to RDP server you can use remmina program
+
+1. Click ``+`` sign on the left top, which is ``New connection profile``
+2. Fill all required data like it is on the picture:
+
+.. image:: ./Remmina_profile.png

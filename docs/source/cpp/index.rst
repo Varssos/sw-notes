@@ -13,6 +13,7 @@ C/C++
   modbusRTU
   modbusTCP
   s7_protocol
+  focas
   debug_configuration
   linux_serial_port
   good_practises_cr

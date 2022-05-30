@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modbus RTU &mdash; SW notes 0.1 documentation</title>
+  <title>Focas &mdash; SW notes 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modbus TCP" href="modbusTCP.html" />
-    <link rel="prev" title="S2OPC" href="s2opc.html" /> 
+    <link rel="next" title="Prepare debug configuration" href="debug_configuration.html" />
+    <link rel="prev" title="S7 Protocol" href="s7_protocol.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,13 +50,14 @@
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Modbus RTU</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#modbus-rtu-simulator">Modbus RTU Simulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modbus-rtu-libraries">Modbus RTU Libraries</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s7_protocol.html">S7 Protocol</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Focas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connection-type">Connection type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applicable-cncs">Applicable CNCs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="debug_configuration.html">Prepare debug configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linux_serial_port.html">Linux serial port configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="good_practises_cr.html">Good practises and CR checklist</a></li>
@@ -95,9 +96,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">C/C++</a> &raquo;</li>
-      <li>Modbus RTU</li>
+      <li>Focas</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cpp/modbusRTU.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/focas.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -105,13 +106,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="modbus-rtu">
-<h1>Modbus RTU<a class="headerlink" href="#modbus-rtu" title="Permalink to this headline"></a></h1>
-<section id="modbus-rtu-simulator">
-<h2>Modbus RTU Simulator<a class="headerlink" href="#modbus-rtu-simulator" title="Permalink to this headline"></a></h2>
+  <section id="focas">
+<h1>Focas<a class="headerlink" href="#focas" title="Permalink to this headline"></a></h1>
+<p>FOCAS means Fanuc Open CNC API Specification.
+There are FOCAS1/2, version 1 and 2.</p>
+<ul class="simple">
+<li><p>FOCAS1 : Library for CNC other than FS300i/310i/320i</p></li>
+<li><p>FOCAS2 : Library for FS300i/310i/320i</p></li>
+</ul>
+<section id="connection-type">
+<h2>Connection type<a class="headerlink" href="#connection-type" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>High Speed Serial Bus (HSSB) ( from what I know it is used only with FOCAS )</p></li>
+<li><p>Ethernets</p></li>
+</ul>
 </section>
-<section id="modbus-rtu-libraries">
-<h2>Modbus RTU Libraries<a class="headerlink" href="#modbus-rtu-libraries" title="Permalink to this headline"></a></h2>
+<section id="applicable-cncs">
+<h2>Applicable CNCs<a class="headerlink" href="#applicable-cncs" title="Permalink to this headline"></a></h2>
+<p>List of applicable CNCs can be fine <a class="reference external" href="https://www.inventcom.net/fanuc-focas-library/general/fwlib32">here</a> in section <code class="docutils literal notranslate"><span class="pre">Applicable</span> <span class="pre">CNCs</span></code></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p>Focas library is precompiled. For linux devices there is only available 32 bit version which produce following problems:</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">short</span></code> is in fact <code class="docutils literal notranslate"><span class="pre">int16_t</span></code> instead of <code class="docutils literal notranslate"><span class="pre">int32_t</span></code></p></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -119,8 +140,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="s2opc.html" class="btn btn-neutral float-left" title="S2OPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modbusTCP.html" class="btn btn-neutral float-right" title="Modbus TCP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="s7_protocol.html" class="btn btn-neutral float-left" title="S7 Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debug_configuration.html" class="btn btn-neutral float-right" title="Prepare debug configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

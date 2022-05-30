@@ -19,11 +19,12 @@ Simple code to receive data via TCP
     #include <string>
     #include <iostream>
     #include <thread>
-    #define PORT 1502
+
+    const uint16_t Port = 1502;
 
     int main(int argc, char const *argv[])
     {
-        int server_fd, new_socket, valread;
+        int server_fd, new_socket, lReadRet;
         struct sockaddr_in address;
         int opt = 1;
         int addrlen = sizeof(address);
@@ -46,7 +47,7 @@ Simple code to receive data via TCP
         }
         address.sin_family = AF_INET;
         address.sin_addr.s_addr = INADDR_ANY;
-        address.sin_port = htons( PORT );
+        address.sin_port = htons( Port );
         
         // Forcefully attaching socket to the port 8080
         if (bind(server_fd, (struct sockaddr *)&address, 
@@ -69,10 +70,15 @@ Simple code to receive data via TCP
         while(1)
         {
             memset(buffer,0, sizeof(buffer));
-            valread = read( new_socket , buffer, 1024);
-            std::string lResponse = buffer;
-            std::cout<<"Received: "<<lResponse<<std::endl;
-
+            lReadRet = read( new_socket , buffer, 1024);
+            
+            // Read return number of chars, if it return -1 there is a error, if 0 EOF wchich could mean that client has disconnected
+            if ( lReadRet != 0 )
+            {
+                std::string lResponse = buffer;
+                std::cout<<"Received: "<<lResponse<<std::endl;
+            }
+            
         }
 
         return 0;
@@ -90,11 +96,13 @@ TCP client C++
     #include <iostream>
     #include <thread>
 
-    #define PORT 1502
+    const std::string IP = "127.0.0.1";
+    const uint16_t Port = 1502;
+
     
     int main(int argc, char const *argv[])
     {
-        int sock = 0, valread;
+        int sock = 0;
         struct sockaddr_in serv_addr;
         char buffer[1024] = {0};
         if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -104,10 +112,10 @@ TCP client C++
         }
     
         serv_addr.sin_family = AF_INET;
-        serv_addr.sin_port = htons(PORT);
+        serv_addr.sin_port = htons(Port);
         
         // Convert IPv4 and IPv6 addresses from text to binary form
-        if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0) 
+        if(inet_pton(AF_INET, IP.c_str(), &serv_addr.sin_addr)<=0) 
         {
             printf("\nInvalid address/ Address not supported \n");
             return -1;
