@@ -24,5 +24,38 @@ List of applicable CNCs can be fine `here <https://www.inventcom.net/fanuc-focas
     - ``short`` is in fact ``int16_t`` instead of ``int32_t``
 
 
+FOCAS library installing on x86 Linux OS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download library
+----------------
+::
+
+    git clone https://github.com/strangesast/fwlib.git
+
+Get to correct directory
+------------------------
+::
+
+    cd ./fwlib/Linux
+
+Copy shared library to system directory
+---------------------------------------
+::
+
+    sudo cp libfwlib32-linux-x64.so.1.0.5 /usr/local/lib/libfwlib32.so.1.0.5
+
+Create a symbolic link
+----------------------
+::
+
+    sudo ln -s /usr/local/lib/libfwlib32.so.1.0.5 /usr/local/lib/libfwlib32.so
+
+Update headers and libraries installed in system
+------------------------------------------------
+::
+
+    sudo ldconfig
+
 
 
