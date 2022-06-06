@@ -4,12 +4,73 @@ Setup environment
 Visual studio code setup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+VS code keyboard shorcut
+------------------------
+
+1. ``File->Preferences->Keyboard Shortcut``
+2. Find: ``Tasks: Run Task`` and set shortcut ``shift+b``
+3. On the top right corner ``Open Keyboard Shortcuts (JSON)``
+4. Add on the bottom JSON object::
+
+    { 
+        "key": "ctrl+k",
+        "command": "workbench.action.terminal.focus"
+    },
+    { 
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"}
+
+
 Project configuration
 ---------------------
 
 1. Open folder with project
 2. ``ctrl+P`` -> ``>`` -> ``Edit configurations (JSON)``
 3. In ``includePath`` you can add some extra header files for external libraries
+4. Adjust ``cppStandard`` for project standard
+
+Tasks configuration
+-------------------
+1. ``Terminal->Configure Tasks...`` or ``F1`` -> ``Tasks: Configure Task``
+2. Add on the bottom::
+
+    {
+			"label": "build",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"command": "cmake --build build",
+			"problemMatcher": []
+		},
+		{
+			"label": "install",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"command": "sudo cmake --install build",
+			"problemMatcher": []
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"command": "cmake --clean build",
+			"problemMatcher": []
+		},
+		{
+			"label": "run_tests",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"command": "./build/tests",
+			"problemMatcher": []
+		}
 
 Debug configuration
 -------------------
