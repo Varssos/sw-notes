@@ -19,7 +19,8 @@ VS code keyboard shorcut
     { 
         "key": "ctrl+k",
         "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"}
+        "when": "terminalFocus"
+    }
 
 
 Project configuration

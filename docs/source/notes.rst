@@ -1,4 +1,0 @@
-Notes
-=====
-
-Cpp, bash itp
