@@ -24,3 +24,4 @@ C/C++
   include_guards
   STL/STL
   TCP
+  clang_format
