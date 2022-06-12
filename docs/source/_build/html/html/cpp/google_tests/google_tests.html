@@ -203,20 +203,20 @@ with &lt;thread&gt;. It had to be declared as &lt;pthread.h&gt;</p>
 </section>
 <section id="cmake-for-minimum-test-code">
 <h2>CMake for minimum test code<a class="headerlink" href="#cmake-for-minimum-test-code" title="Permalink to this headline"></a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.5</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
 
-<span class="nb">project</span><span class="p">(</span><span class="s">gtest</span> <span class="s">LANGUAGES</span> <span class="s">CXX</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">gtest</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
 
-<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">11</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="s">ON</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">11</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span>
 
-<span class="nb">find_package</span><span class="p">(</span><span class="s">GTest</span> <span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">GTest</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">GTEST_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
 
-<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_GMOCK</span> <span class="s">ON</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_GMOCK</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span>
 
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">gtest</span> <span class="s">./src/gtest.cpp</span><span class="p">)</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">gtest</span> <span class="o">${</span><span class="nv">GTEST_LIBRARIES</span><span class="o">}</span> <span class="o">${</span><span class="nv">GTEST_MAIN_LIBRARIES</span><span class="o">}</span> <span class="s">gmock</span> <span class="s">pthread</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">gtest</span><span class="w"> </span><span class="s">./src/gtest.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">gtest</span><span class="w"> </span><span class="o">${</span><span class="nv">GTEST_LIBRARIES</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">GTEST_MAIN_LIBRARIES</span><span class="o">}</span><span class="w"> </span><span class="s">gmock</span><span class="w"> </span><span class="s">pthread</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

@@ -27,6 +27,7 @@ Contents
 .. toctree::
    :maxdepth: 4
 
+   setup_environment.rst
    cpp/index.rst
    bash/index.rst
    python/index.rst
