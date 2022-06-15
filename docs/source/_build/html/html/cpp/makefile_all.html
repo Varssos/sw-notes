@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cmake" href="cmake.html" />
+    <link rel="next" title="S2OPC" href="s2opc.html" />
     <link rel="prev" title="Makefile tips, knowledge in a nuthsell" href="makefile.html" /> 
 </head>
 
@@ -41,6 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup_environment.html">ReadtheDocs setup environment</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C/C++</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setup environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
@@ -57,7 +58,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
@@ -275,7 +275,7 @@ test:
 <section id="function-call-syntax">
 <h3>Function call syntax<a class="headerlink" href="#function-call-syntax" title="Permalink to this headline"></a></h3>
 <p>Function call looks like this:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">function</span> <span class="nv">arguments</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">function</span> <span class="nv">arguments</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>or like this:</p>
@@ -298,20 +298,20 @@ test:
 <section id="string-substitution">
 <h3>String substitution<a class="headerlink" href="#string-substitution" title="Permalink to this headline"></a></h3>
 <p><strong>Text replacement</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">subst</span> <span class="nv">from</span>,<span class="nv">to</span>,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">subst</span> <span class="nv">from</span>,<span class="nv">to</span>,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">subst</span> <span class="nv">ee</span>,<span class="nv">EE</span>,<span class="nv">feet</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">street</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">subst</span> <span class="nv">ee</span>,<span class="nv">EE</span>,<span class="nv">feet</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">street</span><span class="k">)</span>
 <span class="c"># Result: &#39;fEEt on the strEEt&#39;</span>
 </pre></div>
 </div>
 <p><strong>Pattern replacement</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">patsubst</span> <span class="nv">pattern</span>,<span class="nv">replacement</span>,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">patsubst</span> <span class="nv">pattern</span>,<span class="nv">replacement</span>,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">patsubst</span> %<span class="nv">.c</span>,%<span class="nv">.o</span>,<span class="nv">x.c.c</span> <span class="nv">bar.c</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">patsubst</span> %<span class="nv">.c</span>,%<span class="nv">.o</span>,<span class="nv">x.c.c</span> <span class="nv">bar.c</span><span class="k">)</span>
 <span class="c">#Result: &#39;x.c.o bar.o&#39;</span>
 </pre></div>
 </div>
@@ -326,25 +326,25 @@ test:
 </pre></div>
 </div>
 <p><strong>Remove leading and trailing whitespace from string</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">strip</span> <span class="nv">string</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">strip</span> <span class="nv">string</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">strip</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">strip</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="k">)</span>
 <span class="c"># Result: &#39;a b c&#39;</span>
 </pre></div>
 </div>
 <p><strong>Find string</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">findstring</span> <span class="nv">find</span>,<span class="nv">in</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">findstring</span> <span class="nv">find</span>,<span class="nv">in</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>It search for <code class="docutils literal notranslate"><span class="pre">find</span></code> in <code class="docutils literal notranslate"><span class="pre">in</span></code> and return true on success. Examples:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">findstring</span> <span class="nv">a</span>,<span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="k">)</span><span class="w"></span>
-<span class="k">$(</span><span class="nv">findstring</span> <span class="nv">a</span>,<span class="nv">b</span> <span class="nv">c</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">findstring</span> <span class="nv">a</span>,<span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="k">)</span>
+<span class="k">$(</span><span class="nv">findstring</span> <span class="nv">a</span>,<span class="nv">b</span> <span class="nv">c</span><span class="k">)</span>
 </pre></div>
 </div>
 <p><strong>Filter text</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">filter</span> <span class="nv">pattern</span>…,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">filter</span> <span class="nv">pattern</span>…,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Returns all whitespace-separated words in text that do match any of the parrern words, removing any words that do not match. Example:</p>
@@ -355,58 +355,58 @@ test:
 </pre></div>
 </div>
 <p><strong>Filter out text</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">filter-out</span> <span class="nv">pattern</span>…,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">filter-out</span> <span class="nv">pattern</span>…,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>It works exaclty opposite to <code class="docutils literal notranslate"><span class="pre">filter</span></code>. Example:</p>
 <div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">objects</span><span class="o">=</span>main1.o foo.o main2.o bar.o
 <span class="nv">mains</span><span class="o">=</span>main1.o main2.o
-<span class="k">$(</span><span class="nv">filter-out</span> <span class="k">$(</span><span class="nv">mains</span><span class="k">)</span>,<span class="k">$(</span><span class="nv">objects</span><span class="k">))</span><span class="w"></span>
+<span class="k">$(</span><span class="nv">filter-out</span> <span class="k">$(</span><span class="nv">mains</span><span class="k">)</span>,<span class="k">$(</span><span class="nv">objects</span><span class="k">))</span>
 <span class="c"># Result: foo.o bar.o</span>
 </pre></div>
 </div>
 <p><strong>Sort</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">sort</span> <span class="nv">list</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">sort</span> <span class="nv">list</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">sort</span> <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">lose</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">sort</span> <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">lose</span><span class="k">)</span>
 <span class="c"># Result: &#39;bar foo lose&#39;</span>
 </pre></div>
 </div>
 <p><strong>Word</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">word</span> <span class="nv">n</span>,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">word</span> <span class="nv">n</span>,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Returns the nth word of <code class="docutils literal notranslate"><span class="pre">text</span></code>. It starts counting from 1!. Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">word</span> <span class="nv">2</span>, <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">word</span> <span class="nv">2</span>, <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span>
 <span class="c"># Result: &#39;bar&#39;</span>
 </pre></div>
 </div>
 <p><strong>Wordlist</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">wordlist</span> <span class="nv">s</span>,<span class="nv">e</span>,<span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">wordlist</span> <span class="nv">s</span>,<span class="nv">e</span>,<span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Returns the list of words in <code class="docutils literal notranslate"><span class="pre">text</span></code> starting with word <code class="docutils literal notranslate"><span class="pre">s</span></code> and ending with <code class="docutils literal notranslate"><span class="pre">e</span></code> (inclusive). Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">wordlist</span> <span class="nv">2</span>, <span class="nv">3</span>, <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">wordlist</span> <span class="nv">2</span>, <span class="nv">3</span>, <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span>
 <span class="c"># Return: &#39;bar baz&#39;</span>
 </pre></div>
 </div>
 <p><strong>Words</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">words</span> <span class="nv">text</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">words</span> <span class="nv">text</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Returns the number of words in <code class="docutils literal notranslate"><span class="pre">text</span></code>. Example:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">words</span>  <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">words</span>  <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="k">)</span>
 <span class="c"># Return: &#39;3&#39;</span>
 </pre></div>
 </div>
 <p><strong>Firstword</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">firstword</span> <span class="nv">foo</span> <span class="nv">bar</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">firstword</span> <span class="nv">foo</span> <span class="nv">bar</span><span class="k">)</span>
 </pre></div>
 </div>
 <p><strong>Lastword</strong></p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">lastword</span> <span class="nv">foo</span> <span class="nv">bar</span><span class="k">)</span><span class="w"></span>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span><span class="nv">lastword</span> <span class="nv">foo</span> <span class="nv">bar</span><span class="k">)</span>
 </pre></div>
 </div>
 <p><strong>Some practical examples</strong></p>
@@ -428,7 +428,7 @@ test:
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="makefile.html" class="btn btn-neutral float-left" title="Makefile tips, knowledge in a nuthsell" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cmake.html" class="btn btn-neutral float-right" title="Cmake" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="s2opc.html" class="btn btn-neutral float-right" title="S2OPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
