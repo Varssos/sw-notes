@@ -8,7 +8,7 @@ C/C++
   chrono
   makefile
   makefile_all
-  cmake
+  cmake/cmake
   s2opc
   modbusRTU
   modbusTCP

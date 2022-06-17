@@ -1,0 +1,10 @@
+CMake tutorial
+==============
+
+Cmake tutorial for beginers is `here <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>`_ 
+and on youtube is `here <https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&index=1>`_ 
+
+
+Base project
+~~~~~~~~~~~~
+
