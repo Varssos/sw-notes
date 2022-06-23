@@ -1,6 +1,8 @@
 Linux
 =====
 
+Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_ 
+
 .. toctree::
     :maxdepth: 2
 

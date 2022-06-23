@@ -52,6 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="cmake_tips.html">Short tips about CMake</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">CMake tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#base-project">Base project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-library">Adding a Library</a></li>
 </ul>
 </li>
 </ul>
@@ -113,9 +114,73 @@
   <section id="cmake-tutorial">
 <h1>CMake tutorial<a class="headerlink" href="#cmake-tutorial" title="Permalink to this headline"></a></h1>
 <p>Cmake tutorial for beginers is <a class="reference external" href="https://cmake.org/cmake/help/latest/guide/tutorial/index.html">here</a>
-and on youtube is <a class="reference external" href="https://www.youtube.com/watch?v=nlKcXPUJGwA&amp;list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&amp;index=1">here</a></p>
+and on <a class="reference external" href="https://www.youtube.com/watch?v=nlKcXPUJGwA&amp;list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&amp;index=1">youtube</a></p>
 <section id="base-project">
 <h2>Base project<a class="headerlink" href="#base-project" title="Permalink to this headline"></a></h2>
+<p>PROJ_DIR contain:
+- CMakeLists.txt
+- source files ( here tutorial.cpp )
+- build directory ( here: ./out/build/ )</p>
+<section id="cmakelists-txt">
+<h3>CMakeLists.txt<a class="headerlink" href="#cmakelists-txt" title="Permalink to this headline"></a></h3>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.16.3</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">OLAS</span><span class="p">)</span> <span class="c"># It set ${PROJECT_NAME} variable</span>
+
+<span class="nb">add_executable</span><span class="p">(</span> <span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">tutorial.cpp</span> <span class="p">)</span> <span class="c"># It makes an binary called ${PROJECT_NAME} and take source files</span>
+</pre></div>
+</div>
+</section>
+<section id="tutorial-cpp">
+<h3>tutorial.cpp<a class="headerlink" href="#tutorial-cpp" title="Permalink to this headline"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w">  </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">out</span><span class="o">/</span><span class="n">build</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">.</span> <span class="o">-</span><span class="n">B</span> <span class="o">./</span><span class="n">out</span><span class="o">/</span><span class="n">build</span> <span class="c1"># in PROJ_DIR</span>
+<span class="c1"># -S indicate folder with sources</span>
+<span class="c1"># -B indicate</span>
+<span class="n">cd</span> <span class="o">./</span><span class="n">out</span><span class="o">/</span><span class="n">build</span>
+<span class="n">make</span>
+<span class="o">./</span><span class="n">OLAS</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-a-library">
+<h2>Adding a Library<a class="headerlink" href="#adding-a-library" title="Permalink to this headline"></a></h2>
+<p>For this tutorial we will put the library into a subdirectory called <code class="docutils literal notranslate"><span class="pre">Adder</span></code>. This directory contains a header file <code class="docutils literal notranslate"><span class="pre">adder.hpp</span></code>, a source file <code class="docutils literal notranslate"><span class="pre">adder.cpp</span></code> which contain <code class="docutils literal notranslate"><span class="pre">add</span></code> function and <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> which should contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_library</span><span class="p">(</span><span class="n">adder</span> <span class="n">adder</span><span class="o">.</span><span class="n">cpp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://cmake.org/cmake/help/latest/command/add_library.html">add_library</a></p>
+<p>To make use of the new library we will add an <code class="docutils literal notranslate"><span class="pre">add_subdirectory()</span></code> call in the top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file so that the library will get built. We add the new ibrary to the executable and add <code class="docutils literal notranslate"><span class="pre">adder</span></code></p>
+<p>CMakeLists.txt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. code-block:: cmake
+    :caption: A cool
+
+        cmake_minimum_required(VERSION 3.16.3)
+
+        project(OLAS)
+
+        add_subdirectory(Adder)
+
+        add_executable( ${PROJECT_NAME} tutorial.cpp )
+
+        target_link_libraries( ${PROJECT_NAME} adder )
+
+        target_include_directories( ${PROJECT_NAME} PUBLIC
+                                                &quot;${PROJECT_SOURCE_DIR}/Adder&quot; )
+</pre></div>
+</div>
 </section>
 </section>
 
