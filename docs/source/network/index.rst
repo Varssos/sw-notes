@@ -7,3 +7,4 @@ Network
     network_diagnostic_on_linux
     linux_basic_commands
     linux_networking
+    linux_tools/nmap.rst

@@ -31,8 +31,8 @@ You can simulate device on port ``/dev/ttyS51`` using python pyserial.
 
 Change owner of created ports::
 
-    sudo chown user:user /dev/ttyS50 # Write port
-    sudo chown user:user /dev/ttyS51 # 
+    sudo chown $USER:$USER /dev/ttyS50 # Write port
+    sudo chown $USER:$USER /dev/ttyS51 # 
     
 
 You can test it with echo::
