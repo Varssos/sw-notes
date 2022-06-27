@@ -8,7 +8,7 @@ VS code
 2. Add on the bottom::
    
     "esbonio.sphinx.buildDir" : "${workspaceFolder}/docs/source/_build/html",
-    "esbonio.sphinx.confDir"  : "${workspaceFolder}\\docs\\source",
+    "esbonio.sphinx.confDir"  : "${workspaceFolder}/docs/source",
     "esbonio.sphinx.srcDir"   : "${workspaceFolder}/docs/source",
     "esbonio.server.enabled": true,
     "restructuredtext.linter.run": "onSave"

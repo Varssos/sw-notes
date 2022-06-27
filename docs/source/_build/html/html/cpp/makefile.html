@@ -52,7 +52,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake/cmake.html">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
@@ -256,7 +256,7 @@
 <span class="cp">-include $(DEPS)</span>
 
 <span class="c"># Generate rules</span>
-<span class="k">$(</span><span class="nv">foreach</span> <span class="nv">targetdir</span>, <span class="k">$(</span><span class="nv">TARGETDIRS</span><span class="k">)</span>, <span class="k">$(</span><span class="nv">eval</span> <span class="k">$(</span><span class="nv">call</span> <span class="nv">generateRules</span>, <span class="k">$(</span><span class="nv">targetdir</span><span class="k">))))</span><span class="w"></span>
+<span class="k">$(</span><span class="nv">foreach</span> <span class="nv">targetdir</span>, <span class="k">$(</span><span class="nv">TARGETDIRS</span><span class="k">)</span>, <span class="k">$(</span><span class="nv">eval</span> <span class="k">$(</span><span class="nv">call</span> <span class="nv">generateRules</span>, <span class="k">$(</span><span class="nv">targetdir</span><span class="k">))))</span>
 
 <span class="nf">directories</span><span class="o">:</span>
     <span class="k">$(</span>HIDE<span class="k">)$(</span>MKDIR<span class="k">)</span> <span class="k">$(</span>subst /,<span class="k">$(</span>PSEP<span class="k">)</span>,<span class="k">$(</span>TARGETDIRS<span class="k">))</span> <span class="k">$(</span>ERRIGNORE<span class="k">)</span>

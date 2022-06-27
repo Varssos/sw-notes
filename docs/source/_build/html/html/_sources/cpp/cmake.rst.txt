@@ -19,3 +19,9 @@ Short tips about CMake
         execute_process(
             COMMAND sed "s#\"modbus-tcp\": \".*\"#\"modbus-tcp\": \"${TEST_CFG_PATH}tcp/di-modbus-tcp-test.cfg\"#g" "${TEST_CFG_PATH}/modbus_test.cfg"
         )
+
+CMake tutorial
+~~~~~~~~~~~~~~
+
+Cmake tutorial for beginers is `here <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>`_ 
+

@@ -47,7 +47,7 @@
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile tips, knowledge in a nuthsell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake/cmake.html">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
@@ -127,7 +127,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Base</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Base</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
@@ -135,7 +135,7 @@
 <span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Base</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Derived::f()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span><span class="w"></span>
@@ -173,7 +173,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Base</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Base</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
@@ -183,7 +183,7 @@
 <span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Base</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">    </span><span class="n">Derived</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
@@ -192,7 +192,7 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Write</span><span class="p">(</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">lReg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lReg</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Derived2</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Derived</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Derived2</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Derived</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Write</span><span class="p">(</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">lReg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lReg</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>

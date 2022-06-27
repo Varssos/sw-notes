@@ -47,7 +47,7 @@
 <li class="toctree-l2"><a class="reference internal" href="chrono.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile.html">Makefile tips, knowledge in a nuthsell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="makefile_all.html">All Makefile knowledge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake/cmake.html">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="s2opc.html">S2OPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusRTU.html">Modbus RTU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modbusTCP.html">Modbus TCP</a></li>
@@ -136,8 +136,8 @@
 <p>Let’s imagine that instead of <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code> on which you read/write data from device you can set Application to read from <code class="docutils literal notranslate"><span class="pre">/dev/ttyS50</span></code>.
 You can simulate device on port <code class="docutils literal notranslate"><span class="pre">/dev/ttyS51</span></code> using python pyserial.</p>
 <p>Change owner of created ports:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">user</span><span class="p">:</span><span class="n">user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS50</span> <span class="c1"># Write port</span>
-<span class="n">sudo</span> <span class="n">chown</span> <span class="n">user</span><span class="p">:</span><span class="n">user</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS51</span> <span class="c1">#</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo chown $USER:$USER /dev/ttyS50 # Write port
+sudo chown $USER:$USER /dev/ttyS51 #
 </pre></div>
 </div>
 <p>You can test it with echo:</p>
@@ -227,7 +227,7 @@ You can simulate device on port <code class="docutils literal notranslate"><span
 <h2>Serial port configuration<a class="headerlink" href="#serial-port-configuration" title="Permalink to this headline"></a></h2>
 <p><strong>Important!</strong> Instead of get functions, all other functions return 0 on success and -1 on failure and set errno to indicate the error</p>
 <p><strong>Get USB configuration</strong></p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">termios</span><span class="w"> </span><span class="n">tty</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">termios</span><span class="w"> </span><span class="n">tty</span><span class="p">;</span><span class="w"></span>
 <span class="k">if</span><span class="p">(</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">serial_port</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tty</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error %i from tcgetattr: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
