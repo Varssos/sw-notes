@@ -123,11 +123,11 @@ and on <a class="reference external" href="https://www.youtube.com/watch?v=nlKcX
 - build directory ( here: ./out/build/ )</p>
 <section id="cmakelists-txt">
 <h3>CMakeLists.txt<a class="headerlink" href="#cmakelists-txt" title="Permalink to this headline"></a></h3>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.16.3</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.16.3</span><span class="p">)</span>
 
-<span class="nb">project</span><span class="p">(</span><span class="s">OLAS</span><span class="p">)</span> <span class="c"># It set ${PROJECT_NAME} variable</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">OLAS</span><span class="p">)</span><span class="w"> </span><span class="c"># It set ${PROJECT_NAME} variable</span>
 
-<span class="nb">add_executable</span><span class="p">(</span> <span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">tutorial.cpp</span> <span class="p">)</span> <span class="c"># It makes an binary called ${PROJECT_NAME} and take source files</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="w"> </span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">tutorial.cpp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="c"># It makes an binary called ${PROJECT_NAME} and take source files</span>
 </pre></div>
 </div>
 </section>

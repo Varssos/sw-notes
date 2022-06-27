@@ -25,3 +25,4 @@ C/C++
   STL/STL
   TCP
   clang_format
+  programming_design_patterns/index
