@@ -10,6 +10,5 @@ OpenWrt
     network_configuration
     hub_configuration
     ntpq
-    sdk
     uart
     crontab

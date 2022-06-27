@@ -4,4 +4,5 @@ OpenWRT SDK
 .. toctree::
     :maxdepth: 2
 
+    sdk_prepare
     building_packages
