@@ -7,3 +7,4 @@ Git
     submodules
     tags
     rm_undo_single_file
+    problems.rst

@@ -1,5 +1,0 @@
-Usage Lumache
-=============
-
-To be filled!!!
-
