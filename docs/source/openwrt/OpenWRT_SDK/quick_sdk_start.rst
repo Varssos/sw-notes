@@ -28,3 +28,13 @@ Run make to build your firmware
 ::
 
     make
+
+Adjust the Path variable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose that you sdk folder is located here ``/home/user/openwrt-sdk/openwrt-sdk-21.02.3``
+
+Just add following path to PATH::
+
+    export PATH=/home/comarch_user/openwrt-sdk/openwrt-sdk-21.02.3/staging_dir/host/bin:$PATH
+    

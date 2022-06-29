@@ -6,3 +6,4 @@ OpenWRT SDK
 
     quick_sdk_start
     building_packages
+    feed_makefile
