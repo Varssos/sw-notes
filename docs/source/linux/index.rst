@@ -6,16 +6,17 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
 .. toctree::
     :maxdepth: 2
 
-    users
-    basic_shell_tools
-    SED
-    awk
-    tar
     admin
-    pulseaudio
+    awk
+    basic_shell_tools
     certificates_commands
-    RDP
-    process_monitoring
-    GUI_on_linux
-    ssh_server
     cron
+    GUI_on_linux
+    process_monitoring
+    pulseaudio
+    RDP
+    SED
+    ssh_server
+    systemd_service
+    tar
+    users
