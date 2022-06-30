@@ -8,9 +8,10 @@ VS code keyboard shorcut
 ------------------------
 
 1. ``File->Preferences->Keyboard Shortcut``
-2. Find: ``Tasks: Run Task`` and set shortcut ``shift+b``
-3. On the top right corner ``Open Keyboard Shortcuts (JSON)``
-4. Add on the bottom JSON object::
+2. Find: ``Tasks: Run Task`` , set shortcut ``ctrl+shift+b``
+3. Remove shortcut ``ctrl+shift+b`` for ``Tasks: Run Build Task`` 
+4. On the top right corner ``Open Keyboard Shortcuts (JSON)``
+5. Add on the bottom JSON object::
 
     { 
         "key": "ctrl+k",
@@ -30,6 +31,27 @@ Project configuration
 2. ``ctrl+P`` -> ``>`` -> ``Edit configurations (JSON)``
 3. In ``includePath`` you can add some extra header files for external libraries
 4. Adjust ``cppStandard`` for project standard
+5. c_cpp_properties.json
+
+.. code-block:: json
+
+   {
+		"configurations": [
+		{
+				"name": "Linux",
+				"includePath": [
+					"${workspaceFolder}/**",
+					"/usr/local/include/{HERE_INSERT_subfolder}/*"
+				],
+				"defines": [],
+				"compilerPath": "/usr/bin/gcc",
+				"cStandard": "gnu17",
+				"cppStandard": "gnu++17",
+				"intelliSenseMode": "linux-gcc-x64"
+			}
+		],
+		"version": 4
+	}
 
 Tasks configuration
 -------------------
@@ -72,6 +94,44 @@ Tasks configuration
 			"command": "./build/tests",
 			"problemMatcher": []
 		}
+
+Launch
+~~~~~~
+
+1. ``Run->Add Configuration``
+2. launch.json
+
+.. code-block:: json
+
+	{
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "(gdb) Launch",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "{path_to_bin}",
+				"args": [
+					"-c",
+					"{here are additional flags}"
+				],
+				"stopAtEntry": false,
+				"cwd": "${fileDirname}",
+				"environment": [],
+				"externalConsole": true,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				]
+			}
+		]
+	}
+   
+
 
 Debug configuration
 -------------------
