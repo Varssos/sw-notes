@@ -5,10 +5,11 @@ OpenWrt
 .. toctree::
     :maxdepth: 2
 
-    sd_card_format
+    crontab
+    hub_configuration
     OpenWRT_SDK/index
     network_configuration
-    hub_configuration
     ntpq
+    sd_card_format
     uart
-    crontab
+    

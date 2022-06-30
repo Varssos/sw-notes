@@ -33,7 +33,7 @@ Contents
    python/index.rst
    network/index.rst
    linux/index.rst
-   openwrt/index.rst
+   embedded_linux/index.rst
    git/index.rst
    rpi/index.rst
    esp32/index.rst
