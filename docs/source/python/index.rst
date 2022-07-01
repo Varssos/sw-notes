@@ -6,4 +6,5 @@ Python
 
     os
     pil
+    pip
     pyserial
