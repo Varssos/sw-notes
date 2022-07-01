@@ -14,6 +14,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     GUI_on_linux
     process_monitoring
     pulseaudio
+    pc_troubleshooting/problems_with_system
     RDP
     SED
     ssh_server
