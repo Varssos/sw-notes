@@ -8,7 +8,7 @@ build:
 python:
   # Install our python package before building the docs
   install:
-    - method: pip3
+    - method: pip
       path: .
 
 sphinx:
