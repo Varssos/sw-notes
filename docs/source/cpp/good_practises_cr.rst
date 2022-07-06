@@ -75,3 +75,4 @@ Good practises and CR checklist
 #. Replace magic numbers with enums/ const class members |uncheck|
 #. Do not use/ try to avoid global variables |uncheck|
 #. Try to avoid #define  |uncheck|
+#. override for virtual methods |uncheck|

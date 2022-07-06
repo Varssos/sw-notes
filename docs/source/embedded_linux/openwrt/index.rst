@@ -12,4 +12,5 @@ OpenWrt
     ntpq
     sd_card_format
     uart
+    problems
     
