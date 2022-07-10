@@ -2,6 +2,7 @@ Clean code
 ==========
 
 `C++ best practises by Jason Turner <https://github.com/cpp-best-practices/cppbestpractices>`_ 
+
 `Design Patterns Refactoring Guru  <https://refactoring.guru/design-patterns>`_ 
 
 
