@@ -1,7 +1,9 @@
 Clean code
 ==========
 
+`C++ best practises by Jason Turner <https://github.com/cpp-best-practices/cppbestpractices>`_ 
 `Design Patterns Refactoring Guru  <https://refactoring.guru/design-patterns>`_ 
+
 
 - Clean code - Robert C.Martin
 - Design patterns - Gamma Erich , Helm Richard , Johnson Ralph , Vlissides John
