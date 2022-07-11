@@ -26,3 +26,4 @@ C/C++
   TCP
   clang_format
   clean_code/index
+  cppcheck

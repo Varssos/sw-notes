@@ -76,3 +76,4 @@ Good practises and CR checklist
 #. Do not use/ try to avoid global variables |uncheck|
 #. Try to avoid #define  |uncheck|
 #. override for virtual methods |uncheck|
+#. ``static const`` should be replaced by ``constexpr`` 
