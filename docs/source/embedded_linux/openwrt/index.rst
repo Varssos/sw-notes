@@ -7,6 +7,7 @@ OpenWrt
 
     crontab
     hub_configuration
+    installing_image
     OpenWRT_SDK/index
     network_configuration
     ntpq
