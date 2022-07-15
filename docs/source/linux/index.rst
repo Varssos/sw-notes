@@ -12,6 +12,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     certificates_commands
     cron
     GUI_on_linux
+    grub
     process_monitoring
     pulseaudio
     pc_troubleshooting/problems_with_system

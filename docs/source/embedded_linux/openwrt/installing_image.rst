@@ -13,10 +13,15 @@ Or build your own with SDK
 
 Send via scp on device
 ~~~~~~~~~~~~~~~~~~~~~~
-{user}: sshroot/root
+{user}: sshroot/root::
 
-scp {image_file} {user}@{ip}:/tmp
+    scp {image_file} {user}@{ip}:/tmp
 
 OpenWrt system upgrade
 ~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    sysupgrade -v -c {image_file}
+    # -c attempt to preserve all changed files in /etc/
+    # -v more verbose
 
