@@ -9,11 +9,7 @@ C/C++
   makefile
   makefile_all
   cmake/cmake
-  s2opc
-  modbusRTU
-  modbusTCP
-  s7_protocol
-  focas
+  communication_protocols/index.rst
   linux_serial_port
   good_practises_cr
   unittests
@@ -23,7 +19,6 @@ C/C++
   thread
   include_guards
   STL/STL
-  TCP
   clang_format
   clean_code/index
   cppcheck
