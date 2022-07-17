@@ -15,7 +15,7 @@ C/C++
   unittests
   inheritence
   build_errors
-  debugging
+  debugging/index.rst
   thread
   include_guards
   STL/STL

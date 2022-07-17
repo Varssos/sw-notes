@@ -31,5 +31,3 @@ Use this command line::
 
     valgrind --leak-check=yes myprog arg1 arg2
 
-
-

@@ -12,4 +12,3 @@ Debugging and problems solving
         ld: {module_name}.so: undefined reference to `uuid_unparse'
 
     There should be defined problem which did not occur on build phase
-2. 
