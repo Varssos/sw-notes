@@ -22,3 +22,4 @@ C/C++
   clang_format
   clean_code/index
   cppcheck
+  valgrind
