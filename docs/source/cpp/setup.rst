@@ -4,6 +4,7 @@ Setup environment
 Visual studio code setup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+At first install C/C++ extenstion and C/C++ extension pack
 VS code keyboard shorcut
 ------------------------
 
