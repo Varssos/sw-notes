@@ -1,6 +1,9 @@
 Modbus
 ======
 
+:download:`Theoretical information about modbus <./modbus_theoretical_info.pdf>` 
+
+
 C/C++ Libraries
 ~~~~~~~~~~~~~~~
 
