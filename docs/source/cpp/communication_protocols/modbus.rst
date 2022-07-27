@@ -3,6 +3,30 @@ Modbus
 
 :download:`Theoretical information about modbus <./modbus_theoretical_info.pdf>` 
 
+Example request/response
+~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    Request: read single discrete input, address: 0x322
+    [01][02][03][22][00][01][19][84]
+
+    [01] - Slave ID in hex
+    [02] - Function code in hex ( read discrete input )
+    [03][22] - Address of discrete input in hex ( 0x320)
+    [00][01] - The total number of discrete input requested in hex (1)
+    [19][84] - The CRC ( cyclic redundancy check ) for error checking
+
+    Waiting for a confirmation...
+
+    Response:
+    <01><02><01><00><A1><88>
+
+    <01> - Slave ID in hex
+    <02> - Function code in hex ( read discrete input )
+    <01> - The number of data bytes to follow in hex
+    <00> - Read value ( last bit is desired value )
+    <A1><88> - The CRC
+
 
 C/C++ Libraries
 ~~~~~~~~~~~~~~~

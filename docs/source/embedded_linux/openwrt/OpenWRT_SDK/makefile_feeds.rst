@@ -10,6 +10,17 @@ There are some basic examples. More details are in `OpenWrt Creating packages <h
 Example lib package makefile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+libsnap7 feed
+-------------
+
+::
+
+    libsnap7
+    ├── Makefile                # feed Makefile for OpenWrt 
+    └── Makefile.libsnap7       # makefile to generate shared library for mips and gather header files
+
+Makefile
+
 .. code-block:: makefile
 
     include $(TOPDIR)/rules.mk
@@ -20,15 +31,15 @@ Example lib package makefile
     
     PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
     PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-    PKG_SOURCE_URL:=https://ct-git.krakow.comarch/biblioteka/snap7.git
+    PKG_SOURCE_URL:=https://github.com/sebastianwach/snap7.git
     PKG_SOURCE_PROTO:=git
-    PKG_SOURCE_VERSION:=c3f011ad0443597be502bd897638ea78ce18537b
+    PKG_SOURCE_VERSION:=03766c2deff40365822e768d50265381e5934895
 
     
     include $(INCLUDE_DIR)/package.mk
     
     define Package/$(PKG_NAME)
-        SECTION:=Libraries
+        SECTION:=libraries
         CATEGORY:=Libraries
         TITLE:=Step7 Open Source Ethernet Communication Suite
         DEPENDS:=+libstdcpp
@@ -67,3 +78,27 @@ Example lib package makefile
     endef
     
     $(eval $(call BuildPackage,$(PKG_NAME)))
+
+
+Makefile.libsnap7
+
+.. code-block:: makefile
+
+    LIBSNAP7_FOLDER=snap7-full-1.4.2
+
+    LIBSNAP7_INCLUDES=\
+        -I./$(LIBSNAP7_FOLDER)/src/sys \
+        -I./$(LIBSNAP7_FOLDER)/src/core \
+        -I./$(LIBSNAP7_FOLDER)/src/lib 
+
+    libsnap7.so: \
+        ./$(LIBSNAP7_FOLDER)/src/sys/*.cpp ./$(LIBSNAP7_FOLDER)/src/sys/*.h \
+        ./$(LIBSNAP7_FOLDER)/src/core/*.cpp ./$(LIBSNAP7_FOLDER)/src/core/*.h \
+        ./$(LIBSNAP7_FOLDER)/src/lib/*.cpp ./$(LIBSNAP7_FOLDER)/src/lib/*.h
+        $(CXX) $(CXXFLAGS) -fPIC -c ./$(LIBSNAP7_FOLDER)/src/sys/*.cpp $(LIBSNAP7_INCLUDES)
+        $(CXX) $(CXXFLAGS) -fPIC -c ./$(LIBSNAP7_FOLDER)/src/core/*.cpp $(LIBSNAP7_INCLUDES)
+        $(CXX) $(CXXFLAGS) -fPIC -c ./$(LIBSNAP7_FOLDER)/src/lib/*.cpp $(LIBSNAP7_INCLUDES)
+        $(CXX) $(LDFLAGS) -shared -o $@ *.o -pthread -lrt
+        cp -r ./$@ ./dist/usr/lib/
+        cd ./$(LIBSNAP7_FOLDER)/src; find ./ -type f -name '*.h' -exec cp --parents '{}' ../../dist/usr/include/snap7 ';'
+
