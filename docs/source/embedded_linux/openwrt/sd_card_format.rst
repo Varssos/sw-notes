@@ -11,18 +11,27 @@ Steps:
 
    opkg update
 
-2. Install all utils if you want to verify usb drivers
+2. Install all packages
 
-.. code-block:: bash
+To handle filesystem::
 
+    opkg install block-mount
+    opkg install kmod-fs-ext4
+    opkg install e2fsprogs
+    # Optionally:
+    opkg install cfdisk
+    # Handling usb:
     opkg install kmod-usb-storage
-    opkg install kmod-usb-storage-uas
-    opkg install usbutils
+    # if missing:
+    opkg install kmod-usb-core
+    opkg install kmod-usb2
+
 
 3. List your connected devices 
 
 .. code-block:: bash
 
+    opkg install usbutils
     lsusb -t
 
 4. Check current file system 
@@ -43,21 +52,29 @@ Otherwise check which one is it
 
     ls -l /dev/sd*
 
-6. Before format partition, install needed packages
-
-.. code-block:: bash
-
-    opkg install e2fsprogs
-    opkg install kmod-fs-ext4
-
-7. Format with EXT4 file system
+6. Format with EXT4 file system
 
 .. code-block:: bash
 
     mkfs.ext4 /dev/sda1
 
-8. Mount sd card
+7. Mount sd card
 
 .. code-block:: bash
 
     mount /dev/sda1 /mnt/sdcard
+
+8. Set fstab for automount after reboot
+
+.. code-block:: bash
+
+    uci add fstab mount
+    uci set fstab.@mount[-1]='mount'
+    uci set fstab.@mount[-1].device='/dev/sda1'
+    uci set fstab.@mount[-1].fstype='ext4'
+    uci set fstab.@mount[-1].options='rw,noatime'
+    uci set fstab.@mount[-1].target='/mnt/sdcard'
+    uci set fstab.@mount[-1].enabled_fsck='1'
+    uci set fstab.@mount[-1].enabled='1'
+
+    uci commit
