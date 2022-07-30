@@ -18,7 +18,7 @@ Capabilities of snap7 library for Client
 - `DBRead()` - read PLC DB 
 - `ABRead()` - read PLC Process outputs 
 - `EBRead()` - read PLC Process inputs
-- `MBRead()` - read PLC Merkers
+- `MBRead()` - read PLC Markers
 - `TMRead()` - read PLC Timers
 - `CTRead()` - read PLC Counters
 - `GetLastError()` - Returns the last job result.
