@@ -10,8 +10,8 @@ VS code keyboard shorcut
 ------------------------
 
 1. ``File->Preferences->Keyboard Shortcut``
-2. Find: ``Tasks: Run Task`` , set shortcut ``ctrl+shift+b``
-3. Remove shortcut ``ctrl+shift+b`` for ``Tasks: Run Build Task`` 
+2. Remove shortcut ``ctrl+shift+b`` for ``Tasks: Run Build Task`` 
+3. Find: ``Tasks: Run Task`` , set shortcut ``ctrl+shift+b``
 4. On the top right corner ``Open Keyboard Shortcuts (JSON)``
 5. Add on the bottom JSON object::
 
