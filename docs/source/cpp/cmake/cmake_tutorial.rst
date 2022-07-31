@@ -81,3 +81,6 @@ CMakeLists.txt::
 
 
 
+.. todo:: 
+    1. Clean all not necessary data
+    2. Divide into important sections and fill them
