@@ -1,6 +1,15 @@
 Tar
 ===
 
+1. Create tar::
+
+    tar -czvf projects.tar.gz $HOME/projects/
+
+2. Extract tar::
+
+    tar -xvf file.tar.gz
+
+
 Jesteś w katalogu domowym. Skopiuj poniższy kod do terminala. Utworzy on katalogi z plikami do ćwiczeń.
 
 
