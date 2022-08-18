@@ -15,16 +15,11 @@ Steps:
 
 To handle filesystem::
 
-    opkg install block-mount
-    opkg install kmod-fs-ext4
-    opkg install e2fsprogs
+    opkg install block-mount kmod-fs-ext4 e2fsprogs
     # Optionally:
     opkg install cfdisk
     # Handling usb:
-    opkg install kmod-usb-storage
-    # if missing:
-    opkg install kmod-usb-core
-    opkg install kmod-usb2
+    opkg install kmod-usb-core kmod-usb2 kmod-usb-storage
 
 
 3. List your connected devices 
