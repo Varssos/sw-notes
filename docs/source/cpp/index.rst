@@ -13,7 +13,9 @@ C/C++
   linux_serial_port
   good_practises_cr
   unittests
+  explicit
   inheritence
+  inline
   build_errors
   debugging/index.rst
   thread
