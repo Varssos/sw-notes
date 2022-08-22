@@ -10,8 +10,10 @@ If you want to add usb ethernet adapter/ usb internet card just go throw these s
 2. Connect device to usb port and check which driver should be installed::
 
     lsusb
-    # More details for e.g: Bus 001 Device 003: ID 0424:4050 Generic Ultra Fast Media Reader
-    lsusb -s 1:3 -v
+    # Output:
+    # Bus 001 Device 005: ID 0b95:772a ASIX Elec. Corp. AX88x72A
+    # More details:
+    lsusb -s 1:5 -v
 
 3. List all available drivers::
 
@@ -19,7 +21,9 @@ If you want to add usb ethernet adapter/ usb internet card just go throw these s
 
 4. Install selected drivers::
 
-    opkg install kmod-usb-net-asix-ax88179 kmod-usb-net-asix
+    opkg install kmod-usb-net-asix 
+    # In this case it was enough, if it is not try install exactly module:
+    # opkg install kmod-usb-net-asix-ax88179 
 
 5. Check ifname for interface in dmesg after installing kernel module::
 
