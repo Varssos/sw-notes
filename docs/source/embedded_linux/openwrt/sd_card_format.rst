@@ -74,3 +74,37 @@ Otherwise check which one is it
     uci set fstab.@mount[-1].enabled='1'
 
     uci commit
+
+
+Mounting SD card with volume label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    opkg update
+    opkg install block-mount kmod-fs-ext4 e2fsprogs
+    opkg install kmod-usb-core kmod-usb2 kmod-usb-storage
+    opkg install usbutils
+
+    umount /dev/sda1
+    mkfs.ext4 -L sd_card /dev/sda1
+
+    mkdir /mnt/sdcard
+    mount /dev/sda1 /mnt/sdcard
+
+    uci add fstab mount
+    uci set fstab.@mount[-1]='mount'
+    uci set fstab.@mount[-1].label='sd_card'
+    uci set fstab.@mount[-1].fstype='ext4'
+    uci set fstab.@mount[-1].options='rw,noatime'
+    uci set fstab.@mount[-1].target='/mnt/sdcard'
+    uci set fstab.@mount[-1].enabled_fsck='1'
+    uci set fstab.@mount[-1].enabled='1'
+
+    uci commit
+
+Mounting OpenWRT feed
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. todo:: Add openwrt feed
