@@ -19,5 +19,4 @@ There are presented steps how to change IP of PLC:
 .. image:: ./plc_network_config.png
 
 4. After uploading etc you should get desired IP address
-5. You can go back to previous network profile on your PC 
-6. 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
+5. You can go back to previous network profile on your PC
