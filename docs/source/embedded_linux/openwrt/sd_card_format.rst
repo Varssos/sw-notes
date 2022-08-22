@@ -75,6 +75,18 @@ Otherwise check which one is it
 
     uci commit
 
+9. Check filesystem if mounted properly
+
+.. code-block:: bash
+
+    df -Th
+
+10. Verify mounted blocks info
+
+.. code-block:: bash
+
+    block info
+
 
 Mounting SD card with volume label
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
