@@ -57,6 +57,7 @@ Otherwise check which one is it
 
 .. code-block:: bash
 
+    mkdir /mnt/sdcard
     mount /dev/sda1 /mnt/sdcard
 
 8. Set fstab for automount after reboot
