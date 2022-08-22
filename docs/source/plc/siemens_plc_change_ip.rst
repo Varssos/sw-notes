@@ -16,7 +16,8 @@ There are presented steps how to change IP of PLC:
 
 3. Set all network config as it is on image below, change IP to desired one( in this case 192.168.50.100) and download to device
 
-.. image:: ./network_config_plc.png
+.. image:: ./plc_network_config.png
 
 4. After uploading etc you should get desired IP address
 5. You can go back to previous network profile on your PC 
+6. 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
