@@ -37,4 +37,5 @@ Contents
    git/index.rst
    rpi/index.rst
    esp32/index.rst
+   plc/index.rst
 
