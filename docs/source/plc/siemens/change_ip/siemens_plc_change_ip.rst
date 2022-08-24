@@ -1,5 +1,5 @@
-Changing  Siemens PLC address
-=============================
+Changing  Siemens PLC IP address
+================================
 
 At start there is Siemens PLC with IP: ``192.168.0.30`` directly connected to PC with address ``192.168.0.100``. There is no problem with establishing connection to PLC.
 
