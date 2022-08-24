@@ -6,9 +6,6 @@ C/C++
 
   setup
   chrono
-  makefile
-  makefile_all
-  cmake/cmake
   communication_protocols/index.rst
   linux_serial_port
   good_practises_cr

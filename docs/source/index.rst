@@ -28,9 +28,11 @@ Contents
    :maxdepth: 4
 
    setup_environment.rst
+   cmake/index.rst
    cpp/index.rst
    bash/index.rst
    python/index.rst
+   makefile/index.rst
    network/index.rst
    linux/index.rst
    embedded_linux/index.rst
