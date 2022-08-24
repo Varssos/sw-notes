@@ -11,6 +11,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     basic_shell_tools
     certificates_commands
     cron
+    expect
     GUI_on_linux
     grub
     process_monitoring
