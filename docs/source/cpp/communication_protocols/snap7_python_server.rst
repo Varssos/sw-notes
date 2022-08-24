@@ -23,8 +23,8 @@ s7-server.py
 
     print( f'Finished running snap7 server' )
 
-Makefile
-~~~~~~~~
+Makefile which prepare everything before running script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: Makefile
 
