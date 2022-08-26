@@ -98,6 +98,7 @@ Static address configuration on eth0
         option proto 'static'
         option netmask '255.255.255.0'
         option ipaddr '192.168.2.194'
+        option gateway '192.168.2.1'
         option metric '5'
 
 **UCI commands**::
@@ -105,6 +106,7 @@ Static address configuration on eth0
     uci set network.wan.proto='static'
     uci set network.wan.netmask='255.255.255.0'
     uci set network.wan.ipaddr='192.168.2.194'
+    uci set network.wan.gateway='192.168.2.1'
     uci set network.wan.metric='5'
     uci commit
     /etc/init.d/network restart
