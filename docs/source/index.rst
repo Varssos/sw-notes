@@ -38,8 +38,10 @@ Contents
    makefile/index.rst
    network/index.rst
    plc/index.rst
+   processor_architectures/index.rst
    python/index.rst
    rpi/index.rst
+
    
    
 

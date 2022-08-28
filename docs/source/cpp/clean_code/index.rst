@@ -16,3 +16,4 @@ Clean code
 - `TDD C++ <https://infotraining.bitbucket.io/cpp-tdd/>`_  
 - `C++11 <https://infotraining.bitbucket.io/cpp-11/>`_  
 - `C++17 <https://infotraining.bitbucket.io/cpp-17/>`_  
+- `Infotraining github <https://github.com/infotraining?tab=repositories>`_ 

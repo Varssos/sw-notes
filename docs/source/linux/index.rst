@@ -15,6 +15,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     GUI_on_linux
     grub
     process_monitoring
+    process_vs_thread
     pulseaudio
     pc_troubleshooting/problems_with_system
     RDP
