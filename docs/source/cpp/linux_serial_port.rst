@@ -12,6 +12,12 @@ Checking tty* serial port details
 
     stty -F /dev/ttyUBS0
 
+Setting tty* communication parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This will set the baud rate to 9600, 8 bits, 1 stop bit, no parity::
+
+    stty -F /dev/ttyS0 9600 cs8 -cstopb -parenb
+
 
 Creating virtual port on Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
