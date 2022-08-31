@@ -10,7 +10,7 @@ Checking tty* serial port details
 
 ::
 
-    stty -F /dev/ttyUBS0
+    stty -F /dev/ttyUSB0
 
 Setting tty* communication parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
