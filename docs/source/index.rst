@@ -31,6 +31,7 @@ Contents
    bash/index.rst
    cmake/index.rst
    cpp/index.rst
+   device_integrations/index.rst
    embedded_linux/index.rst
    esp32/index.rst
    git/index.rst

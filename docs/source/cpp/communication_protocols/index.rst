@@ -9,4 +9,4 @@ Communication protocols
   modbus
   s2opc
   s7_protocol
-  TCP
+  TCP/index

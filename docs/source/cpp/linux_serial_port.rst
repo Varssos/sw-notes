@@ -18,6 +18,21 @@ This will set the baud rate to 9600, 8 bits, 1 stop bit, no parity::
 
     stty -F /dev/ttyS0 9600 cs8 -cstopb -parenb
 
+Stty XON/XOFF
+~~~~~~~~~~~~~
+Enable XON/XOFF::
+
+    stty ixon
+
+Disable stty -ixon::
+
+    stty -ixon
+
+Monitor incoming data on /dev/ttyUSB0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    screen /dev/ttyUSB0 9600
 
 Creating virtual port on Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
