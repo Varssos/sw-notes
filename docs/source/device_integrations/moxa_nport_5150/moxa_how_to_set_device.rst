@@ -73,7 +73,7 @@ Go to Serial Port -> Port 1. Set according to your device. In this case it was p
 
 Set:
 
-- ``TCP Server Mode``
+- Operation mode: ``TCP Server Mode``
 - Max Connection e.g.: ``3``
 - Local TCP port: ``4001``
 
