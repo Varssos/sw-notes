@@ -7,8 +7,78 @@ I created my own `mirror for snap7 on github <https://github.com/sebastianwach/s
 
 Whole doc is in main repository in doc/ folder
 
+Licensing
+~~~~~~~~~
+
+Snap7 is distributed as a binary shared library with full source code under **GNU Library or Lesser General Public License version 3.0 (LGPLv3).**
+
+Communication
+~~~~~~~~~~~~~
+
+Snap7, by design handles only Ethernet S7 Protocol communication on port 102(ISO TCP) and cannot be changed.
+
+Siemens data format
+~~~~~~~~~~~~~~~~~~~
+
+The PLC internal data format is **Big-Endian**, i.e. the complex variable (which size is greater than 1 byte) are stored in memory starting from **MSB** (the most significant byte) up to **LSB** (least significant one)
+
+The PC internal data format, except for some architectures as Sparc, Mips and Motorola 68000 systems based, is **Little-Endian**
+
+.. image:: ./siemens_data_format.png
+
+.. important:: In case of problems with endian convention, you can use ``be64toh()`` etc.
+
+
+Target compatibility
+~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ./snap7_compatibility.png
+
+
+S7 300/400/WinAC CPU
+~~~~~~~~~~~~~~~~~~~~
+
+They fully support the S7 Protocol
+
+S7 1200/1500 CPU
+~~~~~~~~~~~~~~~~
+
+They use a modified S7 protocol with an extended telegram, 1500 series has advanced security functions (such an encrypted telegrams), however they can work in 300/400 compability mode and some functions can be executed.
+
+An external equipment can access to S71200/1500 CPU using the S7 “base” protocol,
+only working as an HMI, i.e. only basic data transfer are allowed.
+
+All other PG operations (control/directory/etc..) must follow the extended protocol.
+
+Prepare Siemens PLC for reading data with snap7 library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Set DBs as global
+2. Turn off DBs ``Optimized block access``
+
+.. image:: ./optimized_block_access.png
+
+3. Set ``Full access(no protection)`` and ``Connection mechanisms ( Permit access with PUT/GET...)`` 
+
+.. important:: In case of activating OPC UA server, communication with S7 protocol probably will not work
+
+
+.. image:: ./plc_full_access.png
+
+S7 200/ LOGO OBA7
+~~~~~~~~~~~~~~~~~
+
+These PLC have a different approach. See S7 200 and LOGO chapters in doc for a detailes description about their use with Snap7.
+
+SINAMICS Drives
+~~~~~~~~~~~~~~~
+
+It's possible to communicate with the internal CPU, for some models G120 for example) is also possible to change driver parameters
+
+
+
 Capabilities of snap7 library for Client
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **The most important functions**
 
