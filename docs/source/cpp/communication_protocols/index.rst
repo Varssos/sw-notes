@@ -5,8 +5,9 @@ Communication protocols
 .. toctree::
   :maxdepth: 2
 
-  focas
-  modbus
-  s2opc
-  s7_protocol
-  TCP/index
+  focas/index.rst
+  modbus/index.rst
+  mt_connect/index.rst
+  s2opc/index.rst
+  s7_protocol/index.rst
+  TCP/index.rst
