@@ -14,6 +14,7 @@ OpenWrt
     ntpq
     sd_card_format
     uart
+    UCI
     usb_ethernet_adapter
     problems
     

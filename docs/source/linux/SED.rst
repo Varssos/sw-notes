@@ -1,7 +1,32 @@
 SED
 ===
 
+`AGH SED tutorial <https://home.agh.edu.pl/~wojnicki/didactic/sed1line.txt>`_ 
 
+The most usefull sed commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Get value between two strings
+-----------------------------
+
+Get ``0`` between ``[`` ``]`` from ``fstab.@mount[0].target='/mnt/sdcard'``
+
+::
+
+   echo "fstab.@mount[0].target='/mnt/sdcard'" | sed -E 's/.*\[(.*)\].*/\1/'
+
+.. important:: You should put ``\`` backslash before chars like ``[`` https://www.baeldung.com/linux/bash-escape-characters
+
+
+Real example::
+
+   uci show fstab | grep "target='/mnt/sdcard'" | sed -E 's/.*\[(.*)\].*/\1/' | sort -r
+
+Get fstab section ids in reverse order
+
+
+Linux course examples
+~~~~~~~~~~~~~~~~~~~~~
 
 Tutorial: https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux
 Pobierz plik BSD.txt do ćwiczenia :download:`BSD.txt`

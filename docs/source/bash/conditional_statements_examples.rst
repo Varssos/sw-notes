@@ -54,3 +54,19 @@ If..else example
     else
         echo "$num_a is greater than $num_b!"
     fi
+
+If with invoking function
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    check_log() {
+        ! [ -f "/usr/apps/appcheck.log" ]
+    }
+
+    if check_log;
+    then   
+        echo "if yes"
+    else
+        echo "if no"
+    fi
