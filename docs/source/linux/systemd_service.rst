@@ -21,8 +21,8 @@ Systemd service
     Restart=always
     StandardOutput=syslog
     StandardError=syslog
-    User=comarch
-    Group=comarch
+    User=<user>
+    Group=<user_group>
     Environment=PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 

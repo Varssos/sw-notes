@@ -18,11 +18,11 @@ Get ``0`` between ``[`` ``]`` from ``fstab.@mount[0].target='/mnt/sdcard'``
 .. important:: You should put ``\`` backslash before chars like ``[`` https://www.baeldung.com/linux/bash-escape-characters
 
 
-Real example::
+Real example, get fstab section ids in reverse order::
 
    uci show fstab | grep "target='/mnt/sdcard'" | sed -E 's/.*\[(.*)\].*/\1/' | sort -r
 
-Get fstab section ids in reverse order
+
 
 
 Linux course examples
