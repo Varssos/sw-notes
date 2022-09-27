@@ -37,11 +37,13 @@ Contents
    git/index.rst
    linux/index.rst
    makefile/index.rst
+   mqtt/index.rst
    network/index.rst
    plc/index.rst
    processor_architectures/index.rst
    python/index.rst
    rpi/index.rst
+   VPN/index.rst
 
    
    
