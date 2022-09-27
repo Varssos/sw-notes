@@ -28,6 +28,7 @@ Contents
    :maxdepth: 4
 
    setup_environment.rst
+   automotive/index.rst
    bash/index.rst
    cmake/index.rst
    cpp/index.rst
