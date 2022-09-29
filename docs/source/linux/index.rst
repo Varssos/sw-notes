@@ -14,6 +14,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     expect
     GUI_on_linux
     grub
+    install_deb_from_file
     process_monitoring
     process_vs_thread
     pulseaudio
