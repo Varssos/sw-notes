@@ -33,6 +33,7 @@ Contents
    cmake/index.rst
    cpp/index.rst
    device_integrations/index.rst
+   electronics/index.rst
    embedded_linux/index.rst
    esp32/index.rst
    git/index.rst
@@ -41,7 +42,6 @@ Contents
    mqtt/index.rst
    network/index.rst
    plc/index.rst
-   processor_architectures/index.rst
    python/index.rst
    rpi/index.rst
    VPN/index.rst

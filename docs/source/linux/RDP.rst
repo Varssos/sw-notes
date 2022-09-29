@@ -19,7 +19,7 @@ Steps to set Remote Dektop on Ubuntu 20.04::
     # Enable xrdp after reboot and imediately
     sudo systemctl enable --now xrdp
     # Open a firewall port
-    sudo ufw allow from ant to any port 3389 proto tcp
+    sudo ufw allow from any to any port 3389 proto tcp
 
 After that you should be able to connect with this device via RDP
 
