@@ -44,6 +44,7 @@ Contents
    plc/index.rst
    python/index.rst
    rpi/index.rst
+   rust/index.rst
    VPN/index.rst
 
    
