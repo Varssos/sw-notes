@@ -1,5 +1,5 @@
-Clean code
-==========
+C++ Learning articles/books
+===========================
 
 `C++ best practises by Jason Turner <https://github.com/cpp-best-practices/cppbestpractices>`_ 
 

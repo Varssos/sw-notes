@@ -5,19 +5,20 @@ C/C++
   :maxdepth: 4
 
   setup
-  communication_protocols/index.rst
-  keywords/index.rst
-  linux_serial_port
-  good_practises_cr
-  unittests
-  inheritence
   build_errors
-  debugging/index.rst
-  thread
-  include_guards
-  STL/index.rst
   clang_format
-  clean_code/index
+  communication_protocols/index.rst
   cppcheck
-  valgrind
+  keywords/index.rst
+  cpp_learning/index
+  STL/index.rst
+  debugging/index.rst
+  good_practises_cr
+  include_guards
+  inheritence
+  linux_serial_port
   lvalue_rvalue
+  thread
+  unittests
+  valgrind
+  
