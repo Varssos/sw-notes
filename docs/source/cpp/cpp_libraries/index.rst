@@ -1,5 +1,5 @@
-C/C++ Libraries
-===============
+C or C++ Libraries
+==================
 
 
 .. toctree:: 
