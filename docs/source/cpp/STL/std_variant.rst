@@ -7,7 +7,7 @@ It was introduced in C++17 as an alternative to unsafe union
 
 `Infotraining C++17 variant <https://infotraining.bitbucket.io/cpp-17/variant.html>`_ 
 
-::
+Simple std::variant example::
 
     std::variant<int, std::string, double> my_variant{"text"};
 
@@ -22,3 +22,12 @@ It was introduced in C++17 as an alternative to unsafe union
 
 
 .. important:: In case of no value or bad type it throw ``std::bad_variant_access``
+
+
+Visit and print variant data::
+
+    std::variant<int, std::string> v1{2};
+    std::visit([] (auto&& x) { std::cout << x << ' '; }, v1);
+
+    v1 = "asdf";
+    std::visit([] (auto&& x) { std::cout << x << '\n'; }, v1);
