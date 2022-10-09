@@ -3,6 +3,6 @@ C or C++ Libraries
 
 
 .. toctree:: 
-    :maxdepth: 2
+    :maxdepth: 1
 
     cppzmq
