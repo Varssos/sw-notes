@@ -11,6 +11,7 @@ C/C++
   cppcheck
   keywords/index.rst
   cpp_learning/index
+  cpp_libraries/index
   STL/index.rst
   debugging/index.rst
   good_practises_cr
