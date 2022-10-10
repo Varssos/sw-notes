@@ -9,4 +9,5 @@ C++ STL
   std_function
   std_optional
   std_placeholders
+  std_string
   std_variant
