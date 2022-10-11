@@ -3,7 +3,7 @@ Embedded Linux
 
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 1
 
     buildroot_openwrt_yocto
     buildroot/index.rst

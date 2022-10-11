@@ -2,7 +2,7 @@ Git
 ===
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     get_file_from_remote_repo
     problems

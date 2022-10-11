@@ -2,6 +2,6 @@ VPN
 ===
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    openvpn_linux
