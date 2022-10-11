@@ -1,5 +1,5 @@
-How to set MOXA NPORT 5150
-==========================
+MOXA NPORT 5150
+===============
 
 
 Available MOXA NPORT 5150 modes

@@ -2,7 +2,7 @@ C/C++
 =====
 
 .. toctree::
-  :maxdepth: 4
+  :maxdepth: 1
 
   setup
   build_errors

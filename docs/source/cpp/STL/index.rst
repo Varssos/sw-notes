@@ -11,3 +11,4 @@ C++ STL
   std_placeholders
   std_string
   std_variant
+  std_vector
