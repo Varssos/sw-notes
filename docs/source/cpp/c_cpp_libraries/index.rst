@@ -6,3 +6,4 @@ C or C++ Libraries
     :maxdepth: 1
 
     cppzmq
+    termios
