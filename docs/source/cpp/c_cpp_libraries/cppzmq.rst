@@ -1,6 +1,8 @@
 ZeroMQ
 ======
 
+.. warning:: Pay attention on disconnect. Try socket disconnect and avoid context close when you want to reconnect again
+
 
 The most important cppzmq content:
     - zmq::context_t
