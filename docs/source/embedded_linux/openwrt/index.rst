@@ -11,7 +11,7 @@ OpenWrt
     installing_image
     OpenWRT_SDK/index
     network_configuration
-    ntpq
+    ntp
     sd_card_format
     uart
     UCI
