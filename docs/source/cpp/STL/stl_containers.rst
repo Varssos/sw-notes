@@ -25,7 +25,7 @@ Containers in C++ STL:
        - ``queue``
        - ``priority_queue`` 
 
-STL Sequence containers
+STL Sequence Containers
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Use sequential containers when you need to access elements by position
@@ -42,27 +42,37 @@ Which one sequential containers choose?
 
 
 std::array
-----------
-- fixed size contiguous array
-- nearly complete interface for container
-- fast access for each container element
+  - fixed size contiguous array
+  - nearly complete interface for container
+  - fast access for each n-element
 
 std::vector
------------
-- dynamic contiguous array
-- fast inserting and erasing element at the beginning and at the end of the container
-- fast acces for each container element
+  - dynamic contiguous array
+  - size can be set in a runtime
+  - fast inserting and erasing element at the beginning and at the end of the container ( const plus linear complexity )
+  - fast acces for each n-element
 
 std::deque
-----------
-- allocates memory in chunks (not contigous array)
-- queue with two endings
-- fast inserting and erasing element at the beginning and at the end of the container
-- fast access for each container element
+  - allocates memory in chunks (not contigous array)
+  - double ended queue
+  - fast inserting and erasing element at the beginning and at the end of the container
+  - additional step when you get access to n-element. Iterators and access is a little bit slower
+  - iterators are smart pointers which navigate in chunks of memory
+  - no way to control reallocation
 
 std::list
----------
-- allocates memory by node (not contigous array)
-- fast inserting and erasing element
-- no access to each container element``
+  - allocates memory by node (not contigous array)
+  - fast inserting and erasing element ( const time )
+  - linear complexity to find n-element
+  - has additional functions like: ``sort()``, ``merge()``, ``reverse()``, ``unique()``, ``remove()``, ``remove_if()``, ``splice()`` 
 
+STL Associative Containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+STL Unordered associative Containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+STL Container Adaptors
+~~~~~~~~~~~~~~~~~~~~~~
