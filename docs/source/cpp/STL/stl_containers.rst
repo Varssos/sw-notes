@@ -1,0 +1,68 @@
+STL Containers
+==============
+
+`Geeks for geeks STL containers <https://www.geeksforgeeks.org/containers-cpp-stl/>`_ 
+
+Containers in C++ STL:
+    - Sequence containers
+       - ``array``
+       - ``vector``
+       - ``deque``
+       - ``forward_list``
+       - ``list``
+    - Associative containers
+       - ``set``
+       - ``map``
+       - ``multiset``
+       - ``multimap`` 
+    - Unordered associative containers
+       - ``unordered_set``
+       - ``unordered_map``
+       - ``unordered_multiset``
+       - ``unordered_multimap`` 
+    - Container adaptors
+       - ``stack``
+       - ``queue``
+       - ``priority_queue`` 
+
+STL Sequence containers
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Use sequential containers when you need to access elements by position
+
+Which one sequential containers choose?
+---------------------------------------
+- Use std:vector as your default sequential container, especially as an alternative to built-in arrays
+- If size is known in advance, use std::array instead of a built-in array
+- If you add or remove elements frequently at both the front and back of a container, use std::deque
+- Use a std::list (not std::deque) if you need to insert/remove elements in the middle of the sequence
+- Do not use std::list if you need random access to objects
+- Prefer std::vector over std::list if your system uses a cache
+- std::string is almost always better than a C-string
+
+
+std::array
+----------
+- fixed size contiguous array
+- nearly complete interface for container
+- fast access for each container element
+
+std::vector
+-----------
+- dynamic contiguous array
+- fast inserting and erasing element at the beginning and at the end of the container
+- fast acces for each container element
+
+std::deque
+----------
+- allocates memory in chunks (not contigous array)
+- queue with two endings
+- fast inserting and erasing element at the beginning and at the end of the container
+- fast access for each container element
+
+std::list
+---------
+- allocates memory by node (not contigous array)
+- fast inserting and erasing element
+- no access to each container element``
+

@@ -2,7 +2,7 @@ C++ STL
 =======
 
 .. toctree::
-  :maxdepth: 3
+  :maxdepth: 1
 
   std_bind
   std_chrono
@@ -12,3 +12,4 @@ C++ STL
   std_string
   std_variant
   std_vector
+  stl_containers
