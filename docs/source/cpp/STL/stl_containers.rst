@@ -1,6 +1,15 @@
 STL Containers
 ==============
 
+.. toctree:: 
+  :maxdepth: 1
+
+  std_bitset
+  std_hash
+  std_map
+  std_set
+  std_vector
+
 `Geeks for geeks STL containers <https://www.geeksforgeeks.org/containers-cpp-stl/>`_ 
 
 Containers in C++ STL:
@@ -24,6 +33,7 @@ Containers in C++ STL:
        - ``stack``
        - ``queue``
        - ``priority_queue`` 
+       - ``bitset``
 
 STL Sequence Containers
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,3 +86,18 @@ STL Unordered associative Containers
 
 STL Container Adaptors
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. important:: Adaptors don't have iterators
+
+std::stack:
+  - Allow only pushes and pops the element from the back
+
+std::queue:
+  - Allow only pushes on the back and pops on the front
+
+std::priority_queue:
+  - Order elements in container
+  - You can add element to queue and pop element from the front
+
+std::bitset:
+  - bit container with fixed size known in compile time
