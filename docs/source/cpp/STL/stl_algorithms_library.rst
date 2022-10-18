@@ -97,8 +97,61 @@ Modyfying sequence operations
 - ``OutIt transform(InpIt first, InpIt last, OutIt result, UnOp unop)``
 - ``OutIt transform(InpIt first1, InpIt last1, InpIt2 first2, OutIt result, BinOp binop)``
 
-Sorting and merging operations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sorting operations
+~~~~~~~~~~~~~~~~~~
 
-Portioning operations
-~~~~~~~~~~~~~~~~~~~~~
+- ``bool is_sorted(FwdIt first, FwdIt last)``
+- ``bool is_sorted(FwdIt first, FwdIt last, Cmp comp)``
+- ``void nth_element(RndIt first, RndIt nth, RndIt last)``
+- ``void nth_element(RndIt first, RndIt nth, RndIt last, Cmp comp)``
+- ``void partial_sort(RndIt first, RndIt middle, RndIt last)``
+- ``void partial_sort(RndIt first, RndIt middle, RndIt last, Cmp comp)``
+- ``RndIt partial_sort_copy(InpIt first, InpIt last, RndIt result_first, RndIt result_last)``
+- ``RndIt partial_sort_copy(InpIt first, InpIt last, RndIt result_first, RndIt result_last, Cmp comp)``
+- ``RandomIt partial_sort_copy(InpIt first, InpIt last, RndIt d_first, RndIt d_last)``
+- ``RandomIt partial_sort_copy(InpIt first, InpIt last, RndIt d_first, RndIt d_last, Cmp comp)``
+- ``void sort(RndIt first, RndIt last)``
+- ``void sort(RndIt first, RndIt last, Cmp comp)``
+- ``void stable_sort(RndIt first, RndIt last)``
+- ``void stable_sort(RndIt first, RndIt last, Cmp comp)``
+
+
+Partitioning operations
+~~~~~~~~~~~~~~~~~~~~~~~
+
+- ``bool is_partitioned(InpIt first, InpIt last, UnaryPred pred)``
+- ``BidirectIt partition(BidirectIt first, BidirectIt last, Pred pred)``
+- ``pair<OutIt1, OutIt2> partition_copy(InpIt first, InpIt last, OutIt1 result1, OutIt2 result2, UnaryPred pred)``
+- ``BidirectIt stable_partition(BidirectIt first, BidirectIt last, Pred pred)``
+
+.. important:: ``stable_partition()`` keeps order of input element in order to  ``partition()``
+
+
+Merge operations
+~~~~~~~~~~~~~~~~
+
+- ``void inplace_merge(BidirectIt first, BidirectIt mid, BidirectIt last)``
+- ``void inplace_merge(BidirectIt first, BidirectIt mid, BidirectIt last, Cmp comp)``
+- ``OutIt merge(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result)``
+- ``OutIt merge(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
+
+Set operations
+~~~~~~~~~~~~~~
+.. warning:: These operations work on sorted container
+
+
+- ``bool includes(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2)``
+- ``bool includes(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, Cmp comp)``
+
+- ``OutIt set_difference(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result)``
+- ``OutIt set_difference(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
+
+- ``OutIt set_intersection(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result)``
+- ``OutIt set_intersection(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
+
+- ``OutIt set_symmetric_difference(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result)``
+- ``OutIt set_symmetric_difference(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
+
+- ``OutIt set_union(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result)``
+- ``OutIt set_union(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
+
