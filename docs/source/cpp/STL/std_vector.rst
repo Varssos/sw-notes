@@ -61,3 +61,35 @@ Write a function ``filter`` that removes odd numbers and duplicate even numbers
         filter(v);
         REQUIRE_THAT(v, Catch::Matchers::UnorderedEquals(std::vector{-2, 4}));
     }
+
+Iterate over the elements in vector and do action only for elements which fulfill condition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The problem is that simple ``std::find_if()`` returns only one iterator for first element
+
+
+.. code-block:: cpp
+
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+
+    struct S
+    {
+        int x;
+        char c;
+    };
+
+
+    int main()
+    {
+        std::vector<S> vec {S{1, 'c'}, S{2, 'd'}, S{2, 'e'}, S{3, 'f'} };
+
+        for( auto it = find_if( vec.begin(), vec.end(), []( S s) { return s.x == 2; } ); 
+            it != vec.end();
+            it = std::find_if( ++it, vec.end(), []( S s) { return s.x == 2; } ) )
+        {
+            std::cout << it->x << " -> " << it->c << '\n';   
+        }
+
+        return 0;
+    }
