@@ -1,5 +1,6 @@
-STL Containers
-==============
+STL Containers library
+======================
+
 
 .. toctree:: 
   :maxdepth: 1

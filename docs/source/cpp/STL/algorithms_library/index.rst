@@ -1,5 +1,5 @@
-STL Algorithms
-==============
+Algorithms
+==========
 
 .. toctree:: 
     :maxdepth: 1

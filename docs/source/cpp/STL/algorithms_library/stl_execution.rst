@@ -14,8 +14,8 @@ To use algorithms from ``<execution>`` you have to install::
 and link to your project: ``-ltbb``
 
 
-Types of concurrent algorithms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Types of concurrency algorithms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - ``std::seq``          -> Sequenced policy
    - one thread, all instructions executed sequentially
@@ -34,8 +34,8 @@ Types of concurrent algorithms
    - you can't use ``std::mutex::lock()`` becasue of ``interleaved``. It can cause deadlock.
    - dynamic allocation and deallocation is forbidden
 
-New concurrent algorithms
-~~~~~~~~~~~~~~~~~~~~~~~~~
+New concurrency algorithms
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - ``std::reduce``
 - ``std::transform_reduce``
