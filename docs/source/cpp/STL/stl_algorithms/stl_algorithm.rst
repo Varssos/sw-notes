@@ -1,5 +1,5 @@
-STL Algorithms library
-======================
+<algorithm>
+===========
 
 
 Non-modyfying sequence operations
@@ -156,13 +156,3 @@ Set operations
 - ``OutIt set_union(InpIt1 first1, InpIt1 last1, InpIt2 first2, InpIt2 last2, OutIt result, Cmp comp)``
 
 
-
-Parallel algorithms execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To use algorithms from ``<execution>`` you have to install::
-
-    sudo apt update
-    sudo apt install libtbb-dev
-
-and link to your project: ``-ltbb``

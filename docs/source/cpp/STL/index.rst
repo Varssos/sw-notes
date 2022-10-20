@@ -11,5 +11,5 @@ C++ STL
   std_placeholders
   std_string
   std_variant
-  stl_algorithms_library
+  stl_algorithms/index
   stl_containers
