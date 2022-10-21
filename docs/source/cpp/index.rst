@@ -7,6 +7,7 @@ C/C++
   setup
   build_errors
   clang_format
+  compiler
   communication_protocols/index.rst
   cppcheck
   c_cpp_libraries/index
