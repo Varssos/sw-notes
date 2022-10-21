@@ -41,3 +41,23 @@ Verify if string contain substr/char
 
         return false;
     }
+
+Check if a string contains only number
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    bool isNumber( const std::string &str )
+    {
+        return str.find_first_not_of( "0123456789" ) == std::string::npos;
+    }
+
+    bool isNumber(const std::string &s) 
+    {
+        return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
+    }
+
+    bool isNumber(const std::string& s)
+    {
+        return !s.empty() && std::find_if(s.begin(),
+            s.end(), [](unsigned char c) { return !std::isdigit(c); }) == s.end();
+    }
