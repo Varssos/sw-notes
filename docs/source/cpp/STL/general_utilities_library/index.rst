@@ -9,7 +9,6 @@ General utilities library
     std_any
     std_expected
     std_optional
-    std_pair
     std_tuple
     std_variant
     
