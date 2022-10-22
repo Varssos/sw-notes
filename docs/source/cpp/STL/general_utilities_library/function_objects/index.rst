@@ -6,6 +6,7 @@ Function objects
 .. toctree:: 
     :maxdepth: 1
 
+    std_bind
     std_function
     std_mem_fn
-    std_bind
+    std_ref
