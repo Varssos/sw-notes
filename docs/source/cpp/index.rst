@@ -8,6 +8,7 @@ C/C++
   build_errors
   clang_format
   compiler
+  compilation_process
   communication_protocols/index.rst
   cppcheck
   c_cpp_libraries/index
