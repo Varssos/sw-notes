@@ -6,9 +6,7 @@ C++ STL
 .. toctree::
   :maxdepth: 1
 
-  std_bind
   std_chrono
-  std_function
   std_optional
   std_placeholders
   std_variant
@@ -24,7 +22,7 @@ C++ STL
   localizations_library/index
   memory_management/index
   metaprogramming_library/index
-  numeric_library/index
+  pseudo_random_number_generation/index
   ranges_library/index
   regular_expressions_library/index
   strings_library/index

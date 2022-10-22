@@ -1,2 +1,0 @@
-Floating-point environment
-==========================
