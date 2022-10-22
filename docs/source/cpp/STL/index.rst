@@ -4,7 +4,7 @@ C++ STL
 `C++ reference <https://en.cppreference.com/w/cpp>`_ 
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
 
   std_chrono
   std_optional
