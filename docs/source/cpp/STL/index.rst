@@ -7,9 +7,6 @@ C++ STL
   :maxdepth: 2
 
   std_chrono
-  std_optional
-  std_placeholders
-  std_variant
   algorithms_library/index
   concurrency_support_library/index
   containers_library/index
