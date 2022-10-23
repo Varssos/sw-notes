@@ -15,6 +15,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     GUI_on_linux
     grub
     install_deb_from_file
+    IPC_linux
     package_management_system/index
     process_monitoring
     process_vs_thread

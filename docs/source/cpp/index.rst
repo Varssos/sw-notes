@@ -22,6 +22,7 @@ C/C++
   inheritence
   linux_serial_port
   lvalue_rvalue
+  memory_cpp
   thread
   unittests
   valgrind
