@@ -48,3 +48,5 @@ Articles about turtle module
 `The Beginner's Guide to Python Turtle <https://realpython.com/beginners-guide-python-turtle/>`_ 
 
 `Python turtle module documentation <https://docs.python.org/3/library/turtle.html>`_ 
+
+https://www.youtube.com/watch?v=pzUFOPr7HiI
