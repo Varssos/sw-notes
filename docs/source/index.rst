@@ -28,11 +28,13 @@ Contents
    :maxdepth: 4
 
    setup_environment.rst
+   ansible/index.rst
    automotive/index.rst
    bash/index.rst
    cmake/index.rst
    cpp/index.rst
    device_integrations/index.rst
+   docker/index.rst
    electronics/index.rst
    embedded_linux/index.rst
    esp32/index.rst
