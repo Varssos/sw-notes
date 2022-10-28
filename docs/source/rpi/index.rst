@@ -6,4 +6,6 @@ RPI
 
     apt_repo_manager.rst
     open_auto
+    rdp_rpi
     retro_games
+    
