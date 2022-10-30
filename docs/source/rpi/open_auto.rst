@@ -2,8 +2,20 @@ Open Auto
 =========
 
 
+OpenDash
+~~~~~~~~
 
-1. Prepare Raspberry PI OS Legacy (BUSTER)
+Instead of installing OpenAuto manually you should install OpenDash from `github link <https://github.com/openDsh/dash>`_ and install acording to readme 
+
+
+
+OpenAuto
+~~~~~~~~
+
+.. warning:: I had a lot of issue. Just don't use OpenAuto. OpenDash doesnt't have many problem and it is up to date.
+
+
+1. Prepare recomended Raspberry PI OS (Bullseye) image
 2. Update apt and fix problem with them like here :ref:`Apt Raspbian repositories` 
 3. Follow installation from readme like here: https://github.com/humeman/openauto-patched-installer 
 
@@ -34,6 +46,3 @@ Last error in make -j1 in openauto:
 
 
 
-OpenDash can be also interestring
-
-https://github.com/openDsh/dash
