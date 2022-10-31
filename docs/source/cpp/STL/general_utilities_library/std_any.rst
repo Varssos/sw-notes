@@ -3,8 +3,8 @@ std::any
 
 Header: ``<any>`` since C++17
 
-It is a type-safe container for single values of any copy constructible type
-
+It is a type-safe container for single values of any copy constructible type.
+Safe equivalent to ``void*``
 
 
 Assigning an std::any object
