@@ -33,4 +33,7 @@ Batocera image has already kodi. So you can switch from batocera to kodi and upl
 9. Connect gamepad, hdmi, power supply and just play :)
 
 
+Batocera commands(e.g. if you want to exit game): https://wiki.batocera.org/basic_commands
+
+
 
