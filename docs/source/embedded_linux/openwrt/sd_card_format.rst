@@ -1,7 +1,7 @@
 SD card format
 ==============
 
-If there is lack of some information check this nice `tutorial <https://openwrt.org/docs/guide-user/storage/usb-drives>`_ 
+If there is lack of some information, check this nice `tutorial <https://openwrt.org/docs/guide-user/storage/usb-drives>`_ 
 
 `To manage partitions you can use fdisk <https://www.golinuxcloud.com/steps-to-format-sd-card-in-linux/>`_ 
 
