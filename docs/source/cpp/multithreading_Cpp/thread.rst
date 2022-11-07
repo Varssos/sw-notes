@@ -1,9 +1,10 @@
-Multithreading in C++
-=====================
+Threads and mutex
+=================
 
 Multithreading in C++ can be possible by a ``<thread>`` and ``<mutex>`` libraries
 
 This page describe the most important things from these libraries
+
 
 Threads
 ~~~~~~~
