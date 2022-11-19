@@ -8,7 +8,6 @@ C++ STL
 
   std_chrono
   algorithms_library/index
-  concurrency_support_library/index
   containers_library/index
   data_and_time_library/index
   diagnostics_library/index

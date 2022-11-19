@@ -26,4 +26,5 @@ C/C++
   multithreading_Cpp/index
   unittests
   valgrind
+  virtual_tables_c++
   
