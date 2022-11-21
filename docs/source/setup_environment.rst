@@ -8,7 +8,7 @@ VS code
 2. Create a file ``.vscode/settings.json`` in project folder
 3. Add on the bottom::
    
-    "esbonio.sphinx.buildDir" : "${workspaceFolder}/docs/source/_build/html",
+    "esbonio.sphinx.buildDir" : "${workspaceFolder}/docs/build",
     "esbonio.sphinx.confDir"  : "${workspaceFolder}/docs/source",
     "esbonio.sphinx.srcDir"   : "${workspaceFolder}/docs/source",
     "esbonio.server.enabled": true,
@@ -25,3 +25,5 @@ VS code
    3. Remove config files from ``~/.config/Code/``
    4. `Install VS code on Linux <https://code.visualstudio.com/docs/setup/linux>`_ 
    5. If needed go to first steps of configuring VS code
+
+6. Or try to run VS code ``code . --no-sandbox``

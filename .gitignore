@@ -4,7 +4,7 @@
 
 #Custom
 .vscode
-docs/source/_build
+docs/build
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
