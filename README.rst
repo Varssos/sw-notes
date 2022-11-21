@@ -1,9 +1,9 @@
-Template for the Read the Docs tutorial
-=======================================
+SW-notes repo
+=============
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+Here are my notes for only my purposes. 
 
-Read the tutorial here:
+In ``docs/source/index.rst`` is a short text about what is going on here.
 
-https://docs.readthedocs.io/en/stable/tutorial/
+In ``docs/source/setup_environment.rst`` is a short doc how to prepare environment
+
