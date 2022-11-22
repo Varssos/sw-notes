@@ -1,5 +1,5 @@
-Inline functions in C++
-=======================
+Inline
+======
 
 `More details about inline functions <https://www.geeksforgeeks.org/inline-functions-cpp/>`_ 
 

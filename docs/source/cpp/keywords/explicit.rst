@@ -1,5 +1,5 @@
-Explicit keyword in C++
-=======================
+Explicit
+========
 
 `More details about explicit keyword here <https://www.geeksforgeeks.org/use-of-explicit-keyword-in-cpp/>`_ 
 

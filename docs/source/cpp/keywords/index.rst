@@ -2,7 +2,7 @@ C++ Keywords
 ============
 
 .. toctree:: 
-    :maxdepth: 2
+    :maxdepth: 1
 
     explicit
     inline
