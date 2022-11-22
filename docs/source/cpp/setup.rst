@@ -13,17 +13,27 @@ VS code keyboard shorcut
 2. Remove shortcut ``ctrl+shift+b`` for ``Tasks: Run Build Task`` 
 3. Find: ``Tasks: Run Task`` , set shortcut ``ctrl+shift+b``
 4. On the top right corner ``Open Keyboard Shortcuts (JSON)``
-5. Add on the bottom JSON object::
+5. Add on the bottom JSON object(~/.config/Code/User/keybindings.json)::
 
-    { 
-        "key": "ctrl+k",
-        "command": "workbench.action.terminal.focus"
-    },
-    { 
-        "key": "ctrl+k",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"
-    }
+    [
+		{
+			"key": "ctrl+shift+b",
+			"command": "-workbench.action.tasks.build"
+		},
+		{
+			"key": "ctrl+shift+b",
+			"command": "workbench.action.tasks.runTask"
+		},
+		{
+			"key": "ctrl+k",
+			"command": "workbench.action.terminal.focus"
+		},
+		{
+			"key": "ctrl+k",
+			"command": "workbench.action.focusActiveEditorGroup",
+			"when": "terminalFocus"
+		}
+	]
 
 
 Project configuration
