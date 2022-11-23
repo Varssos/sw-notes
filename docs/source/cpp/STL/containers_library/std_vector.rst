@@ -144,3 +144,4 @@ The problem is that simple ``std::find_if()`` returns only one iterator for firs
 
         return 0;
     }
+    
