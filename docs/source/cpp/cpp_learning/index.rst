@@ -19,3 +19,7 @@ C++ Learning articles/books
 - `Design Patterns C++ <https://infotraining.bitbucket.io/cpp-dp/>`_  
 - `TDD C++ <https://infotraining.bitbucket.io/cpp-tdd/>`_  
 - `Infotraining github <https://github.com/infotraining?tab=repositories>`_ 
+
+
+
+`C++ quiz <https://cppquiz.org/quiz/question/177>`_ 

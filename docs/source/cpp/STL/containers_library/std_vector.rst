@@ -62,6 +62,57 @@ Write a function ``filter`` that removes odd numbers and duplicate even numbers
         REQUIRE_THAT(v, Catch::Matchers::UnorderedEquals(std::vector{-2, 4}));
     }
 
+**Alternative code**
+
+.. code-block:: cpp
+
+    #include <catch2/catch_test_macros.hpp>
+    #include <catch2/matchers/catch_matchers_container_properties.hpp>
+    #include <catch2/matchers/catch_matchers_vector.hpp>
+    #include <vector>
+    #include <iostream>
+    #include <set>
+
+    void filter ( std::vector<int> &vec )
+    {
+        std::set<int> duplicated {};
+
+        auto it = std::remove_if(vec.begin(), vec.end(), [](int x ) { return x%2; });
+        vec.erase(it, vec.end());
+
+        auto itt = std::remove_if( vec.begin(), vec.end(), [&duplicated] ( int x ) { if(duplicated.count(x)>0){ return true; }else{ duplicated.emplace(x); return false; } });
+        vec.erase( itt, vec.end());
+    }
+
+    TEST_CASE("given an empty vector filter does nothing", "[filter]") {
+        std::vector<int> v{};
+        filter(v);
+        REQUIRE_THAT(v, Catch::Matchers::IsEmpty());
+    }
+
+    TEST_CASE("given a filtered vector, filter does nothing", "[filter]") {
+        std::vector<int> v{-2, 2};
+        filter(v);
+        REQUIRE(v == std::vector{-2, 2});
+    }
+
+    TEST_CASE(
+        "given a vector, filter removes odd numbers and duplicate even numbers",
+        "[filter]") {
+        std::vector v{-2, 1, 4, 1, -2, 4};
+        filter(v);
+        REQUIRE_THAT(v, Catch::Matchers::UnorderedEquals(std::vector{-2, 4}));
+    }
+
+**Or you can use Erase-Remove Idiom**::
+    
+    # Instead of
+    auto it = std::remove_if(vec.begin(), vec.end(), [](int x ) { return x%2; });
+    vec.erase(it, vec.end())
+
+    # Just:
+    vec.erase(std::remove_if(vec.begin(), vec.end(), [](int x ) { return x%2; }), vec.end());
+
 Iterate over the elements in vector and do action only for elements which fulfill condition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The problem is that simple ``std::find_if()`` returns only one iterator for first element
