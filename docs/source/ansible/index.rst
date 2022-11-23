@@ -12,3 +12,4 @@ Ansible
     install_ansible
     getting_started
     install_and_configute_package_openwrt
+    ansible_passwords
