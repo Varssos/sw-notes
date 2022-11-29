@@ -24,6 +24,7 @@ C/C++
   lvalue_rvalue
   memory_cpp
   multithreading_Cpp/index
+  objdump
   unittests
   valgrind
   virtual_tables_c++
