@@ -1,6 +1,7 @@
 Google tests
 ============
 
+`C++ cmake gtest template project <https://github.com/Varssos/Cpp_CMake_GTest_Template>`_ 
 
 Preview
 ~~~~~~~
