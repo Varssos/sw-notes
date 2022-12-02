@@ -1,6 +1,29 @@
 CMake in a nutshell
 ===================
 
+Basic invoking cmake
+~~~~~~~~~~~~~~~~~~~~
+Defaults:
+    - ``FOLDER_WHERE_CMAKELISTS.TXT_IS`` = ``.``
+    - ``BUILD_DIR`` = ``build``
+
+::
+
+    # Create makefile
+    cmake -S {FOLDER_WHERE_CMAKELISTS.TXT_IS} -B {BUILD_DIR} -DCMAKE_BUILD_TYPE=Debug -DTESTS=True
+
+    # build
+    cmake -S {FOLDER_WHERE_CMAKELISTS.TXT_IS} --build {BUILD_DIR}
+
+    # install
+    sudo cmake -S {FOLDER_WHERE_CMAKELISTS.TXT_IS} --install build
+
+In most cases::
+
+    cmake -B build
+    cmake --build build
+    sudo cmake --install build
+
 
 Necessary things to do in CMake
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

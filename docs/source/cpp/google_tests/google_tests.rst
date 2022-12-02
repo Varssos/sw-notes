@@ -25,8 +25,8 @@ Video Tutorial analysis
 
 
 
-Install on Linux system
-~~~~~~~~~~~~~~~~~~~~~~~
+Install CMake on Linux system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -37,6 +37,9 @@ Install on Linux system
     make -j8
     sudo make install
     sudo ldconfig
+
+Install CMake on Windows
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Install google test on Windows
 It should works as `here <https://www.youtube.com/watch?v=3zUqJEilhnM>`_ 
@@ -97,3 +100,18 @@ CMake for minimum test code
     target_link_libraries(gtest ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} gmock pthread)
 
   
+
+
+CMake get gtest archive and install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: cmake
+
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+    )
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)

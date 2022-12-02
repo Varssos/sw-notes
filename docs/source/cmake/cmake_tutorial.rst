@@ -43,8 +43,8 @@ Commands::
 
     mkdir -p ./out/build
     cmake -S . -B ./out/build # in PROJ_DIR
-    # -S indicate folder with sources
-    # -B indicate 
+    # -S indicate folder with CMAKELists.txt
+    # -B indicate build folder 
     cd ./out/build
     make
     ./OLAS
