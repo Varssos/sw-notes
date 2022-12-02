@@ -38,8 +38,8 @@ Install CMake on Linux system
     sudo make install
     sudo ldconfig
 
-Install CMake on Windows
-~~~~~~~~~~~~~~~~~~~~~~~~
+Install CMake on Windows OS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Install google test on Windows
 It should works as `here <https://www.youtube.com/watch?v=3zUqJEilhnM>`_ 
