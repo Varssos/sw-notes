@@ -1,6 +1,8 @@
 Setup environment
 =================
 
+`VS code C++ template project with gtest and cmake <https://github.com/Varssos/Cpp_CMake_GTest_Template>`_ 
+
 Visual studio code setup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
