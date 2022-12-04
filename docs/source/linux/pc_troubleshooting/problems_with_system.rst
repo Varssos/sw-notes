@@ -38,3 +38,23 @@ I tried:
 
 1. Update kernel version
 2. Update driver for r8169 ethernet module
+
+
+Sudo apt update public key not available
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Error::
+
+    Err:16 http://ppa.launchpad.net/ansible/ansible/ubuntu focal InRelease                                       
+    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 93C4A3FD7BB9C367
+    Err:20 http://lenovo.archive.canonical.com focal InRelease
+    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY D4D1EAED36962F69 NO_PUBKEY F9FDA6BED73CDC22
+
+Solution::
+
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 93C4A3FD7BB9C367
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D4D1EAED36962F69
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys F9FDA6BED73CDC22
+    sudo apt update 
+    #and then there should be no problem
+
