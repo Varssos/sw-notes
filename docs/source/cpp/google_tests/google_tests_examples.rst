@@ -2,7 +2,7 @@ GoogleTest Framework Examples
 =============================
 
 
-GTest main
+Main GTest
 ~~~~~~~~~~
 
 .. code-block:: cpp
@@ -20,7 +20,7 @@ GTest main
     }
 
 
-Basic GTest Test case
+Basic test case GTest
 ~~~~~~~~~~~~~~~~~~~~~
 
 Production code
@@ -60,8 +60,8 @@ Test cases
         EXPECT_EQ( 10, a.GetX() );
     }
 
-Basic GTest ASSERT_TRUE or ASSERT_False
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ASSERT_TRUE or ASSERT_False GTest 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -71,7 +71,7 @@ Basic GTest ASSERT_TRUE or ASSERT_False
     }
 
 
-GTest Fixture
+Fixture GTest
 ~~~~~~~~~~~~~
 
 ::
@@ -122,7 +122,7 @@ GTest Fixture
         }
     }
 
-GTest Sharing Resources Between Tests in the Same Test Suite
+Sharing Resources Between Tests in the Same Test Suite GTest
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Static constructor has to be ``SetUpTestCase()`` and destructor ``TearDownTestSuite()``::
@@ -153,7 +153,7 @@ Static constructor has to be ``SetUpTestCase()`` and destructor ``TearDownTestSu
         EXPECT_EQ( vec[0], 0 );
     }
 
-GTest exceptions
+Exceptions GTest
 ~~~~~~~~~~~~~~~~
 ::
 
@@ -177,7 +177,7 @@ GTest exceptions
         EXPECT_NO_THROW( no_throw() );
     }
 
-GTest floats
+Floats GTest
 ~~~~~~~~~~~~
 ::
 
@@ -194,7 +194,7 @@ GTest floats
         EXPECT_NEAR( a, b, 0.2 );
     }
 
-GTest Death tests
+Death tests GTest
 ~~~~~~~~~~~~~~~~~
 ::
 
@@ -264,8 +264,8 @@ Value-parametrized GTests
     INSTANTIATE_TEST_CASE_P(PackOfTests, ParametrizedTest, testing::ValuesIn(params));
 
 
-Typed tests
-~~~~~~~~~~~
+Typed tests GTest
+~~~~~~~~~~~~~~~~~
 ::
 
     template <typename T >
