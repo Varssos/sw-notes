@@ -1,5 +1,5 @@
-Google tests
-============
+GoogleTests
+===========
 
 `C++ cmake gtest template project <https://github.com/Varssos/Cpp_CMake_GTest_Template>`_ 
 
@@ -9,20 +9,6 @@ Preview
 `Google test C++ article <https://infotraining.bitbucket.io/cpp-tdd/gtest.html>`_
 
 `Google C++ tutorial playlist <https://www.youtube.com/watch?v=nbFXI9SDfbk&list=PL_dsdStdDXbo-zApdWB5XiF2aWpsqzV55&index=1>`_ 
-
-
-Video Tutorial analysis
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. toctree::
-  :maxdepth: 3
-
-  tutorial1/tutorial1
-  tutorial2/tutorial2
-  tutorial3/tutorial3
-  tutorial4/tutorial4
-  tutorial5/tutorial5
-
 
 
 Install CMake on Linux system
@@ -115,3 +101,17 @@ CMake get gtest archive and install
     # For Windows: Prevent overriding the parent project's compiler/linker settings
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(googletest)
+
+
+[deprecated]Video Tutorial analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. toctree::
+  :maxdepth: 3
+
+  tutorial1/tutorial1
+  tutorial2/tutorial2
+  tutorial3/tutorial3
+  tutorial4/tutorial4
+  tutorial5/tutorial5
+

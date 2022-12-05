@@ -8,4 +8,5 @@ Unit tests libraries
 
   general_unit_tests_info
   google_tests/google_tests
+  google_tests/google_tests_examples
   cute_unit_tests.rst

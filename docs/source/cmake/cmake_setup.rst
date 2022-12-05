@@ -28,3 +28,5 @@ Install cmake on Linux
     cmake version 3.16.3
 
     CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+Or even better in case of old cmake version in apt, just install from `snap <https://graspingtech.com/upgrade-cmake/>`_ 
