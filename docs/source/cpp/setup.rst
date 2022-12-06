@@ -198,3 +198,38 @@ Windows
 
     clean: 
         rm thread.exe
+
+Windows WSL for C/C++
+~~~~~~~~~~~~~~~~~~~~~
+ 
+Try first video
+ 
+`C++ vs code wsl environment setup <https://www.youtube.com/watch?v=NY5izJWXi0U>`_
+
+`VS Code WSL video tutorial <https://www.youtube.com/watch?v=NY5izJWXi0U>`_
+ 
+Install WSL
+-----------
+ 
+1. Open cmd
+2. ``wsl --install``
+ 
+Set up your Linux environment in WSL
+------------------------------------
+::
+ 
+    Navigate to your vs code project,
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install build-essential gdb cmake
+ 
+VS code setup in WSL
+--------------------
+ 
+1. Open VS code
+2. Install WSL VS code extension
+3. Click in the left bottom corner and ``Open Folder in WSL``
+4. Write your code
+5. ``Terminal`` -> ``Configure Default Build Task``. Choose ``/usr/bin/gcc`` or ``/usr/bin/g++``
+6. ``Run`` -> ``Start Debugging`` -> ``/usr/bin/gcc`` or ``/usr/bin/g++``
+7. Done. Remember to set breakpoint during debugging
