@@ -226,9 +226,20 @@ Set up your Linux environment in WSL
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get install build-essential gdb cmake
- 
-VS code setup in WSL
---------------------
+
+VS code setup in WSL with my C template projects
+------------------------------------------------
+
+1. Open VS code
+2. Install WSL VS code extension if not installed
+3. Click in the left bottom corner and ``Open Folder in WSL``
+4. Use make or cmake to build app as it is described in my C project template
+5. Move to ``Run and Debug`` section on the left hand side in VS code.
+6. Choose ``gdb_Windows``
+7. Run debug
+
+Alternative VS code setup in WSL
+--------------------------------
  
 1. Open VS code
 2. Install WSL VS code extension
