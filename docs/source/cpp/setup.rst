@@ -3,6 +3,10 @@ Setup environment
 
 `VS code C++ template project with gtest and cmake <https://github.com/Varssos/Cpp_CMake_GTest_Template>`_ 
 
+`C_Cmake_NoTests_Template <https://github.com/Varssos/C_CMake_NoTests_Template>`_ 
+
+`C_Makefile_NoTests_Template <https://github.com/Varssos/C_Makefile_NoTests_Template.git>`_ 
+
 Visual studio code setup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -233,3 +237,4 @@ VS code setup in WSL
 5. ``Terminal`` -> ``Configure Default Build Task``. Choose ``/usr/bin/gcc`` or ``/usr/bin/g++``
 6. ``Run`` -> ``Start Debugging`` -> ``/usr/bin/gcc`` or ``/usr/bin/g++``
 7. Done. Remember to set breakpoint during debugging
+8. You can git clone my C/C++ project listed on the top of this page
