@@ -1,5 +1,5 @@
-GoogleTest Framework Examples
-=============================
+GTest Examples
+==============
 
 
 Main GTest
