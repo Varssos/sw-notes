@@ -70,6 +70,20 @@ ASSERT_TRUE or ASSERT_False GTest
         ASSERT_TRUE( true );
     }
 
+Compare containers with GTest and GMock
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You have to include::
+    
+    #include <gmock/gmock/h>
+
+Then use ASSERT_THAT with ``testing::ElementsAre()``::
+
+    TEST( FilterTest, PlentyValues )
+    {
+        std::vector<int> vec { -2, 1, 4, 1, -2, 4 };
+        filter(vec);
+        ASSERT_THAT( vec, testing::ElementsAre( -2, 4 ));
+    }
 
 Fixture GTest
 ~~~~~~~~~~~~~

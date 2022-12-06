@@ -46,6 +46,7 @@ Contents
    plc/index.rst
    python/index.rst
    rpi/index.rst
+   RTOS/index.rst
    rust/index.rst
    UML/index.rst
    VPN/index.rst
