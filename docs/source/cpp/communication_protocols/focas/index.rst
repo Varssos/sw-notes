@@ -91,7 +91,7 @@ CNC Program number, comment and processing time
 CNC Status information
 ----------------------
 
-`cnc_statinfo <cnc_statinfo>`_ 
+`cnc_statinfo <https://www.inventcom.net/fanuc-focas-library/misc/cnc_statinfo>`_ 
 
 You can retrive information like:
     - T/M mode selection
@@ -106,7 +106,7 @@ You can retrive information like:
 CNC Alarm type
 --------------
 
-`cnc_alarm2 <http://link>`_ 
+`cnc_alarm2 <https://www.inventcom.net/fanuc-focas-library/misc/cnc_alarm2>`_ 
 
 It reads long variable(int32_t) which is alarm type. Depending on which bit is '1' it signals appropriate alarm message and should be mapped as in documentation. In practice it should be the same as the output of ``cnc_rdalmmsg2()``
 
