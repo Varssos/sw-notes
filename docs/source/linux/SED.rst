@@ -23,6 +23,11 @@ Real example, get fstab section ids in reverse order::
    uci show fstab | grep "target='/mnt/sdcard'" | sed -E 's/.*\[(.*)\].*/\1/' | sort -r
 
 
+Remove the first n charactrs from each line
+-------------------------------------------
+::
+
+   sed -i -r 's/^.{3}//' gamepad.py
 
 
 Linux course examples

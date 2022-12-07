@@ -104,3 +104,42 @@ On the other hand if you want to throw errors if there is no mock defualt behavi
 
         MyProductionFunction(foo); // reported as error - unexpected call
     }
+
+Setting the Default Value for a Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    Bar default_bar;
+    // Sets the default return value for type Bar.
+    DefaultValue<Bar>::Set(default_bar);
+
+    MockFoo foo;
+
+    // We don't need to specify an action here, as the default
+    // return value works for us.
+    EXPECT_CALL(foo, CalculateBar());
+
+    foo.CalculateBar();  // This should return default_bar.
+
+    // Unsets the default return value.
+    DefaultValue<Bar>::Clear();
+
+Setting the Default Actions for a Mock Method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Return Values GMock
+-------------------
+
+- ``Return()`` -  return ``void``
+- ``Return(value)`` - return ``value``
+- ``ReturnArg<N>()`` - return N-th argument ( 0-index base )
+- ``ReturnNew<T>(a1, ..., ak)`` - return ``new T(a1, ..., ak)``
+- ``ReturnNull()`` - return ``nullptr``
+- ``ReturnPointee(ptr)`` - return ``ptr`` pointer value 
+- ``ReturnRed(variable)`` - return reference to ``variable``
+- ``ReturnRefOfCopy(value)`` - return reference to ``variable`` copy
+
+
+
+
