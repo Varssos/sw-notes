@@ -16,10 +16,8 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     GUI_on_linux
     grub
     install_deb_from_file
-    IPC_linux
     package_management_system/index
-    process_monitoring
-    process_vs_thread
+    processes/index
     pulseaudio
     pc_troubleshooting/problems_with_system
     RDP
