@@ -17,6 +17,7 @@ C/C++
   cpp_learning/index
   STL/index.rst
   debugging/index.rst
+  endianess.rst
   good_practises_cr
   include_guards
   inheritence
