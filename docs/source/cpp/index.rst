@@ -26,8 +26,8 @@ C/C++
   multithreading_Cpp/index
   objdump
   pointer_reference
+  runtime_analysis/index
   static_analysis/index
   unittests
-  valgrind
   virtual_tables_c++
   
