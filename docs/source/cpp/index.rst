@@ -10,7 +10,6 @@ C/C++
   compiler
   compilation_process
   communication_protocols/index.rst
-  cppcheck
   c_cpp_libraries/index
   cpp_atributes/index
   keywords/index.rst
@@ -27,6 +26,7 @@ C/C++
   multithreading_Cpp/index
   objdump
   pointer_reference
+  static_analysis/index
   unittests
   valgrind
   virtual_tables_c++
