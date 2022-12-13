@@ -15,6 +15,7 @@ C/C++
   keywords/index.rst
   cpp_learning/index
   STL/index.rst
+  cpp_tools/index.rst
   debugging/index.rst
   endianess.rst
   good_practises_cr
