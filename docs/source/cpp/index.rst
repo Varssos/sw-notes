@@ -17,6 +17,7 @@ C/C++
   STL/index.rst
   cpp_tools/index.rst
   debugging/index.rst
+  efficiency/index.rst
   endianess.rst
   good_practises_cr
   include_guards

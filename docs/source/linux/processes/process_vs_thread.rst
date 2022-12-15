@@ -1,6 +1,8 @@
 Process vs thread in Linux
 ==========================
 
+`ByteByteGo Process vs Thread short video <https://www.youtube.com/watch?v=4rLW7zg21gI>`_ 
+
 Process definition
 ~~~~~~~~~~~~~~~~~~
 
