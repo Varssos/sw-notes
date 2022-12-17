@@ -38,6 +38,8 @@ Static library on linux
 2. Create static library ( libdevice.a )::
 
     ar rc libdevice.a device.o
+    # r - replace existing or insert new file(s) into the archive
+    # c - do not warn if the library had to be created
 
 3. Link static library to your executable file::
 
