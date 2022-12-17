@@ -17,6 +17,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     grub
     install_deb_from_file
     package_management_system/index
+    posix
     processes/index
     pulseaudio
     pc_troubleshooting/problems_with_system
