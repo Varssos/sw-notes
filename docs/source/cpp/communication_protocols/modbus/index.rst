@@ -28,8 +28,8 @@ Example request/response
     <A1><88> - The CRC
 
 
-C/C++ Libraries
-~~~~~~~~~~~~~~~
+C/C++ Modbus Libraries
+~~~~~~~~~~~~~~~~~~~~~~
 
 For embedded development purposes `libmodbus <https://libmodbus.org/>`_ 
 is good solution. 

@@ -15,20 +15,13 @@ C/C++
   STL/index.rst
   cpp_tools/index.rst
   debugging/index.rst
-  efficiency/index.rst
-  endianess.rst
   good_practises_cr
-  include_guards
-  inheritence
   linux_serial_port
-  lvalue_rvalue
-  memory_cpp
   multithreading_Cpp/index
   objdump
-  pointer_reference
   runtime_analysis/index
   static_analysis/index
   template/index
   unittests
-  virtual_tables_c++
+  various_cpp_topics/index
   
