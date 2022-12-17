@@ -65,6 +65,17 @@ Undo Commits
 - ``git reset --hard <id>`` Undo changes by deleting all commits since <id>
 
 
+.. warning:: Be careful that this will create an "alternate reality" for people who have already fetch/pulled/cloned from the remote repository. But in fact, it's quite simple:
+
+Undo last commit locally and in origin::
+
+    git reset HEAD^ # remove commit locally
+    git push origin +HEAD # force-push the new HEAD commit
+
+
+
+
+
 Git ignore
 ----------
 
@@ -86,6 +97,12 @@ Git branches
 - ``git merge <name>`` - Merge branch
 
 - ``git push origin <local_branch_name>`` - Push local branch to remote(origin) 
+
+Remove remote and local branch::
+
+    git push -d origin <branch_name>
+    git branch -D <branch_name>
+
 
 Git remote
 ----------
