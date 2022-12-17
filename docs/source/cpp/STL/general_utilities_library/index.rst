@@ -6,6 +6,7 @@ General utilities library
 
     bit_manipulation
     function_objects/index
+    numeric_limits
     std_any
     std_expected
     std_optional
