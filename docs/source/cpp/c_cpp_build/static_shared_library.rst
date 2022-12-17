@@ -33,7 +33,7 @@ Static library on linux
 
 1. Create object files( device.o )::
 
-    g++ -Wall -Werror -std=c++17 -c device.cpp
+    g++ -c device.cpp
 
 2. Create static library ( libdevice.a )::
 
@@ -43,13 +43,16 @@ Static library on linux
 
 3. Link static library to your executable file::
 
-    g++ -std=c++17 app.cpp -ldevice -o app -L .
+    g++ app.cpp -ldevice -o app -L .
     # or 
-    g++ -std=c++17 app.cpp -l:libdevice.a -o app -L .
+    g++ app.cpp -l:libdevice.a -o app -L .
 
     # -L indicate a directory which should be search for library to avoid:
     # /usr/bin/ld: cannot find -ldevice
     # collect2: error: ld returned 1 exit status
+
+.. warning:: In ``g++ app.cpp -ldevice -o app -L .`` You have to specify .cpp files first then library!
+
 
 
 Display content of the archive::
@@ -66,7 +69,7 @@ Determine type of files::
 
 You can add flag ``-static`` to make whole app truly static::
 
-    g++ -std=c++17 app.cpp -l:libdevice.a -o app -L . -static
+    g++ app.cpp -l:libdevice.a -o app -L . -static
     # then: check: 
     file ./app
     # output :
@@ -76,12 +79,62 @@ You can add flag ``-static`` to make whole app truly static::
 Static library with CMake
 -------------------------
 
+Basic CMake example
+
+.. code-block:: cmake
+
+    cmake_minimum_required( VERSION 3.16 )
+
+    project( app )
+
+    set( LIB_SRC device.cpp)
+
+    add_library(device STATIC ${LIB_SRC})
+    add_executable( app app.cpp)
+
+    target_link_libraries( app device)
+
+
 
 
 Shared library on linux
 -----------------------
+`How to create shared library in C++ <https://iq.opengenus.org/create-shared-library-in-cpp/>`_ 
+
+1. Create object files( device.o ) with Position Independent Code ``-fPIC``::
+
+    g++ -fPIC -c device.cpp
+
+2. Create shared library ( libdevice.so )::
+
+    g++ -shared -o libdevice.so device.o
+
+3. Link shared library to your executable file::
+
+    g++ app.cpp -L . -ldevice -o app
+    
+4. Install shared lib in standard location or export path to that shared library::
+
+    export LD_LIBRARY_PATH=/full_path_to_your_library_location/libname:$LD_LIBRARY_PATH
+
 
 Shared library with CMake
 -------------------------
+
+Basic CMake example
+
+.. code-block:: cmake
+
+    cmake_minimum_required( VERSION 3.16 )
+
+    project( app )
+
+    set( LIB_SRC device.cpp)
+
+    add_library(device SHARED ${LIB_SRC})
+    add_executable( app app.cpp)
+
+    target_link_libraries( app device)
+
 
 
