@@ -16,9 +16,7 @@ C/C++
   cpp_tools/index.rst
   debugging/index.rst
   good_practises_cr
-  linux_serial_port
   multithreading_Cpp/index
-  objdump
   runtime_analysis/index
   static_analysis/index
   template/index

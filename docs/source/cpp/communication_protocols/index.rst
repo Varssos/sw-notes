@@ -3,9 +3,10 @@ Communication protocols
 
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
 
   focas/index.rst
+  linux_serial_port
   modbus/index.rst
   mt_connect/index.rst
   s2opc/index.rst
