@@ -9,6 +9,7 @@ Git
     problems
     rm_undo_single_file
     undo_last_commit
+    posix
     submodules
     tags
     
