@@ -30,6 +30,7 @@ C/C++
   pointer_reference
   runtime_analysis/index
   static_analysis/index
+  template/index
   unittests
   virtual_tables_c++
   
