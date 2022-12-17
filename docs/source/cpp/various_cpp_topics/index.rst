@@ -12,4 +12,4 @@ Various C++ topics
     lvalue_rvalue
     memory_cpp
     pointer_reference
-    virtual_tables_c
+    virtual_tables_c++
