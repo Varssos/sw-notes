@@ -1,4 +1,4 @@
-C or C++ Libraries
+C/C++ Libraries
 ==================
 
 

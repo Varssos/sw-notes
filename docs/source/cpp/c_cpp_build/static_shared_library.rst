@@ -1,0 +1,4 @@
+Static vs shared library
+========================
+
+

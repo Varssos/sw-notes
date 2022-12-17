@@ -5,11 +5,9 @@ C/C++
   :maxdepth: 1
 
   setup
-  build_errors
   clang_format
-  compiler
-  compilation_process
   communication_protocols/index.rst
+  c_cpp_build/index
   c_cpp_libraries/index
   cpp_atributes/index
   keywords/index.rst
