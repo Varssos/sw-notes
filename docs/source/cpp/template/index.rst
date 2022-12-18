@@ -1,6 +1,9 @@
 Templates in C++
 ================
 
+`Infotraining C++ templates <https://infotraining.bitbucket.io/cpp-templates/index.html>`_ 
+
+
 Different implementation for string and different for other parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

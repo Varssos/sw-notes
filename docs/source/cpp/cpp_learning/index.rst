@@ -15,6 +15,7 @@ C++ Learning articles/books
 - `C++17 <https://infotraining.bitbucket.io/cpp-17/>`_  
 - `Advanced C++ <https://infotraining.bitbucket.io/cpp-adv/>`_ 
 - `C++ STL <https://infotraining.bitbucket.io/cpp-stl/>`_ 
+- `C++ Templates <https://infotraining.bitbucket.io/cpp-templates/index.html>`_ 
 - `Multithreading C++ <https://infotraining.bitbucket.io/cpp-thd/>`_  
 - `Design Patterns C++ <https://infotraining.bitbucket.io/cpp-dp/>`_  
 - `TDD C++ <https://infotraining.bitbucket.io/cpp-tdd/>`_  
