@@ -1,6 +1,8 @@
 Git
 ===
 
+https://learngitbranching.js.org/
+
 .. toctree::
     :maxdepth: 1
 

@@ -24,3 +24,4 @@ C++ Learning articles/books
 
 
 `C++ quiz <https://cppquiz.org/quiz/question/177>`_ 
+`C++ interview questions <https://aticleworld.com/cpp-interview-questions/>`_ 

@@ -9,6 +9,7 @@ C/C++
   communication_protocols/index.rst
   c_cpp_build/index
   c_cpp_libraries/index
+  c_standard_library/index
   cpp_atributes/index
   keywords/index.rst
   cpp_learning/index
