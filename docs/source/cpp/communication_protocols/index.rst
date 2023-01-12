@@ -5,6 +5,7 @@ Communication protocols
 .. toctree::
   :maxdepth: 1
 
+  can/index.rst
   focas/index.rst
   linux_serial_port
   modbus/index.rst
