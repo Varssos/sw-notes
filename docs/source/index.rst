@@ -33,6 +33,7 @@ Contents
    bash/index.rst
    cmake/index.rst
    cpp/index.rst
+   CI_CD/index.rst
    device_integrations/index.rst
    docker/index.rst
    electronics/index.rst
