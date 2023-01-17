@@ -13,7 +13,7 @@ A program is typically divide into different memory areas called segments:
 
 - **Code Segment**. It is also called text segment where the compiled program sits in memory. The code segment is typically read-only 
 - **Data Segment**. It is also called initialized data segment where initilized global and static variables are stored
-- **BSS Segment**. It is also called the uninitialized data segment where zeroinitilaized global ans static variables are stored.
+- **BSS Segment (block starting symbol)**. It is also called the uninitialized data segment where zeroinitilaized global ans static variables are stored.
 - **Heap**. It holds dynamically allocated variables
 - **Stack**. It stores function parameters, local variables and other function-related information
 

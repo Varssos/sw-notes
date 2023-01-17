@@ -19,6 +19,7 @@ C/C++
   good_practises_cr
   multithreading_Cpp/index
   runtime_analysis/index
+  santizers/index
   static_analysis/index
   template/index
   unittests
