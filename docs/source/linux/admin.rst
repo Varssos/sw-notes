@@ -20,8 +20,8 @@ Admin tools
     nice -n20 find / -name "*user*"  2>/dev/null >/tmp/wyniki&
 
 
-Users
-~~~~~
+Manage users on linux
+~~~~~~~~~~~~~~~~~~~~~
 
 `How to change username usergroup, askubuntu thread <https://askubuntu.com/questions/34074/how-do-i-change-my-username>`_ 
 
