@@ -29,6 +29,12 @@ Remove the first n charactrs from each line
 
    sed -i -r 's/^.{3}//' gamepad.py
 
+Replace text in all files recursively
+-------------------------------------
+::
+
+   grep -rl oldtext . | xargs sed -i 's/oldtext/newtext/g'
+
 
 Linux course examples
 ~~~~~~~~~~~~~~~~~~~~~
