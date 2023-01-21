@@ -13,3 +13,9 @@ Github project requirements
 In your project:
 ``Settings`` -> ``Actions`` -> ``General`` -> ``Actions permissions`` is set to ``Allow all actions and reusable workflows``
 
+
+Marketplace actions
+~~~~~~~~~~~~~~~~~~~
+
+`OpenWrt ImageBuilder Github Action <https://github.com/marketplace/actions/openwrt-imagebuilder-github-action>`_ 
+

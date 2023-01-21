@@ -1,6 +1,7 @@
 Admin tools
 ===========
 
+
 ! Reorganize this page
 
 #. Zmiana portu dla ssh::
@@ -18,6 +19,13 @@ Admin tools
    
     nice -n20 find / -name "*user*"  2>/dev/null >/tmp/wyniki&
 
+
+Users
+~~~~~
+
+`How to change username usergroup, askubuntu thread <https://askubuntu.com/questions/34074/how-do-i-change-my-username>`_ 
+
+`How to change hostname on linux <https://www.hostinger.com/tutorials/linux-change-hostname>`_ 
 
 
 
