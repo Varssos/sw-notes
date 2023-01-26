@@ -8,9 +8,9 @@ MQTT details
 `MQTT in details on YT <https://www.youtube.com/watch?v=TSwgZn2FKUw&list=PLS1QulWo1RIbQWue3zzwEuV2pSASiDxvv&index=1>`_ 
 
 
-MQTT stands for Message Queuing Telemetry Transport. It is a lightweight, publish-sibscribe, machine to machine network protocol for message queue/message queuing service.
+**MQTT** stands for MQ Telemetry Transport. It is a lightweight, publish-subscribe, machine to machine network protocol for message queue/message queuing service.
 
-- Perfect fir for constained devices with limited resources
+- Perfect fit for constained devices with limited resources
 - Minimal packet overhead
 - Very lightweight and binary protocol
 - Very easy to use
