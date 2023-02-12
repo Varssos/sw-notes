@@ -50,6 +50,7 @@ Contents
    RTOS/index.rst
    rust/index.rst
    UML/index.rst
+   VM/index.rst
    VPN/index.rst
 
    
