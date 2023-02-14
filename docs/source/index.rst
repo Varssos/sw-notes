@@ -51,6 +51,7 @@ Contents
    rust/index.rst
    UML/index.rst
    VPN/index.rst
+   windows/index.rst
 
    
    
