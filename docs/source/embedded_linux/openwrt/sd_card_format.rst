@@ -120,5 +120,4 @@ Mounting SD card with volume label
 Mounting OpenWRT feed
 ~~~~~~~~~~~~~~~~~~~~~
 
-
-.. todo:: Add openwrt feed
+:download:`sd_card feed to automate mounting sd card <./sd_card.tar.gz>` 

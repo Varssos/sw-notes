@@ -179,8 +179,8 @@ Before you start, make sure that binary and shared libraries are build with arg 
 
 4. It is possible to specify gdb binary location, just add section ``"miDebuggerPath": "/usr/bin/gdb"``
 
-Windows
-~~~~~~~
+Install MinGw in Windows
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. `Install gcc/g++ <https://www.youtube.com/watch?v=8CNRX1Bk5sY>`_  
    
