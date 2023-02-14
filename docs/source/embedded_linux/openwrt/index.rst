@@ -6,6 +6,7 @@ OpenWrt
     :maxdepth: 2
 
     crontab
+    feeds/index
     gdb_openwrt
     hub_configuration
     installing_image

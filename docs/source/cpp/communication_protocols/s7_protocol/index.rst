@@ -6,4 +6,4 @@ S7 Protocol
 
   snap7_c++_library
   snap7_python_server
-
+  s7_openwrt
