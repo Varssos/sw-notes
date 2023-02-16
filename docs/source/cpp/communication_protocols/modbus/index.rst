@@ -43,6 +43,13 @@ is good solution.
 Python modbus library
 ~~~~~~~~~~~~~~~~~~~~~
 
+**It worked on version 3.0.0. Now on 3.1.3 there is a problem**::
+
+    Traceback (most recent call last):
+    File "./modbusTCPserver.py", line 10, in <module>
+        from pymodbus.server.sync import StartTcpServer
+    ModuleNotFoundError: No module named 'pymodbus.server.sync'
+
 `PyModbus <https://pymodbus.readthedocs.io/en/latest/readme.html>`_ 
 which require python3 >= 3.8
 
