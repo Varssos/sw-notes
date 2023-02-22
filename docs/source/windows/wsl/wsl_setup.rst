@@ -14,3 +14,13 @@ Set default wsl startup location
 2.  ``ctrl + ,``
 3. Set ``Starting directory``
 
+
+Setup time synchronization in wsl
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://askubuntu.com/questions/1096930/sudo-apt-update-error-release-file-is-not-yet-valid
+
+::
+
+    sudo apt install ntp 
+    sudo service ntp restart 
