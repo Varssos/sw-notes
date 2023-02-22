@@ -8,3 +8,4 @@ Docker basic knowledge
     docker_images
     docker_hub
     docker_cp
+    dockerfile
