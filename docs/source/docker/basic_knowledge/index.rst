@@ -9,3 +9,4 @@ Docker basic knowledge
     docker_hub
     docker_cp
     dockerfile
+    docker_tags
