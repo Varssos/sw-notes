@@ -10,3 +10,4 @@ Docker basic knowledge
     docker_cp
     dockerfile
     docker_tags
+    docker_build_context
