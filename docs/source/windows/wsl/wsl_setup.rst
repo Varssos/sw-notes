@@ -24,3 +24,9 @@ https://askubuntu.com/questions/1096930/sudo-apt-update-error-release-file-is-no
 
     sudo apt install ntp 
     sudo service ntp restart 
+
+GUI apps in wsl
+~~~~~~~~~~~~~~~
+::
+
+    https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps
