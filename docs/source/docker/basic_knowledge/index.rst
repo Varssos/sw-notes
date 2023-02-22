@@ -6,3 +6,4 @@ Docker basic knowledge
 
     docker_containers
     docker_images
+    docker_hub
