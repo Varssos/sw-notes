@@ -58,3 +58,16 @@ Solution::
     sudo apt update 
     #and then there should be no problem
 
+
+Black monitor on display connected to hdmi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reason:
+1. hdmi output is connected only to nvidia GPU on some laptops
+
+
+Solution:
+1. You have to install nvidia drivers
+2. Switch to ``Nvidia (Performance Mode)``
+3. You can update kernel
+4. In some cases turning off ``secure boot`` in bios can help
