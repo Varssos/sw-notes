@@ -11,6 +11,20 @@ VS code
     pip install esbonio
     pip install docutils
     pip install sphinx-rtd-theme
+    pip install restructuredtext-lint
+    pip install rstcheck
+    pip install doc8
+
+    # Or 
+
+    pip install --upgrade esbonio==0.16.0
+    pip install --upgrade docutils==0.18.1
+    pip install --upgrade sphinx-rtd-theme==1.2.0
+    pip install --upgrade restructuredtext-lint==1.4.0
+    pip install --upgrade rstcheck==6.1.1
+    pip install --upgrade doc8==0.11.2
+
+
     
 4. Create a file ``.vscode/settings.json`` in project folder
 5. Add on the bottom::

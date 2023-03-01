@@ -1,0 +1,13 @@
+{
+    "esbonio.sphinx.buildDir" : "${workspaceFolder}/docs/build",
+    "esbonio.sphinx.confDir"  : "${workspaceFolder}/docs/source",
+    "esbonio.sphinx.srcDir"   : "${workspaceFolder}/docs/source",
+    "esbonio.server.enabled": true,
+    "restructuredtext.linter.run": "onSave",
+    "restructuredtext.preview.name": "sphinx",
+    "restructuredtext.preview.scrollEditorWithPreview": false,
+    "restructuredtext.preview.scrollPreviewWithEditor": false
+   
+}
+
+
