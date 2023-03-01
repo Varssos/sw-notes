@@ -12,3 +12,10 @@ Install package with accurate version
 ::    
     
     pip3 install --upgrade docutils==0.17.1
+
+
+Check pip package version
+~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    pip show docutils
