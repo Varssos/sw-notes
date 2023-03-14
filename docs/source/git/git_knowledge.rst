@@ -117,6 +117,12 @@ Git config
     git config --global user.name "Varssos"
     git config --global user.email "abcd@gmail.com"
 
+Save your credentials to rid of asking for credentials each time on git push/pull
+---------------------------------------------------------------------------------
+::
+
+    git config --global credential.helper store
+
 GitHub Repositories
 ~~~~~~~~~~~~~~~~~~~
 
