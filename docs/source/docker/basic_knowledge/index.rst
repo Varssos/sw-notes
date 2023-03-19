@@ -12,3 +12,4 @@ Docker basic knowledge
     docker_tags
     docker_build_context
     docker_basic_web_app
+    docker_add
