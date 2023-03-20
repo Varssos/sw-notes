@@ -24,7 +24,9 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     pc_troubleshooting/problems_with_system
     RDP
     SED
+    ssh_keygen
     ssh_server
+    sshfs
     systemd_service
     tar
     users
