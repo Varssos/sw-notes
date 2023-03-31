@@ -15,11 +15,11 @@ Brother printer on Linux
     # Many y y y 
 
 2. Now you are albe to print
+
 3. Setup scanner
 ::
 
     sudo apt-get install sane xsane
 
-    
 4. Restart PC
 5. Now you should see XSane app in system and be able to scan documents
