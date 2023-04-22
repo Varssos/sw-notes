@@ -149,7 +149,29 @@ Launch
 		]
 	}
    
+Alternative launch.json
+-----------------------
 
+This way you have to specify ``Set the default build target`` and ``Select the target to launch``
+
+.. code-block:: json
+
+	{
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug target",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${command:cmake.launchTargetPath}",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false
+			}
+		]
+	}
 
 Debug configuration
 -------------------
