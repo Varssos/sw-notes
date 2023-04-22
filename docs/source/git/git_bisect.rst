@@ -23,7 +23,7 @@ How to run automatic git bisect
     git bisect run cmake --build build
 
 
-Quit from bisect section
+Quit from bisect session
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ::
 
