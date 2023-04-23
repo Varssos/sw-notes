@@ -15,6 +15,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     expect
     GUI_on_linux
     grub
+    hexdump
     HID
     install_deb_from_file
     package_management_system/index
