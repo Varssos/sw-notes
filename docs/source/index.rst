@@ -42,6 +42,7 @@ Contents
    git/index.rst
    linux/index.rst
    makefile/index.rst
+   misc/index.rst
    mqtt/index.rst
    network/index.rst
    plc/index.rst
