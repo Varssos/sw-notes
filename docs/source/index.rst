@@ -39,7 +39,6 @@ Contents
    electronics/index.rst
    embedded_linux/index.rst
    esp32/index.rst
-   git/index.rst
    linux/index.rst
    makefile/index.rst
    misc/index.rst
@@ -51,6 +50,7 @@ Contents
    RTOS/index.rst
    rust/index.rst
    UML/index.rst
+   version_control/index.rst
    VM/index.rst
    VPN/index.rst
    windows/index.rst
