@@ -7,9 +7,3 @@ Repo tool
 
 
 .. warning:: Make sure that you have ``master`` branch to avoid ``repo sync`` fails
-
-
-
-.. code-block:: bash
-
-    repo forall -c "git reset --hard HEAD"
