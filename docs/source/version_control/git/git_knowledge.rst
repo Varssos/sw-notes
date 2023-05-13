@@ -50,6 +50,8 @@ Move between Commits
 --------------------
 
 - ``git checkout <id>`` Temporarily move to another commit. It change pointer ``HEAD`` to desired commit id
+- ``git checkout HEAD^`` Move to one commit between HEAD
+- ``git checkout HEAD~N`` Move to N commits between HEAD
 
 
 Move between Branches
@@ -89,19 +91,58 @@ Git branches
 - ``git branch <branch_name>`` - Create a new branch
 - ``git checkout <branch_name>`` - Switch to passed branch name
 - ``git checkout - b <branch_name>`` - Create and switch to new branch. Following two above in one command
-
 - ``git branch`` - List existing branches
-
 - ``git branch -D <branch_name>`` - Delete branch
-
-- ``git merge <name>`` - Merge branch
-
+- ``git merge <branch_name>`` - Merge branch <branch_name> to current branch
 - ``git push origin <local_branch_name>`` - Push local branch to remote(origin) 
+- ``git branch -f main HEAD~N`` - Move branch to specified commit e.g. HEAD~N
 
 Remove remote and local branch::
 
     git push -d origin <branch_name>
     git branch -D <branch_name>
+
+Git merge
+---------
+
+Merge keep branch history
+
+- ``git merge <branch_name>`` Merge branch <branch_name> to current branch
+
+Git rebase
+----------
+
+Rebase erase branch history and align to one branch
+
+- ``git rebase <branch_name>`` Put changes from current branch to ``<branch_name>``
+- ``git rebase <dest_branch> <src_branch>`` Put changes from ``<src_branch>`` and put them after ``<dest_branch>``
+- ``git rebase -i HEAD~N`` Change order of last N commits in current branch
+
+Git cherry-pick
+---------------
+
+- ``git cherry-pick C1 C3`` Put commits C1 and C3 in front of the HEAD
+
+
+Git push
+--------
+
+- ``git push`` - push current branch to remote
+- ``git push origin <local_branch_name>`` - push local commits of branch to remote(origin)
+- ``git push origin <source>:<destination>`` - push commits from local branch(source) to remote branch(destination)
+
+
+Git fetch
+---------
+
+- ``git fetch`` - download commits from remote origin and make them available in local
+
+
+Git pull
+--------
+
+- ``git pull`` <==> ``git fetch; git merge o/main``
+- ``git pull --rebase`` <==> ``git fetch; git rebase o/main``
 
 
 Git remote
