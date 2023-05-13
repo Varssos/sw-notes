@@ -44,7 +44,21 @@ Get started with esp hello-world
    
    `idf.py build`
 
-5. Flash::
+5. Setup port::
+
+    sudo adduser $USER dialout
+    sudo chmod a+rw /dev/ttyUSB0
+
+6. Flash::
 
     idf.py -p /dev/ttyUSB0 flash
 
+7. Monitor the output::
+
+    idf.py monitor
+
+
+Setup esp32 in vs code
+~~~~~~~~~~~~~~~~~~~~~~
+
+https://docs.platformio.org/en/stable/tutorials/espressif32/espidf_debugging_unit_testing_analysis.html
