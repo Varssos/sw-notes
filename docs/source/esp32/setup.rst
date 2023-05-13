@@ -62,3 +62,6 @@ Setup esp32 in vs code
 ~~~~~~~~~~~~~~~~~~~~~~
 
 https://docs.platformio.org/en/stable/tutorials/espressif32/espidf_debugging_unit_testing_analysis.html
+
+
+https://www.youtube.com/watch?v=5IuZ-E8Tmhg&ab_channel=YuriR
