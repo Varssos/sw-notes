@@ -7,3 +7,10 @@ Repo tool
 
 
 .. warning:: Make sure that you have ``master`` branch to avoid ``repo sync`` fails
+
+
+.. toctree:: 
+    :maxdepth: 1
+
+    repo_quick_guide
+    repo_useful_examples
