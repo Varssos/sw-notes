@@ -17,8 +17,8 @@ Try::
 If it won't fix it. Try to change default mirror in ``/etc/apt/sources.list``::
 
     Instead of: 
-    deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+    deb http://raspbian.raspberrypi.org/raspbian/ bullseye main contrib non-free rpi
     Change to:
-    deb http://www.mirrorservice.org/sites/archive.raspbian.org/raspbian buster main contrib non-free rpi
+    deb http://www.mirrorservice.org/sites/archive.raspbian.org/raspbian bullseye main contrib non-free rpi
     Different mirrors are available here: http://raspbian.org/RaspbianMirrors
     In my case it fixed problem with dependencies for openauto

@@ -28,7 +28,13 @@ RDP client on Linux
 
 To connect to RDP server you can use remmina program
 
-1. Click ``+`` sign on the left top, which is ``New connection profile``
-2. Fill all required data like it is on the picture:
+1. Install remmina::
+
+    sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
+    sudo apt update
+    sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
+
+2. Click ``+`` sign on the left top, which is ``New connection profile``
+3. Fill all required data like it is on the picture:
 
 .. image:: ./Remmina_profile.png
