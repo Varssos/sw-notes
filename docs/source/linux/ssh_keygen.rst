@@ -10,3 +10,5 @@ ssh-keygen
     # Pass file name e.g.  test_x
     # Pass password
     # On the result you will get private key: test_x and public: test_x.pub
+    # Then you can copy to remote machine
+    ssh-copy-id -p PORT -i ~/.ssh/YOUR_PUB_KEY.pub USER@IP
