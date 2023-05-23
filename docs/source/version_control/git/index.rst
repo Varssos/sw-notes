@@ -8,6 +8,7 @@ https://learngitbranching.js.org/
 
     git_knowledge
     git_bisect
+    git_blame
     get_file_from_remote_repo
     problems
     rm_undo_single_file
