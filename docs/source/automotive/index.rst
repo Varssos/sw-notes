@@ -8,3 +8,4 @@ Automotive
    ASPICE
    AUTOSAR
    doip
+   UDS/uds.rst
