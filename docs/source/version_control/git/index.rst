@@ -10,6 +10,7 @@ https://learngitbranching.js.org/
     git_bisect
     git_blame
     git_stash
+    git_revert_reset
     get_file_from_remote_repo
     problems
     rm_undo_single_file
