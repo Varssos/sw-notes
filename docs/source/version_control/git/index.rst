@@ -9,9 +9,8 @@ https://learngitbranching.js.org/
     git_knowledge
     git_bisect
     git_blame
-    git_stash
     git_revert_reset
-    get_file_from_remote_repo
+    git_stash
     problems
     submodules
     tags

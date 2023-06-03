@@ -43,6 +43,8 @@ Erase local file modification
 ::
 
     git checkout -- <file>
+    # Or
+    git checkout origin/master -- <file>
 
 
 Unstage file and erase local modification
