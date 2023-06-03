@@ -13,7 +13,6 @@ https://learngitbranching.js.org/
     git_revert_reset
     get_file_from_remote_repo
     problems
-    rm_undo_single_file
     undo_last_commit
     submodules
     tags

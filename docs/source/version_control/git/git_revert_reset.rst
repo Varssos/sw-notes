@@ -1,5 +1,5 @@
-Git reset/revert
-================
+Git reset/revert, undo changes/files
+====================================
 
 
 Create commit which revert our changes in commit <commit_id>
@@ -30,3 +30,24 @@ Erase commits before and on that <commit_id>
 ::
 
     git reset --hard <commit_id>
+
+
+Unstage file
+~~~~~~~~~~~~
+::
+
+    git reset -- <file>
+
+Erase local file modification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    git checkout -- <file>
+
+
+Unstage file and erase local modification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    git reset -- <file>
+    git checkout -- <file>
