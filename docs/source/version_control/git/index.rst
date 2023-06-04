@@ -9,6 +9,7 @@ https://learngitbranching.js.org/
     git_knowledge
     git_bisect
     git_blame
+    git_log
     git_revert_reset
     git_stash
     problems
