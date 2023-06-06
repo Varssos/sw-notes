@@ -9,10 +9,11 @@ https://learngitbranching.js.org/
     git_knowledge
     git_bisect
     git_blame
+    git_cherry_pick
     git_log
     git_revert_reset
-    git_stash
     git_squash
+    git_stash
     problems
     submodules
     tags
