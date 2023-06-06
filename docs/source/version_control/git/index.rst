@@ -12,6 +12,7 @@ https://learngitbranching.js.org/
     git_log
     git_revert_reset
     git_stash
+    git_squash
     problems
     submodules
     tags
