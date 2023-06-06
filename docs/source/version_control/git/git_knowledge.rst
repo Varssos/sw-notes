@@ -118,8 +118,8 @@ Rebase erase branch history and align to one branch
 - ``git rebase <dest_branch> <src_branch>`` Put changes from ``<src_branch>`` and put them after ``<dest_branch>``
 - ``git rebase -i HEAD~N`` Change order of last N commits in current branch
 
-Git cherry-pick
----------------
+Git cherry-pick <commit_hash>
+-----------------------------
 
 - ``git cherry-pick C1 C3`` Put commits C1 and C3 in front of the HEAD
 
