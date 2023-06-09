@@ -18,3 +18,8 @@ Run playbook with asking for vaule pass
 
     ansible-playbook main.yml --ask-vault-pass
 
+Decrypt your api_key.yml
+~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    ansible-playbook decrypt api_key.yml
