@@ -19,6 +19,8 @@ Inventory:
 1. Install ansible::
 
     python3 -m pip install --user ansible
+    sudo apt-get install sshpass
+
 
 2. Create playbook e.g. ``testplay.yml`` as below
 

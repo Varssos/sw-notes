@@ -6,5 +6,7 @@ Installing Ansible
 The easiest way is to type::
 
     python3 -m pip install --user ansible
+    sudo apt-get install sshpass
+
 
 .. warning:: In the production environment you should consider install via python with virtual environment to be independent from system python version
