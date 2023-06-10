@@ -9,7 +9,8 @@ Ansible
 .. toctree:: 
     :maxdepth: 2
 
+    ansible_base_knowledge/index
+    ansible_documentation/index
     install_ansible
-    getting_started
     install_and_configute_package_openwrt
     ansible_passwords

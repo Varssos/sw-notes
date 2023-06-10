@@ -10,3 +10,5 @@ The easiest way is to type::
 
 
 .. warning:: In the production environment you should consider install via python with virtual environment to be independent from system python version
+
+.. todo:: How to run ansible from virtualenv

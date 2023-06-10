@@ -1,7 +1,5 @@
-Getting started with ansible
+Getting started with Ansible
 ============================
-
-
 
 
 Control node:
@@ -21,8 +19,26 @@ Inventory:
     python3 -m pip install --user ansible
     sudo apt-get install sshpass
 
+2. Create file ``/etc/ansible/hosts``::
 
-2. Create playbook e.g. ``testplay.yml`` as below
+    [ubuntu]
+    192.168.0.62
+
+3. Verify the hosts in your inventory::
+
+    ansible all --list-hosts
+
+4. Setup ssh connection to devices. Create keys and then send public to managed node to ``~/.ssh/``
+
+5. Ping managed nodes::
+
+    ansible all -m ping -u seba_nas
+
+6. Verify disk usage or other command on the managed node::
+
+    ansible ubuntu -m command -a "df -Th" -u seba_nas
+
+7. Create playbook e.g. ``testplay.yml`` as below
 
 .. code-block:: yaml
 
@@ -47,3 +63,5 @@ Inventory:
     ansible-playbook -i inventory testplay.yml
 
 5. Verify if ``/tmp/file.txt`` on your device has following content: ``12345``
+
+
