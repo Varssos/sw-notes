@@ -5,3 +5,4 @@ Ansible base knowledge
     :maxdepth: 1
 
     ansible_inventory
+    ansible_playbooks
