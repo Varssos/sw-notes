@@ -7,4 +7,5 @@ Python modules
 
     pil
     pyserial
+    pytest/index
     turtle
