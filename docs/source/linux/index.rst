@@ -10,6 +10,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     awk
     basic_shell_tools
     certificates_commands
+    checksums
     cron
     curl
     expect
