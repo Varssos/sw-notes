@@ -16,3 +16,9 @@ Daddy Live
 Repo: ``https://team-crew.github.io/``
 
 `Daddy Live Kodi <https://www.wirelesshack.org/how-to-install-daddy-live-kodi-addon.html>`_ 
+
+
+F1 streams online
+~~~~~~~~~~~~~~~~~
+
+:file:`./fi_streams.txt` 
