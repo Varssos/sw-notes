@@ -8,6 +8,7 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
 
     admin
     awk
+    basic_linux_commands/index
     basic_shell_tools
     certificates_commands
     checksums
