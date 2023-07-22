@@ -1,4 +1,4 @@
-Expect
+expect
 ======
 
 Expect command or scripting language works with scripts that expect user inputs. It automates the task by providing inputs.

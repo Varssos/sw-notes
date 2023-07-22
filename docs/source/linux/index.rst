@@ -7,14 +7,12 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     :maxdepth: 1
 
     admin
-    awk
     basic_linux_commands/index
     basic_shell_tools
     certificates_commands
     checksums
     cron
     curl
-    expect
     GUI_on_linux
     grub
     hexdump
@@ -27,10 +25,8 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     pulseaudio
     pc_troubleshooting/problems_with_system
     RDP
-    SED
     ssh_keygen
     ssh_server
     sshfs
     systemd_service
-    tar
     users

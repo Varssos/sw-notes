@@ -1,4 +1,4 @@
-SED
+sed
 ===
 
 `AGH SED tutorial <https://home.agh.edu.pl/~wojnicki/didactic/sed1line.txt>`_ 
