@@ -23,3 +23,23 @@ Uninstall NoMachine
     systemctl disable nxserver
     sudo dpkg -r nomachine
     sudo dpkg --purge nomachine
+
+NoMachine FAQ
+~~~~~~~~~~~~~
+
+`NoMachine Knowledge Base <https://kb.nomachine.com/AR03P00973>`_ 
+
+
+Black screen nomachine
+----------------------
+::
+
+    sudo systemctl stop gdm
+    sudo /etc/NX/nxserver --restart
+
+When back to office try to ssh and 
+::
+
+    sudo systemctl start gdm
+    # if it didn't bring the physical screen to life do
+    sudo reboot
