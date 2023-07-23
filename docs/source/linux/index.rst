@@ -24,9 +24,6 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     processes/index
     pulseaudio
     pc_troubleshooting/problems_with_system
-    RDP
-    ssh_keygen
-    ssh_server
-    sshfs
+    remote_connections/index
     systemd_service
     users
