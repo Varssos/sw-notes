@@ -39,6 +39,7 @@ Contents
    electronics/index.rst
    embedded_linux/index.rst
    esp32/index.rst
+   home_server/index
    linux/index.rst
    makefile/index.rst
    misc/index.rst
