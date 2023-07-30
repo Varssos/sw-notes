@@ -14,3 +14,4 @@ Ansible
     install_ansible
     install_and_configute_package_openwrt
     ansible_passwords
+    ansible_become_password
