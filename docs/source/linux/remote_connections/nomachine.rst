@@ -9,6 +9,12 @@ Install NoMachine
     curl https://download.nomachine.com/download/8.7/Linux/nomachine_8.7.1_1_amd64.deb --output nomachine_8.7.1_1_amd64.deb
     sudo dpkg -i nomachine_8.7.1_1_amd64.deb
 
+Or more generic::
+
+    cd ~/Downloads
+    wget https://www.nomachine.com/free/linux/64/deb -O nomachine.deb
+    sudo apt install ./nomachine.deb
+
 Check NoMachine process
 ~~~~~~~~~~~~~~~~~~~~~~~
 ::
