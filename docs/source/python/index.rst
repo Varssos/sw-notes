@@ -6,3 +6,4 @@ Python
 
     packages/index
     pip
+    python_learning
