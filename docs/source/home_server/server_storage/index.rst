@@ -5,3 +5,4 @@ Server storage
     :maxdepth: 1
 
     mergerfs_snapraid
+    zfs
