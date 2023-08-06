@@ -6,3 +6,4 @@ Home server
     :maxdepth: 1
 
     jellyfin/index
+    server_storage/index
