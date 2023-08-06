@@ -1,6 +1,7 @@
 MergerFS and SnapRaid
 =====================
 .. warning:: MergeGS and SnapRaid are beneficial if you have drives with different capacity. In my case I had with the same and had only 2 disk drives so you cant use like this below. On the last step ``snapraid sync`` it will fail like here
+
 ::
 
     Self test...
