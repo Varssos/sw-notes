@@ -27,3 +27,4 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     remote_connections/index
     systemd_service
     users
+    usb_linux
