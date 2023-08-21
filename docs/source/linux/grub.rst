@@ -24,3 +24,18 @@ Choose linux kernel version
 6. Check current kernel version::
 
     uname -r
+
+Change kernel version with grub customizer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`How to boot into an older kernel <https://itsfoss.com/boot-older-kernel-default/>`_ 
+
+
+::
+
+    sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+    sudo apt update
+    sudo apt install grub-customizer
+
+1. Select the desired kernel entry and use the arrow (displayed on the top menu) to move it up the order.
+2. ``General settings`` -> ``default entry:`` ``predefined:`` <here_choose your kernel verision>
