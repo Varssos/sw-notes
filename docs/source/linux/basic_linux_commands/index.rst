@@ -8,6 +8,7 @@ Basic linux commands
     awk
     expect
     find
+    grep
     mv
     sed
     tar
