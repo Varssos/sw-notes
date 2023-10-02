@@ -71,3 +71,11 @@ Solution:
 2. Switch to ``Nvidia (Performance Mode)``
 3. You can update kernel
 4. In some cases turning off ``secure boot`` in bios can help
+
+
+Red or green screen after change from wayland to xorg
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Solution**: Change device colour profile
+
+On ubuntu: Settings->Device Colour Profiles->Choose e.g. sRGB or whatever different profile which works for you
