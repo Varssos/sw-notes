@@ -1,4 +1,4 @@
-git squash
+Git squash
 ==========
 
 Squash child commits to one above the ``parent_commit_id``

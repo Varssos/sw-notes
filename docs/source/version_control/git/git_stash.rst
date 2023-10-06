@@ -59,3 +59,15 @@ Stash untracked files
 ::
 
     git stash -u
+
+Remove element from stash list
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    git stash drop stash@{0}
+
+Remove all elements from stash list
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    git stash clear
