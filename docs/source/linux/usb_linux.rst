@@ -1,8 +1,35 @@
-usb linux
+Usb linux
 =========
 
-Disconnect usb device on linux
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to restart any tty serial in linux cli
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Look for ``usb 1-7.2.3: FTDI USB Serial Device converter
+now attached to ttyUSB1`` in ``sudo dmesg``
+
+Where: 
+    - ``1-7.2.3`` is physical usb address. Bus: 01 and Ports: 7.2.3. You can compare with: ``lsusb -tv``.  It should remain constant if you don't physically switch the USB port.
+    - ``ttyUSB1`` usb port to which you want to connect  e.g. ``picocom -b 115200 /dev/ttyUSB1``
+
+2. Disconnect usb port (Just insert the physical address
+into the command below)
+::
+
+    echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/unbind
+
+1. Connect usb port
+::
+
+    echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/bind
+
+4. You can add aliases to ``~/.bashrc``
+::
+
+    alias disconnectusb='echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/unbind'
+    alias connectusb='echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/bind'
+
+[[deprecated]] Disconnect usb device on linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. List connected usb devices
 ::
