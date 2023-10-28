@@ -4,12 +4,24 @@ Usb linux
 How to restart any tty serial in linux cli
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Look for ``usb 1-7.2.3: FTDI USB Serial Device converter
-now attached to ttyUSB1`` in ``sudo dmesg``
+1. Look for physical usb address e.g. ``usb 1-7.2.3`` in ``sudo dmesg`` in ``usb 1-7.2.3: FTDI USB Serial Device converter
+now attached to ttyUSB1``
 
 Where: 
     - ``1-7.2.3`` is physical usb address. Bus: 01 and Ports: 7.2.3. You can compare with: ``lsusb -tv``.  It should remain constant if you don't physically switch the USB port.
     - ``ttyUSB1`` usb port to which you want to connect  e.g. ``picocom -b 115200 /dev/ttyUSB1``
+
+Or use this command::
+
+    udevadm info --query=path --name=/dev/ttyUSB1 | awk -F'/' '{print $(NF-4)}'
+
+You can add alias::
+
+    alias getphysicalttyusbaddress='getphysicalttyUSBaddress_fun() { udevadm info --query=path --name=/dev/ttyUSB"$1" | awk -F/ "{print \$(NF-4)}"; }; getphysicalttyUSBaddress_fun'
+
+Usage::
+
+    getphysicalttyusbaddress 1
 
 2. Disconnect usb port (Just insert the physical address
 into the command below)
@@ -17,7 +29,7 @@ into the command below)
 
     echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/unbind
 
-1. Connect usb port
+3. Connect usb port
 ::
 
     echo "1-7.2.3" | sudo tee /sys/bus/usb/drivers/usb/bind
@@ -80,3 +92,35 @@ For this device it is:
 
     echo "1-2" | sudo tee /sys/bus/usb/drivers/usb/bind
 
+
+Gather information about usb device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Get complete path to usb device
+-------------------------------
+::
+
+    udevadm info --query=path --name=/dev/ttyUSB1 2>/dev/null
+    # Output:
+    /devices/pci0000:00/0000:00:02.1/0000:06:00.0/0000:07:0c.0/0000:0d:00.0/usb1/1-7/1-7.2/1-7.2.3/1-7.2.3:1.0/ttyUSB1/tty/ttyUSB1
+
+Lets assume that variable ``path`` has output of above command
+
+Get usb device properties
+-------------------------
+::
+
+    udevadm info --query=property --path="$path" 2>/dev/null
+    # Output:
+    ...
+    ID_VENDOR_ID=0403
+    ID_MODEL_ID=6001
+    ...
+
+Get ttyUSB* physical usb port
+-----------------------------
+::
+
+    udevadm info --query=path --name=/dev/ttyUSB1 | awk -F'/' '{print $(NF-4)}'
+    # Output:
+    1-7.2.3
