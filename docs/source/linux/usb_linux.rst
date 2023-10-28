@@ -110,7 +110,9 @@ Get usb device properties
 -------------------------
 ::
 
-    udevadm info --query=property --path="$path" 2>/dev/null
+    udevadm info --query=property --name=/dev/ttyUSB1
+    # Or
+    udevadm info --query=property --path="$path"
     # Output:
     ...
     ID_VENDOR_ID=0403
@@ -124,3 +126,24 @@ Get ttyUSB* physical usb port
     udevadm info --query=path --name=/dev/ttyUSB1 | awk -F'/' '{print $(NF-4)}'
     # Output:
     1-7.2.3
+
+Create const symbolic link to usb device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Get Vendor ID(ID_VENDOR_ID), Product ID(ID_MODEL_ID) and usb physical address
+::
+
+    udevadm info --query=path --name=/dev/ttyUSB1
+    udevadm info --query=path --name=/dev/ttyUSB1 | awk -F'/' '{print $(NF-4)}'
+
+2. Create file ``/etc/udev/rules.d/99-usb-serial.rules``
+::
+
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", KERNELS=="1-7.2.3", SYMLINK+="qnx_serial"
+
+3. Reload udevadm rules
+::
+
+    sudo udevadm control --reload-rules
+
+4. After connecting this device, not only ``/dev/ttyUSB1`` should be visible but also ``/dev/qnx_serial`` as symbolic link
