@@ -15,8 +15,7 @@ You are not able to connect in vscode with Remote-SSH extension.
 **Fix:**
 
 1. Try to: ``ctrl+shift+p`` and ``Remote-SSH: Kill VS Code server on host``
-2. If it still fails, try to remove all content from ``~/.vscode-server/bin`` on remote machine
-::
+2. If it still fails, try to remove all content from ``~/.vscode-server/bin`` on remote machine::
 
     cd ~/.vscode-server/bin
     ls

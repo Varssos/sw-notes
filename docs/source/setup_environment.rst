@@ -1,8 +1,8 @@
 ReadtheDocs setup environment
 =============================
 
-VS code
-~~~~~~~
+VS code setup for ReadtheDocs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Install ``reStructuredText`` and ``Extension Pack for reStructuredText`` extensions and ``WSL`` in case of windows system
 2. On windows: Open project with click in the left bottom corner and ``Open Folder in WSL...``
