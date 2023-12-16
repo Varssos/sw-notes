@@ -4,6 +4,7 @@ Self hosted VPNs
 .. toctree::
    :maxdepth: 2
 
+   duckdns
    port_forwarding
    tailscale
 
