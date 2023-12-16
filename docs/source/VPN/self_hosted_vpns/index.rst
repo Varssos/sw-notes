@@ -1,6 +1,11 @@
 Self hosted VPNs
 ================
 
+.. toctree::
+   :maxdepth: 2
+
+   tailscale
+
 Checking if you are behind CGNAT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
