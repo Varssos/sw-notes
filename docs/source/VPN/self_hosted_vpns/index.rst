@@ -4,6 +4,7 @@ Self hosted VPNs
 .. toctree::
    :maxdepth: 2
 
+   port_forwarding
    tailscale
 
 Checking if you are behind CGNAT
