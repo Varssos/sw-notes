@@ -51,6 +51,7 @@ Contents
    rpi/index.rst
    RTOS/index.rst
    rust/index.rst
+   stm32/index.rst
    UML/index.rst
    version_control/index.rst
    VM/index.rst
