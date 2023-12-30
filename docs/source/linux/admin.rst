@@ -108,8 +108,8 @@ pass:...
 
 
 
-NextCloud
-~~~~~~~~~
+NextCloud on centos
+~~~~~~~~~~~~~~~~~~~
 
 https://www.tecmint.com/install-nextcloud-on-centos-8/
 
