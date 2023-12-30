@@ -6,4 +6,5 @@ Home server
     :maxdepth: 1
 
     jellyfin/index
+    nextcloud/index
     server_storage/index
