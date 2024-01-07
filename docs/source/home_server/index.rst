@@ -7,4 +7,5 @@ Home server
 
     jellyfin/index
     nextcloud/index
+    samba/index
     server_storage/index
