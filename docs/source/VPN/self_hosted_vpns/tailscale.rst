@@ -68,3 +68,33 @@ Check github role `here <https://github.com/artis3n/ansible-role-tailscale>`_
             tailscale_authkey: "{{ lookup('env', 'TAILSCALE_KEY') }}"
             # or
             # tailscale_up_skip: true
+
+How to use subnet routers to have the same ip addresses in tailscale network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Tailscale subnets <https://tailscale.com/kb/1019/subnets>`_
+
+In my case I had:
+- Laptop with IP address: 192.168.0.64
+- Home server with IP address: 192.168.0.63
+
+Both are in the same tailscale network. I just wanted to have the same IP addressing no matter if it in local network or remotly via tailscale VPN.
+To achive that you should on each device:
+
+1. Install tailscale client
+2. Fill ``/etc/systemctl.d`` with running::
+
+    echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+    echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+    sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+
+3. Allow firewall::
+
+    sudo ufw route allow proto tcp from any to any port 80,443
+    sudo ufw reload
+
+4. Advertise subnet routes and accept routes::
+
+    sudo tailscale up --accept-routes --advertise-routes=192.168.0.0/24
+
+5. Enable subnet routes in Machines panel in tailscale. ``...`` -> ``Edit route settings`` -> Tick to Enable
