@@ -7,5 +7,6 @@ Home server
 
     jellyfin/index
     nextcloud/index
+    pi_hole/index
     samba/index
     server_storage/index
