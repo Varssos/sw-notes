@@ -45,7 +45,7 @@ Sudo apt update public key not available
 
 Error::
 
-    Err:16 http://ppa.launchpad.net/ansible/ansible/ubuntu focal InRelease                                       
+    Err:16 http://ppa.launchpad.net/ansible/ansible/ubuntu focal InRelease
     The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 93C4A3FD7BB9C367
     Err:20 http://lenovo.archive.canonical.com focal InRelease
     The following signatures couldn't be verified because the public key is not available: NO_PUBKEY D4D1EAED36962F69 NO_PUBKEY F9FDA6BED73CDC22
@@ -58,6 +58,23 @@ Solution::
     sudo apt update 
     #and then there should be no problem
 
+
+Sudo apt update public key deprecated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Error::
+
+    W: https://download.virtualbox.org/virtualbox/debian/dists/focal/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+    W: https://brave-browser-apt-release.s3.brave.com/dists/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+
+
+Solution: `Deprecated linux apt-key <https://opensource.com/article/22/9/deprecated-linux-apt-key>`_
+
+Alternatively you can:
+
+1. Erase gpg file from here: ``/usr/share/keyrings`` e.g. ``brave-browser-archive-keyring.gpg``
+2. Remove source list from ``/etc/apt/sources.list.d`` e.g. ``brave-browser-release.list``
+3. Install once again from scratch you app
 
 Black monitor on display connected to hdmi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
