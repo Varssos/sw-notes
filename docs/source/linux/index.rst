@@ -27,5 +27,6 @@ Pretty nice linux course `Linux Journey <https://linuxjourney.com/>`_
     RAID/index
     remote_connections/index
     systemd_service
+    tmux
     users
     usb_linux
