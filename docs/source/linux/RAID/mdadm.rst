@@ -53,6 +53,15 @@ How to remove mdadm raid
     sudo mdadm --stop /dev/md0
     sudo mdadm --remove /dev/md0
 
+It was safe for me to remove raid and recreate it again(without data loss)
+::
+
+    sudo mdadm --stop /dev/md0
+    sudo mdadm --remove /dev/md0
+    sudo mdadm --zero-superblock /dev/sdb
+    sudo mdadm --zero-superblock /dev/sdc
+    # Then create again with ansible
+
 How to setup mdadm with RAID1 in ansible
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
