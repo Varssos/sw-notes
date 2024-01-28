@@ -4,4 +4,5 @@ Nextcloud
 .. toctree:: 
     :maxdepth: 1
 
-    nextcloud_basic_docker
+    nextcloud_basic
+    nextcloud_with_mariadb

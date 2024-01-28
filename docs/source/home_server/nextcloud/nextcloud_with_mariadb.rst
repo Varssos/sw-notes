@@ -1,4 +1,4 @@
-Nextcloud basic docker
+Nextcloud with mariadb
 ======================
 
 
