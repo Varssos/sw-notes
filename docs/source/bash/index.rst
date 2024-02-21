@@ -8,4 +8,5 @@ Bash
     :caption: Bash content
     :maxdepth: 2
 
-    bash_examples
+    bash_examples/index
+    bash_rules
