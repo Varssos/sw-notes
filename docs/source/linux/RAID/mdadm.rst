@@ -3,6 +3,16 @@ mdadm
 
 We asume that you have 2 disk drives and you try to create raid1 (mirror)
 
+Tools which can check status of your disk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    df -Th
+    lsblk
+    sudo blkid /dev/md0
+    cat /proc/mdstat
+    cat /etc/fstab
+
 Setup raid1 with mdadm on ubuntu 22.04
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -31,12 +41,12 @@ Setup raid1 with mdadm on ubuntu 22.04
 
 6. Mount raid::
 
-    sudo mkdir /mnt/raid
-    sudo mount /dev/md0 /mnt/raid
+    sudo mkdir /mnt/md0
+    sudo mount /dev/md0 /mnt/md0
 
 7. Add to fstab::
 
-    echo "/dev/md0    /mnt/raid    ext4    defaults    0    2" >> /etc/fstab
+    echo "/dev/md0    /mnt/md0    ext4    defaults    0    2" >> /etc/fstab
 
 8. Check sync status::
 
@@ -61,6 +71,24 @@ It was safe for me to remove raid and recreate it again(without data loss)
     sudo mdadm --zero-superblock /dev/sdb
     sudo mdadm --zero-superblock /dev/sdc
     # Then create again with ansible
+
+How to disconnect with force mdadm raid?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    sudo fuser -km /mnt/md0
+
+
+How to remount mdadm?
+~~~~~~~~~~~~~~~~~~~~~
+::
+
+    sudo mdadm --assemble /dev/md0 /dev/sdb /dev/sdc
+    sudo mount /dev/md0 /mnt/md0
+    # If you have samba daemon
+    systemctl status smbd
+    systemctl restart smbd
+    systemctl status smbd
 
 How to setup mdadm with RAID1 in ansible
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
