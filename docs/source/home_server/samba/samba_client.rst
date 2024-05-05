@@ -37,3 +37,9 @@ How to umount samba disk from CLI on Ubuntu/Mint
 ::
 
     sudo umount /mnt/seba_nas_shared_disk
+
+
+How to set samba client on Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Your computer -> Network -> Map network -> Folder: \\192.168.0.63\md0   , Use your different credentials
