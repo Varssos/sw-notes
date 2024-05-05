@@ -10,9 +10,8 @@ How to create basic nextcloud docker?
 1. Create you nextcloud dir
 2. Create there ``docker-compose.yml`` with this conetent::
 
-    ---
     services:
-    nextcloud:
+      nextcloud:
         image: lscr.io/linuxserver/nextcloud:latest
         container_name: nextcloud
         environment:
