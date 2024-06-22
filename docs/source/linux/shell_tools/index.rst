@@ -1,5 +1,5 @@
-Linux shell tools
-=================
+Shell tools
+===========
 
 .. toctree:: 
     :maxdepth: 1

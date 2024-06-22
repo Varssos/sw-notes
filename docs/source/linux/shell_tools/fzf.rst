@@ -6,7 +6,7 @@ https://thevaluable.dev/fzf-shell-integration/
 
 
 Install fzf on debian based systems
-===================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -24,7 +24,7 @@ CTRL-r -> fzf to search for history.
 
 
 Example usages of fzf
-=====================
+~~~~~~~~~~~~~~~~~~~~~
 
 Replacement for interactive find in current directory::
 
