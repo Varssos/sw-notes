@@ -3,8 +3,26 @@ awk
 
 Interesting links:
 
-`tutorialspoint awk <https://www.tutorialspoint.com/awk/index.htm>`_ 
+Great tutorial: `tutorialspoint awk <https://www.tutorialspoint.com/awk/index.htm>`_ 
+
 `linuxhandbook <https://linuxhandbook.com/awk-command-tutorial/>`_ 
+
+AWK - glossary
+~~~~~~~~~~~~~~
+FS - field separator. Default: space
+NF - number of fields ( in the current record/line)
+NR - number of the current records (lines)
+FNR - number of the current records (lines) in the current file
+OFMT - output format for numbers. Default: %.6g
+OFS - output field separator. Default: space
+ORS - output record separator. Default: newline
+RLENGTH - length of the string matched by the match function
+RS - record separator. Default: newline
+RSTART - index of the string matched by the match function
+SUBSEP - subscript separator. Default: \034
+$0 - whole line
+$n - n-th field in the current record/line
+
 
 AWK - print at program start-up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,3 +88,35 @@ AWK - print line which has less than 23 characters
     awk 'length($0) < 23' marks.txt
     # or only 3rd column
     awk 'length($0) < 23 {print $3}' marks.txt
+
+AWK - show line which contain more than 2 fields in line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk 'NF>2'
+
+AWK - use NR to print line number
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk '{printf "%d: %s\n", NR, $0}'
+
+AWK - get max from variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk 'BEGIN { a = 10; b = 20; (a > b) ? max = a : max = b; print "Max = " max}'
+
+AWK - string concatenation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk 'BEGIN { str1 = "Hello, "; str2 = "world"; str3= str1 str2; print str3 }'
+
+AWK - print line which (not)contain pattern 9
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk '$0 ~ 9' marks.txt
+    # or not
+    awk '$0 !~ 9' marks.txt
