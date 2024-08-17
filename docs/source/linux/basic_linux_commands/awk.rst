@@ -30,3 +30,43 @@ AWK - combine BEGIN, process text and END
 
     awk 'BEGIN { print "Begin to process text" } /^Zosia / { print "Hello " $0; } END { print "END" } ' FS=,  input.txt
 
+AWK - assign variable
+~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk -v name=Jerry 'BEGIN { printf "Hello %s!\n", name}'
+    # Hello Jerry!
+
+AWK - dump program variables to default awkvars.out
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk --dump-variables -v name=Jerry 'BEGIN { printf "Hello %s!\n", name}'
+
+AWK - print column with descripction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    # marks.txt
+    1)  Amit    Physics  80
+    2)  Rahul   Maths    90
+    3)  Shyam   Biology  87
+    4)  Kedar   English  85
+    5)  Hari    History  89
+    # cmd:
+    awk '{printf "Name: %s, Subject: %s, score: %s\n", $2, $3, $4}' marks.txt
+
+
+AWK - count lines which has 'a'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk '/a/ {++cnt} END {print "Count = ", cnt}' marks.txt
+
+AWK - print line which has less than 23 characters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    awk 'length($0) < 23' marks.txt
+    # or only 3rd column
+    awk 'length($0) < 23 {print $3}' marks.txt
