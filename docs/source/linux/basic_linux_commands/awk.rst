@@ -120,3 +120,28 @@ AWK - print line which (not)contain pattern 9
     awk '$0 ~ 9' marks.txt
     # or not
     awk '$0 !~ 9' marks.txt
+
+AWK - regular expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    # match single character `f*n`
+    echo -e "cat\nbat\nfun\nfin\nfan" | awk '/f.n/'
+    # match start of line with 'The'
+    echo -e "This\nThat\nThere\nTheir\nthese" | awk '/^The/'
+    # match enf of line with letter 'n'
+    echo -e "knife\nknow\nfun\nfin\nfan\nnine" | awk '/n$/'
+    # match Call or Tall
+    echo -e "Call\nTall\nBall" | awk '/[CT]all/'
+    # exclude Call or Tall
+    echo -e "Call\nTalll\nBall" | awk '/[^CT]all/'
+    # match Call or Talk
+    echo -e "Call\nTalk\nBall\nSmall\nShall" | awk '/Call|Talk/'
+    # match Colour and Color. Make u optional. Zero or one occurence
+    echo -e "Colour\nColor" | awk '/Colou?r/'
+    # match ca, cat, catt. Make t optional. Zero or more occurence
+    echo -e "ca\ncat\ncatt" | awk '/cat*/'
+    # match cat, catt. One or more occurence 't'
+    echo -e "ca\ncat\ncatt" | awk '/cat+/
+    # match Apple Juice or Apple Cake (grouping with ())
+    echo -e "Apple Juice\nApple Pie\nApple Tart\nApple Cake"  | awk '/Apple (Juice|Cake)/'
