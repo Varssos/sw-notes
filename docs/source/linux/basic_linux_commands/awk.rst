@@ -9,19 +9,21 @@ Great tutorial: `tutorialspoint awk <https://www.tutorialspoint.com/awk/index.ht
 
 AWK - glossary
 ~~~~~~~~~~~~~~
-FS - field separator. Default: space
-NF - number of fields ( in the current record/line)
-NR - number of the current records (lines)
-FNR - number of the current records (lines) in the current file
-OFMT - output format for numbers. Default: %.6g
-OFS - output field separator. Default: space
-ORS - output record separator. Default: newline
-RLENGTH - length of the string matched by the match function
-RS - record separator. Default: newline
-RSTART - index of the string matched by the match function
-SUBSEP - subscript separator. Default: \034
-$0 - whole line
-$n - n-th field in the current record/line
+::
+
+    FS - field separator. Default: space
+    NF - number of fields ( in the current record/line)
+    NR - number of the current records (lines)
+    FNR - number of the current records (lines) in the current file
+    OFMT - output format for numbers. Default: %.6g
+    OFS - output field separator. Default: space
+    ORS - output record separator. Default: newline
+    RLENGTH - length of the string matched by the match function
+    RS - record separator. Default: newline
+    RSTART - index of the string matched by the match function
+    SUBSEP - subscript separator. Default: \034
+    $0 - whole line
+    $n - n-th field in the current record/line
 
 
 AWK - print at program start-up
@@ -61,7 +63,7 @@ AWK - dump program variables to default awkvars.out
 
     awk --dump-variables -v name=Jerry 'BEGIN { printf "Hello %s!\n", name}'
 
-AWK - print column with descripction
+AWK - print column with description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
 
@@ -129,7 +131,7 @@ AWK - regular expressions
     echo -e "cat\nbat\nfun\nfin\nfan" | awk '/f.n/'
     # match start of line with 'The'
     echo -e "This\nThat\nThere\nTheir\nthese" | awk '/^The/'
-    # match enf of line with letter 'n'
+    # match end of line with letter 'n'
     echo -e "knife\nknow\nfun\nfin\nfan\nnine" | awk '/n$/'
     # match Call or Tall
     echo -e "Call\nTall\nBall" | awk '/[CT]all/'
