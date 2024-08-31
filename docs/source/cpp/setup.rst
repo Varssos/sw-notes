@@ -271,3 +271,9 @@ Alternative VS code setup in WSL
 6. ``Run`` -> ``Start Debugging`` -> ``/usr/bin/gcc`` or ``/usr/bin/g++``
 7. Done. Remember to set breakpoint during debugging
 8. You can git clone my C/C++ project listed on the top of this page
+
+Disable auto completion in VS code
+----------------------------------
+
+Copilot -> Settings -> Copilot -> Editor: Enable Auto Completions
+Suggestions -> Settings -> type "suggestions" -> Editor: Quick Suggestion -> Item: other -> off
