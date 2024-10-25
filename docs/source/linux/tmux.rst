@@ -23,3 +23,37 @@ How to configure tmux
 
     # In case of any modifications in tmux config use that to source changes:
     tmux source ~/.config/tmux/tmux.conf
+
+
+Create sessions and windows to existing session
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Example of creating tmux session with two windows
+::
+    tmux new-session -d -s my-session-1 -n my-window-1
+    tmux new-window -n my-window-2 -t my-session-1
+
+Create sessions with multiple windows on startup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. sudo nano /etc/init.d/tmux_startup
+2. Fill with
+::
+
+    #!/bin/bash
+
+    sessions=("abc" "xyz" )
+
+    if tmux has-session -t abc > /dev/null 2>&1; then
+        :
+    else
+        for session in "${sessions[@]}"; do
+            echo "$session"
+            tmux new-session -d -s "$session" -n build
+            tmux new-window -n flash -t "$session"
+            tmux new-window -n test -t "$session"
+        done
+    fi
+
+3. sudo chmod +x /etc/init.d/tmux_startup
+4. On next reboot it should create tmux session on startup
