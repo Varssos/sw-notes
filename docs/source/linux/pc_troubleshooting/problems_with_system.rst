@@ -96,3 +96,10 @@ Red or green screen after change from wayland to xorg
 **Solution**: Change device colour profile
 
 On ubuntu: Settings->Device Colour Profiles->Choose e.g. sRGB or whatever different profile which works for you
+
+NetworkManager needs to be running
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Network service is down. Not able to connect to devices via ssh. On Ubuntu just::
+
+    sudo systemctl restart NetworkManager.service
