@@ -52,6 +52,17 @@ Setup raid1 with mdadm on ubuntu 22.04
 
     cat /proc/mdstat
 
+How to umount mdadm raid
+~~~~~~~~~~~~~~~~~~~~~~~~
+::
+    # If target is busy:
+    sudo lsof +f -- /mnt/md0
+    systemctl stop smbd
+
+    sudo umount /dev/md127
+    sudo mdadm --stop /dev/md127
+
+
 How to remove mdadm raid
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ::
