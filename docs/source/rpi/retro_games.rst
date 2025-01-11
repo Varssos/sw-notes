@@ -6,6 +6,9 @@ Retro games on RPI
 Retro emulator roms
 ~~~~~~~~~~~~~~~~~~~
 
+Find how to use that torrent:
+https://punkwhore.com/arcadepunks/2021-3/tor/Arcade.Reboot.Extended.Rpi4-Wolfanoz.torrent
+
 Games (roms) already with image are available here: ``arcadepunks.com``
 
 It is probably the best idea
