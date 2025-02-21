@@ -16,6 +16,12 @@ How to connect to samba server from UI on Linux Mint
     - Password: <HERE_YOUR_PASSWORD>
 4. Connect
 
+Or in nautilus
+
+1. Highlight path with ``ctrl+l``
+2. smb://nas-hostname/share-name   e.g. ``smb://192.168.0.X/md0``
+3. Optionally add to bookmarks 
+
 
 How to mount samba disk from CLI on Ubuntu/Mint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
