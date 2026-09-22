@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/iac_and_automation/ansible/ansible_documentation/getting_started_with_ansible.md). This copy is outdated and no longer maintained.
+
 Getting started with Ansible
 ============================
 

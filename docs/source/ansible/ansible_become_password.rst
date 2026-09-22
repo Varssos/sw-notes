@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/iac_and_automation/ansible/ansible_become_password.md). This copy is outdated and no longer maintained.
+
 Ansible become password
 =======================
 

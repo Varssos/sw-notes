@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/iac_and_automation/ansible/install_and_configure_package_openwrt.md). This copy is outdated and no longer maintained.
+
 Install and configure packages on OpenWRT
 =========================================
 

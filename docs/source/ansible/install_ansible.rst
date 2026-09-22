@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/iac_and_automation/ansible/install_ansible.md). This copy is outdated and no longer maintained.
+
 Installing Ansible
 ==================
 
