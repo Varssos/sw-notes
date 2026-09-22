@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/vpn/self_hosted_vpns/tailscale.md). This copy is outdated and no longer maintained.
+
 Tailscale
 =========
 

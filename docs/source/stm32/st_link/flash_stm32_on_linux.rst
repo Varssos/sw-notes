@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/stm32/st_link/flash_stm32_on_linux.md). This copy is outdated and no longer maintained.
+
 Flash stm32 on linux
 ====================
 

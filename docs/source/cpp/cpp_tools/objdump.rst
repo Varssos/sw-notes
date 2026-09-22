@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/cpp_tools/objdump.md). This copy is outdated and no longer maintained.
+
 Objdump
 =======
 

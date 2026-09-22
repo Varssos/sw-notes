@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/unittests.md). This copy is outdated and no longer maintained.
+
 Unit tests libraries
 ====================
 

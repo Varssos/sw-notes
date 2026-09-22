@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/stm32/st_link/st_link.md). This copy is outdated and no longer maintained.
+
 ST-LINK
 =======
 

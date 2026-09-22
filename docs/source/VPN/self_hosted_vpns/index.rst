@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/vpn/self_hosted_vpns/index.md). This copy is outdated and no longer maintained.
+
 Self hosted VPNs
 ================
 

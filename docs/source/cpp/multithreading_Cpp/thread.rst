@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/multithreading/thread.md). This copy is outdated and no longer maintained.
+
 Threads and mutex
 =================
 

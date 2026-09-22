@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/remote_connections/ssh_server.md). This copy is outdated and no longer maintained.
+
 SSH server
 ==========
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/clang_format.md). This copy is outdated and no longer maintained.
+
 Clang format
 ============
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/debugging/debugging.md). This copy is outdated and no longer maintained.
+
 Debugging and problems solving
 ==============================
 

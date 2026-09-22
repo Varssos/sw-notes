@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/device_integrations/advantech_edge_link.md). This copy is outdated and no longer maintained.
+
 Advantech EdgeLink
 ==================
 

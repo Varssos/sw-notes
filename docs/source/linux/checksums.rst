@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/shell_tools/md5sum.md, docs/linux/shell_tools/sha256sum.md). This copy is outdated and no longer maintained.
+
 Checksums
 =========
 

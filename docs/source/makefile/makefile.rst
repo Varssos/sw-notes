@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/makefile/makefile.md). This copy is outdated and no longer maintained.
+
 Makefile tips, knowledge in a nuthsell
 ======================================
 

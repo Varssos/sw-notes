@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/c_cpp_build/build_errors.md). This copy is outdated and no longer maintained.
+
 Build errors
 ============
 

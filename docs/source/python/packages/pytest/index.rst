@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/python/packages/pytest.md). This copy is outdated and no longer maintained.
+
 pytest
 ======
 

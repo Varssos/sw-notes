@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/vpn/l2tp_vpn.md). This copy is outdated and no longer maintained.
+
 Connect to L2TP VPN
 ===================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/rpi/apt_repo_manager.md). This copy is outdated and no longer maintained.
+
 Apt Raspbian repositories
 =========================
 

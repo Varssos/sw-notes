@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/communication_protocols/tcp/tcp_client_to_server_echo.md). This copy is outdated and no longer maintained.
+
 TCP client to server echo
 =========================
 

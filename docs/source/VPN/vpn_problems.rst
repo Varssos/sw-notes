@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/vpn/vpn_problems.md). This copy is outdated and no longer maintained.
+
 VPN problems
 ============
 

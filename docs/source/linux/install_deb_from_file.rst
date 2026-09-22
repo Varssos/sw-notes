@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/install_deb_from_file.md). This copy is outdated and no longer maintained.
+
 Install deb packages from file
 ==============================
 

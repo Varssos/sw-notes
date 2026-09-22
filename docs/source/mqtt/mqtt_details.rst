@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/mqtt/mqtt_details.md). This copy is outdated and no longer maintained.
+
 MQTT details
 ============
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/stl/general_utilities_library/numeric_limits.md). This copy is outdated and no longer maintained.
+
 std::numeric_limits
 ===================
 

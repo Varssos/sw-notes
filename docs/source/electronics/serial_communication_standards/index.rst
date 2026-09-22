@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/electronics/serial_communication_standards.md). This copy is outdated and no longer maintained.
+
 Serial communication standards
 ==============================
 

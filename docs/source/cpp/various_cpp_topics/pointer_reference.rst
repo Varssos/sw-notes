@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/various_cpp_topics/pointer_reference.md). This copy is outdated and no longer maintained.
+
 Pointer vs reference
 ====================
 

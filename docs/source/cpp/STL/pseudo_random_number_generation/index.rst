@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/stl/pseudo_random_number_generation/index.md). This copy is outdated and no longer maintained.
+
 Pseudo-random number generation
 ===============================
 

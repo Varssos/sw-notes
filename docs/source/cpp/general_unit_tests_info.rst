@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/general_unit_tests_info.md). This copy is outdated and no longer maintained.
+
 General info about unittests
 ============================
 

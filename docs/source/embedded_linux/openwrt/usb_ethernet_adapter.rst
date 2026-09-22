@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/usb_ethernet_adapter.md). This copy is outdated and no longer maintained.
+
 USB Ethernet adapter
 ====================
 

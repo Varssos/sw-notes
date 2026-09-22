@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/openwrt_sdk/quick_sdk_start.md). This copy is outdated and no longer maintained.
+
 Quick OpenWRT SDK start
 =======================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/network/linux_networking.md). This copy is outdated and no longer maintained.
+
 Linux basic network commands
 ============================
 

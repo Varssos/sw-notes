@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/processes/process_vs_thread.md). This copy is outdated and no longer maintained.
+
 Process vs thread in Linux
 ==========================
 

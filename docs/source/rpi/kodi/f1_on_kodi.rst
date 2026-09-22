@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/rpi/kodi.md). This copy is outdated and no longer maintained.
+
 F1 and other sports on Kodi
 ===========================
 

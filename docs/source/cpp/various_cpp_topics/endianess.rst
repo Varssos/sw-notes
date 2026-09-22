@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/various_cpp_topics/endianess.md). This copy is outdated and no longer maintained.
+
 Endianness
 ==========
 

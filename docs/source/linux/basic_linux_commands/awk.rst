@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/shell_tools/awk.md). This copy is outdated and no longer maintained.
+
 awk
 ===
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/installing_image.md). This copy is outdated and no longer maintained.
+
 Installing OpenWrt image
 ========================
 

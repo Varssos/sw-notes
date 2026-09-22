@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/stl/containers_library/std_vector.md). This copy is outdated and no longer maintained.
+
 std::vector
 ===========
 

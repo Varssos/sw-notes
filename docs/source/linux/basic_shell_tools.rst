@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/random_shell_exercises.md). This copy is outdated and no longer maintained.
+
 Basic shell tools
 =================
 

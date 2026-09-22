@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/google_tests/gmock_examples.md). This copy is outdated and no longer maintained.
+
 GMock Examples
 ==============
 

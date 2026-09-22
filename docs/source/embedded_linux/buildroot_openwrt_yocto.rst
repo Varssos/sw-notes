@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/buildroot_openwrt_yocto.md). This copy is outdated and no longer maintained.
+
 BuildRoot OpenWrt and Yocto comparison
 ======================================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/openwrt_sdk/building_packages.md). This copy is outdated and no longer maintained.
+
 Building custom packages with OpenWrt SDK
 =========================================
 

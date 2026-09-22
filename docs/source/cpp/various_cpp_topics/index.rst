@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/various_cpp_topics/index.md). This copy is outdated and no longer maintained.
+
 Various C++ topics
 ==================
 

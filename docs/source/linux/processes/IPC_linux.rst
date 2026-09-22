@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/processes/ipc_linux.md). This copy is outdated and no longer maintained.
+
 IPC in Linux
 ============
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/buildroot/buildroot_getting_start.md). This copy is outdated and no longer maintained.
+
 Getting start with BuildRoot
 ============================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/google_tests/tutorial1/index.md). This copy is outdated and no longer maintained.
+
 Tutorial#1, Introduction
 ========================
 

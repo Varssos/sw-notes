@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/sd_card_format.md). This copy is outdated and no longer maintained.
+
 SD card format
 ==============
 

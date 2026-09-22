@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/esp/esp32_setup.md). This copy is outdated and no longer maintained.
+
 Setup environment ESP
 =====================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/docker/setup_docker_environment_wsl.md). This copy is outdated and no longer maintained.
+
 Setup docker environment WSL
 ============================
 

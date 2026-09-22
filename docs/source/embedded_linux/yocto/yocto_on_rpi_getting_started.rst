@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/yocto/index.md). This copy is outdated and no longer maintained.
+
 Yocto on RPI getting started
 ============================
 

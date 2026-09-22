@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/openwrt_sdk/including_feeds.md). This copy is outdated and no longer maintained.
+
 Including feeds
 ===============
 

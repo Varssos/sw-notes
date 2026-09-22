@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/pc_troubleshooting.md). This copy is outdated and no longer maintained.
+
 Problems with system on Linux
 =============================
 

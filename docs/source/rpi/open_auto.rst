@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/rpi/open_auto.md). This copy is outdated and no longer maintained.
+
 Open Auto
 =========
 

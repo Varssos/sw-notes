@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/remote_connections/rdp.md). This copy is outdated and no longer maintained.
+
 RDP
 ===
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/docker/basic_knowledge/docker_hub.md). This copy is outdated and no longer maintained.
+
 Docker Hub
 ==========
 

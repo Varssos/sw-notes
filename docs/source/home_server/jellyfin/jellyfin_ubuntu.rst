@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/home_server/jellyfin.md). This copy is outdated and no longer maintained.
+
 Jellyfin on ubuntu
 ==================
 

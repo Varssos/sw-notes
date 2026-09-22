@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/stl/algorithms_library/stl_numeric.md). This copy is outdated and no longer maintained.
+
 <numeric>
 =========
 

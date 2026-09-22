@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/version_control/git/git_knowledge.md). This copy is outdated and no longer maintained.
+
 Git base knowledge
 ==================
 

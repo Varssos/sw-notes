@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/various_cpp_topics/memory_cpp.md). This copy is outdated and no longer maintained.
+
 Memory in C++
 =============
 

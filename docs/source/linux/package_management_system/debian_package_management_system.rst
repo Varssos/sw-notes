@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/package_management_system/debian_package_management_system.md). This copy is outdated and no longer maintained.
+
 Debian package management system
 ================================
 

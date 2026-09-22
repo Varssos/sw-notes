@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/home_server/server_storage/mergerfs_snapraid.md). This copy is outdated and no longer maintained.
+
 MergerFS and SnapRaid
 =====================
 .. warning:: MergeGS and SnapRaid are beneficial if you have drives with different capacity. In my case I had with the same and had only 2 disk drives so you cant use like this below. On the last step ``snapraid sync`` it will fail like here

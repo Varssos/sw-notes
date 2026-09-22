@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/google_tests/google_tests_setup.md). This copy is outdated and no longer maintained.
+
 GoogleTests setup
 =================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/home_server/samba/samba_client.md). This copy is outdated and no longer maintained.
+
 Samba client
 ============
 

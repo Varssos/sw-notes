@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/windows/ms_office.md). This copy is outdated and no longer maintained.
+
 MS office
 =========
 

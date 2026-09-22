@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/mqtt/mqtt_bash_example.md). This copy is outdated and no longer maintained.
+
 MQTT bash script example
 ========================
 

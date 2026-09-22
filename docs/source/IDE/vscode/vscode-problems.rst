@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/ide/vscode/index.md). This copy is outdated and no longer maintained.
+
 VS code problems
 ================
 

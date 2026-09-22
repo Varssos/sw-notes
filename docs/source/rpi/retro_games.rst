@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/rpi/retro_games.md). This copy is outdated and no longer maintained.
+
 Retro games on RPI
 ==================
 

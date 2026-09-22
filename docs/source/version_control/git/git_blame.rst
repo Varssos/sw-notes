@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/version_control/git/git_blame.md). This copy is outdated and no longer maintained.
+
 Git blame
 =========
 

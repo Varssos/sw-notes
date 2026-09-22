@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/cute_unit_tests.md). This copy is outdated and no longer maintained.
+
 CUTE
 ====
 

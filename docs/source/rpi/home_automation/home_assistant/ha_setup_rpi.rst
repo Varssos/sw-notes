@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/rpi/home_automation.md). This copy is outdated and no longer maintained.
+
 Setup HA on RPI4 on docker
 ==========================
 

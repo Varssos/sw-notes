@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/device_integrations/zebra_lp_2844.md). This copy is outdated and no longer maintained.
+
 Zebra LP 2844
 =============
 

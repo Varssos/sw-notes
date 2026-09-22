@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/communication_protocols/mt_connect.md). This copy is outdated and no longer maintained.
+
 MT Connect
 ==========
 

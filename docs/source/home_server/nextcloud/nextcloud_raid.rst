@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/home_server/nextcloud/nextcloud_raid.md). This copy is outdated and no longer maintained.
+
 Nextcloud raid
 ==============
 

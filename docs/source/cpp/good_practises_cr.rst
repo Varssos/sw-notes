@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/good_practises_cr.md). This copy is outdated and no longer maintained.
+
 Good practises and CR checklist
 ===============================
 

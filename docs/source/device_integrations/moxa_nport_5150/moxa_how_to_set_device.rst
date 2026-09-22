@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/device_integrations/moxa_nport_5150.md). This copy is outdated and no longer maintained.
+
 MOXA NPORT 5150
 ===============
 

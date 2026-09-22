@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/multithreading/atomic.md). This copy is outdated and no longer maintained.
+
 std::atomic
 ===========
 

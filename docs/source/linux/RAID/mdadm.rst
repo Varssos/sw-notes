@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/linux/raid_in_linux/mdadm.md). This copy is outdated and no longer maintained.
+
 mdadm
 =====
 

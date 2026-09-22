@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/makefile/makefile_all.md). This copy is outdated and no longer maintained.
+
 All Makefile knowledge
 ======================
 

@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/embedded_linux/openwrt/network_configuration.md). This copy is outdated and no longer maintained.
+
 Network configuration
 =====================
 

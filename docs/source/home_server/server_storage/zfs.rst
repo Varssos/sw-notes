@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/home_server/server_storage/zfs.md). This copy is outdated and no longer maintained.
+
 ZFS
 ===
 

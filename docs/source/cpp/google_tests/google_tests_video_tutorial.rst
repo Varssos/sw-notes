@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cpp/google_tests/google_tests_video_tutorial.md). This copy is outdated and no longer maintained.
+
 GoogleTest video tutorial
 =========================
 
