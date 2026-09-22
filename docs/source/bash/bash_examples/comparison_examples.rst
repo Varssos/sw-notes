@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/bash/bash_examples/comparison_examples.md). This copy is outdated and no longer maintained.
+
 Numeric and String Comparisons
 ==============================
 

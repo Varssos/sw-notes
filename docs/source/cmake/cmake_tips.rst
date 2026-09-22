@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cmake/cmake_tips.md). This copy is outdated and no longer maintained.
+
 Short tips about CMake
 ======================
 

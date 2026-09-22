@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/cmake/cmake_base_project.md). This copy is outdated and no longer maintained.
+
 CMake ready to use basic project
 ================================
 

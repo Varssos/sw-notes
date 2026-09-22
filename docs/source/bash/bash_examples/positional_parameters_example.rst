@@ -1,3 +1,6 @@
+.. warning::
+    This page has been migrated to varssos-mkdocs (docs/bash/bash_examples/positional_parameters_example.md). This copy is outdated and no longer maintained.
+
 Positional parameters
 =====================
 
